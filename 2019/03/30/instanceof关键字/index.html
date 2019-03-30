@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+  <meta name="description" content="instanceof运算符用来在运行时指出对象是否是特定的类的一个实例。static void main(String[] args)&amp;#123;123   String s = &amp;quot;sss&amp;quot;;   System.out.println(s instanceof String);&amp;#125;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="泛型">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/泛型/index.html">
+<meta property="og:title" content="instanceof关键字">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/instanceof关键字/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+<meta property="og:description" content="instanceof运算符用来在运行时指出对象是否是特定的类的一个实例。static void main(String[] args)&amp;#123;123   String s = &amp;quot;sss&amp;quot;;   System.out.println(s instanceof String);&amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T12:42:23.580Z">
+<meta property="og:updated_time" content="2019-03-30T12:59:25.634Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泛型">
-<meta name="twitter:description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+<meta name="twitter:title" content="instanceof关键字">
+<meta name="twitter:description" content="instanceof运算符用来在运行时指出对象是否是特定的类的一个实例。static void main(String[] args)&amp;#123;123   String s = &amp;quot;sss&amp;quot;;   System.out.println(s instanceof String);&amp;#125;">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/泛型/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/instanceof关键字/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>泛型 | Blog</title>
+  <title>instanceof关键字 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/泛型/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/instanceof关键字/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">泛型
+          <h1 class="post-title" itemprop="name headline">instanceof关键字
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-03-30 16:52:21 / 修改时间：20:42:23" itemprop="dateCreated datePublished" datetime="2019-03-30T16:52:21+08:00">2019-03-30</time>
+              <time title="创建时间：2019-03-30 20:54:38 / 修改时间：20:59:25" itemprop="dateCreated datePublished" datetime="2019-03-30T20:54:38+08:00">2019-03-30</time>
             
 
             
@@ -371,21 +371,8 @@
       
 
       
-        <h3 id="lt-T-与-lt-的区别"><a href="#lt-T-与-lt-的区别" class="headerlink" title="&lt;T>与&lt;?>的区别"></a>&lt;T>与&lt;?>的区别</h3><p>首先，前提目的是传入某个类以及继承类。</p>
-<ol>
-<li><p>&lt;T>用于声明泛型类和泛型方法，具有约束的作用：</p>
-<pre><code><figure class="highlight plain"><figcaption><span>class Node<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	T valu1;</span><br><span class="line">	T value2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><p> 中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&lt;?>，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&lt;?&gt;</p>
-</li>
-<li><p>&lt;?>用于运行中使用：</p>
- <figure class="highlight plain"><figcaption><span>class Plate<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	T value;</span><br><span class="line">	public Plate(T t)&#123;</span><br><span class="line">		this.value=t;</span><br><span class="line">	&#125;</span><br><span class="line">	public void set(T t)&#123;</span><br><span class="line">		this.value = t;</span><br><span class="line">	&#125;</span><br><span class="line">	public T get()&#123;</span><br><span class="line">		return value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Plate&lt;? exitends Fruit&gt; p = new Plate(new Apple());</span><br><span class="line">p.set(new Apple());//Error</span><br><span class="line">Fruit k = p.get();//right</span><br></pre></td></tr></table></figure>
-<p> 这样就可以定义p为装水果的盘子,使用&lt;?>传入的具体类就不能判断。<br> 使用上限符extends,但是set()方法就出现问题，用?不能判断传入的Apple()实例是否与之前的一致，对具体类未知，因此ERROR,而由于继承中，子类可以赋值给父类，所以，get方法依然可以使用，但只能放在他们的基类里面。</p>
- <figure class="highlight plain"><figcaption><span>super Fruit> p </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.set(new Fruit());//right</span><br><span class="line">p.get();//Error</span><br></pre></td></tr></table></figure>
-<p> 同样使用下限符super，set()传入的父类，虽然同样没有确定父类的类型是那些，但是如果传入Fruit类以及继承类，因为子类可以传入父类，但是反过来不能，所以get()方法取到的类不知具体类型，没法得到，比他高的父类也不知道，多以没有变量能接受该实例。</p>
-</li>
-</ol>
-<pre><code><figure class="highlight plain"><figcaption><span>class Main &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">       // List&lt;Fruit&gt; l = new ArrayList&lt;Apple&gt;();错误</span><br><span class="line">        List&lt;Fruit&gt; l = new ArrayList&lt;Fruit&gt;();正确，多态唯一不能用的就是创建的时候</span><br><span class="line">        l.add(new Apple());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>
+        <p>instanceof运算符用来在运行时指出对象是否是特定的类的一个实例。<br><figure class="highlight plain"><figcaption><span>static void main(String[] args)&#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   String s = &quot;sss&quot;;</span><br><span class="line">   System.out.println(s instanceof String);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -415,15 +402,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/ciyunruoshui.github.io/2019/03/30/for-String/" rel="next" title="+ for String">
+                <i class="fa fa-chevron-left"></i> + for String
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/03/30/transient关键字/" rel="prev" title="transient关键字">
-                transient关键字 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -467,17 +454,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -523,23 +501,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-T-与-lt-的区别"><span class="nav-number">1.</span> <span class="nav-text">&lt;T&gt;与&lt;?&gt;的区别</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
