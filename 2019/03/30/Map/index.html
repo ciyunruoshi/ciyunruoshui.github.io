@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="String对+的重载  包含两种情况：  1String s = new String(&amp;quot;s&amp;quot;)+&amp;quot;j&amp;quot;; +的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。  1String s = &amp;quot;s&amp;quot;+&amp;quot;l&amp;quot;;  +的两部分都是字面量，那">
+  <meta name="description" content="HashTable HashMapHashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全  他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用） 他们底层实现是相同，都是散列表的分离链接法。 HashMap能够存储null">
 <meta property="og:type" content="article">
-<meta property="og:title" content="+ for String">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/for-String/index.html">
+<meta property="og:title" content="Map集合三种实现区别">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/Map/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="String对+的重载  包含两种情况：  1String s = new String(&amp;quot;s&amp;quot;)+&amp;quot;j&amp;quot;; +的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。  1String s = &amp;quot;s&amp;quot;+&amp;quot;l&amp;quot;;  +的两部分都是字面量，那">
+<meta property="og:description" content="HashTable HashMapHashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全  他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用） 他们底层实现是相同，都是散列表的分离链接法。 HashMap能够存储null">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T12:42:26.013Z">
+<meta property="og:updated_time" content="2019-03-30T13:29:21.299Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="+ for String">
-<meta name="twitter:description" content="String对+的重载  包含两种情况：  1String s = new String(&amp;quot;s&amp;quot;)+&amp;quot;j&amp;quot;; +的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。  1String s = &amp;quot;s&amp;quot;+&amp;quot;l&amp;quot;;  +的两部分都是字面量，那">
+<meta name="twitter:title" content="Map集合三种实现区别">
+<meta name="twitter:description" content="HashTable HashMapHashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全  他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用） 他们底层实现是相同，都是散列表的分离链接法。 HashMap能够存储null">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/for-String/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/Map/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>+ for String | Blog</title>
+  <title>Map集合三种实现区别 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/for-String/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/Map/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">+ for String
+          <h1 class="post-title" itemprop="name headline">Map集合三种实现区别
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-03-30 20:31:58 / 修改时间：20:42:26" itemprop="dateCreated datePublished" datetime="2019-03-30T20:31:58+08:00">2019-03-30</time>
+              <time title="创建时间：2019-03-30 21:27:24 / 修改时间：21:29:21" itemprop="dateCreated datePublished" datetime="2019-03-30T21:27:24+08:00">2019-03-30</time>
             
 
             
@@ -371,15 +371,14 @@
       
 
       
-        <h3 id="String对-的重载"><a href="#String对-的重载" class="headerlink" title="String对+的重载"></a>String对+的重载</h3><p>  包含两种情况：</p>
+        <h1 id="HashTable-HashMap"><a href="#HashTable-HashMap" class="headerlink" title="HashTable HashMap"></a>HashTable HashMap</h1><p>HashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全</p>
 <ol>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = new String(&quot;s&quot;)+&quot;j&quot;;</span><br></pre></td></tr></table></figure>
-<p>+的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = &quot;s&quot;+&quot;l&quot;;</span><br></pre></td></tr></table></figure>
-<p> +的两部分都是字面量，那么在编译期间，class文件中常量池中包含拼接后的字符串”sl”，在JVM载入class文件过程中，”sl”已经在堆上创建实例，并且将引用添加到字符串常量池，然后在jvm加载期间从运行时常量池中返回引用。</p>
-</li>
+<li>他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用）</li>
+<li>他们底层实现是相同，都是散列表的分离链接法。</li>
+<li>HashMap能够存储null键，HashTable不能存储。主要是HashMap在判断null键，会把它存储在数组下表为0的地方，但是只能存储一个。</li>
+<li>HashMap的默认容量是16？<br> index=HashCode(s)&amp;(Length-1);来求余值判断下标<br>余数只取决于哈希数的最后几位，令Length-1的二进制上全为1，符合均匀分布的原则，也就是说容量大小一定为2的幂次，保持长度的二进制表达全为1</li>
 </ol>
+<h1 id="CurrentHashMap"><a href="#CurrentHashMap" class="headerlink" title="CurrentHashMap"></a>CurrentHashMap</h1><p>在HashMap线程不安全的基础上设计的线程安全类<br>但是由于锁的粒度变小，因此执行效率比HashTable高，但是这三个的底层实现都是一样。</p>
 
       
     </div>
@@ -410,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/03/30/transient关键字/" rel="next" title="transient关键字">
-                <i class="fa fa-chevron-left"></i> transient关键字
+              <a href="/ciyunruoshui.github.io/2019/03/30/Vector/" rel="next" title="Vector容器">
+                <i class="fa fa-chevron-left"></i> Vector容器
               </a>
             
           </div>
@@ -419,10 +418,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/03/30/instanceof关键字/" rel="prev" title="instanceof关键字">
-                instanceof关键字 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#String对-的重载"><span class="nav-number">1.</span> <span class="nav-text">String对+的重载</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HashTable-HashMap"><span class="nav-number">1.</span> <span class="nav-text">HashTable HashMap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CurrentHashMap"><span class="nav-number">2.</span> <span class="nav-text">CurrentHashMap</span></a></li></ol></div>
             
 
           </div>
