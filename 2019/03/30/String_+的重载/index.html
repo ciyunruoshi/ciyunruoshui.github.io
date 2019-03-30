@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="String对+的重载包含两种情况：  s 12	+的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。2. ```String s = &amp;quot;s&amp;quot;+&amp;quot;l&amp;quot;;  +的两部分都是字面量，那么在编译期间，class文件中常量池中包含拼接后的字符串”sl”，在JVM载入class文件过">
+  <meta name="description" content="String对+的重载  包含两种情况：  1String s = new String(&amp;quot;s&amp;quot;)+&amp;quot;j&amp;quot;; +的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。  1String s = &amp;quot;s&amp;quot;+&amp;quot;l&amp;quot;;  +的两部分都是字面量，那">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/String_+的重载/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="String对+的重载包含两种情况：  s 12	+的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。2. ```String s = &amp;quot;s&amp;quot;+&amp;quot;l&amp;quot;;  +的两部分都是字面量，那么在编译期间，class文件中常量池中包含拼接后的字符串”sl”，在JVM载入class文件过">
+<meta property="og:description" content="String对+的重载  包含两种情况：  1String s = new String(&amp;quot;s&amp;quot;)+&amp;quot;j&amp;quot;; +的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。  1String s = &amp;quot;s&amp;quot;+&amp;quot;l&amp;quot;;  +的两部分都是字面量，那">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-30T11:05:04.375Z">
+<meta property="og:updated_time" content="2019-03-30T11:06:45.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="String对+的重载包含两种情况：  s 12	+的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。2. ```String s = &amp;quot;s&amp;quot;+&amp;quot;l&amp;quot;;  +的两部分都是字面量，那么在编译期间，class文件中常量池中包含拼接后的字符串”sl”，在JVM载入class文件过">
+<meta name="twitter:description" content="String对+的重载  包含两种情况：  1String s = new String(&amp;quot;s&amp;quot;)+&amp;quot;j&amp;quot;; +的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。  1String s = &amp;quot;s&amp;quot;+&amp;quot;l&amp;quot;;  +的两部分都是字面量，那">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -159,9 +159,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="String对-的重载"><a href="#String对-的重载" class="headerlink" title="String对+的重载"></a>String对+的重载</h1><p>包含两种情况：</p>
+        <h1 id="String对-的重载"><a href="#String对-的重载" class="headerlink" title="String对+的重载"></a>String对+的重载</h1><p>  包含两种情况：</p>
 <ol>
-<li><figure class="highlight plain"><figcaption><span>s </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">	+的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。</span><br><span class="line">2. ```String s = &quot;s&quot;+&quot;l&quot;;</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = new String(&quot;s&quot;)+&quot;j&quot;;</span><br></pre></td></tr></table></figure>
+<p>+的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = &quot;s&quot;+&quot;l&quot;;</span><br></pre></td></tr></table></figure>
 <p> +的两部分都是字面量，那么在编译期间，class文件中常量池中包含拼接后的字符串”sl”，在JVM载入class文件过程中，”sl”已经在堆上创建实例，并且将引用添加到字符串常量池，然后在jvm加载期间从运行时常量池中返回引用。</p>
 </li>
 </ol>
