@@ -368,14 +368,19 @@
       
         
           
-            <h1 id="transient关键字"><a href="#transient关键字" class="headerlink" title="transient关键字"></a>transient关键字</h1><h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>java中对象的序列化指的是将对象转换成以字节序列的形式来表示，这些字节序列包含了对象的数据和信息，一个序列化后的对象可以被写到数据库或文件中，也可用于网络传输，一般当我们使用缓存cache（内存空间不够有可能会本地存储到硬盘）或远程调用rpc（网络传输）的时候，经常需要让我们的实体类实现Serializable接口，目的就是为了让其可序列化。</p>
-<p>当然，序列化后的最终目的是为了反序列化，恢复成原先的Java对象，要不然序列化后干嘛呢，所以序列化后的字节序列都是可以恢复成Java对象的，这个过程就是反序列化。</p>
-<h2 id="transient"><a href="#transient" class="headerlink" title="transient"></a>transient</h2><p>Java中transient关键字的作用，简单地说，就是让某些被修饰的成员属性变量不被序列化，这一看好像很好理解，就是不被序列化，那么什么情况下，一个对象的某些字段不需要被序列化呢？如果有如下情况，可以考虑使用关键字transient修饰：</p>
-<p>1、类中的字段值可以根据其它字段推导出来，如一个长方形类有三个属性：长度、宽度、面积（示例而已，一般不会这样设计），那么在序列化的时候，面积这个属性就没必要被序列化了；</p>
-<p>2、其它，看具体业务需求吧，哪些字段不想被序列化；</p>
-<p>PS，记得之前看HashMap源码的时候，发现有个字段是用transient修饰的，我觉得还是有道理的，确实没必要对这个modCount字段进行序列化，因为没有意义，modCount主要用于判断HashMap是否被修改（像put、remove操作的时候，modCount都会自增），对于这种变量，一开始可以为任何值，0当然也是可以（new出来、反序列化出来、或者克隆clone出来的时候都是为0的），没必要持久化其值。</p>
-
+            <p>
+              transient关键字序列化java中对象的序列化指的是将对象转换成以字节序列的形式来表示，这些字节序列包含了对象的数据和信息，一个序列化后的对象可以被写到数据库或文件中，也可用于网络传输，一般当我们使用缓存cache（内存空间不够有可能会本地存储到硬盘）或远程调用rpc（网络传输）的时候，经常需
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/03/30/transient关键字/#more" rel="contents">
+                Weiterlesen &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -516,17 +521,24 @@
       
         
           
-            <h1 id="String对-的重载"><a href="#String对-的重载" class="headerlink" title="String对+的重载"></a>String对+的重载</h1><p>  包含两种情况：</p>
-<ol>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = new String(&quot;s&quot;)+&quot;j&quot;;</span><br></pre></td></tr></table></figure>
-<p>+的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = &quot;s&quot;+&quot;l&quot;;</span><br></pre></td></tr></table></figure>
-<p> +的两部分都是字面量，那么在编译期间，class文件中常量池中包含拼接后的字符串”sl”，在JVM载入class文件过程中，”sl”已经在堆上创建实例，并且将引用添加到字符串常量池，然后在jvm加载期间从运行时常量池中返回引用。</p>
-</li>
-</ol>
+            <p>
+              String对+的重载  包含两种情况：
 
+String s = new String(&quot;s&quot;)+&quot;j&quot;;
++的两部分钟包含new,需要在运行期间创建实例，因此，重载使用StringBuilder类以及toString()方法来创建字符串新对象。
+
+Strin
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/03/30/String_+的重载/#more" rel="contents">
+                Weiterlesen &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -626,7 +638,7 @@
                 
               
 
-              <time title="Erstellt: 2019-03-30 16:52:21 / Geändert am: 19:22:11" itemprop="dateCreated datePublished" datetime="2019-03-30T16:52:21+08:00">2019-03-30</time>
+              <time title="Erstellt: 2019-03-30 16:52:21 / Geändert am: 19:59:20" itemprop="dateCreated datePublished" datetime="2019-03-30T16:52:21+08:00">2019-03-30</time>
             
 
             
@@ -667,22 +679,23 @@
       
         
           
-            <h1 id="lt-T-与-lt-的区别？"><a href="#lt-T-与-lt-的区别？" class="headerlink" title="&lt;T>与&lt;?>的区别？"></a>&lt;T>与&lt;?>的区别？</h1><p>首先，前提目的是传入某个类以及继承类。</p>
-<ol>
-<li><p>&lt;T>用于声明泛型类和泛型方法，具有约束的作用：</p>
-<pre><code><figure class="highlight plain"><figcaption><span>class Node<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	T valu1;</span><br><span class="line">	T value2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><p> 中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&lt;?>，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&lt;?&gt;</p>
-</li>
-<li><p>&lt;?>用于运行中使用：</p>
- <figure class="highlight plain"><figcaption><span>class Plate<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	T value;</span><br><span class="line">	public Plate(T t)&#123;</span><br><span class="line">		this.value=t;</span><br><span class="line">	&#125;</span><br><span class="line">	public void set(T t)&#123;</span><br><span class="line">		this.value = t;</span><br><span class="line">	&#125;</span><br><span class="line">	public T get()&#123;</span><br><span class="line">		return value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Plate&lt;? exitends Fruit&gt; p = new Plate(new Apple());</span><br><span class="line">p.set(new Apple());//Error</span><br><span class="line">Fruit k = p.get();//right</span><br></pre></td></tr></table></figure>
-<p> 这样就可以定义p为装水果的盘子,使用&lt;?>传入的具体类就不能判断。<br> 使用上限符extends,但是set()方法就出现问题，用?不能判断传入的Apple()实例是否与之前的一致，对具体类未知，因此ERROR,而由于继承中，子类可以赋值给父类，所以，get方法依然可以使用，但只能放在他们的基类里面。</p>
- <figure class="highlight plain"><figcaption><span>super Fruit> p </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.set(new Fruit());//right</span><br><span class="line">p.get();//Error</span><br></pre></td></tr></table></figure>
-<p> 同样使用下限符super，set()传入的父类，虽然同样没有确定父类的类型是那些，但是如果传入Fruit类以及继承类，因为子类可以传入父类，但是反过来不能，所以get()方法取到的类不知具体类型，没法得到，比他高的父类也不知道，多以没有变量能接受该实例。</p>
-</li>
-</ol>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	public class Main &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">       // List&lt;Fruit&gt; l = new ArrayList&lt;Apple&gt;();错误</span><br><span class="line">        List&lt;Fruit&gt; l = new ArrayList&lt;Fruit&gt;();正确，多态唯一不能用的就是创建的时候</span><br><span class="line">        l.add(new Apple());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>
+            <p>
+              与&lt;?>的区别？">&lt;T>与&lt;?>的区别？首先，前提目的是传入某个类以及继承类。
+
+&lt;T>用于声明泛型类和泛型方法，具有约束的作用：
+class Node&#123;	T valu1;	T value2;&#125;
+ 中的两个值必须都是相同的类，这就是使用T的约束作用，如果
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/03/30/泛型/#more" rel="contents">
+                Weiterlesen &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
