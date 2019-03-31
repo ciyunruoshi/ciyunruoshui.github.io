@@ -96,17 +96,19 @@
 
 
 
-  <meta name="description" content="List ,就是原始类型，其引用变量可以接受任何对应List的参数化类型，包括List&amp;lt;?&amp;gt;,可以接受添加任意类型的元素,缺点就是不安全，不便捷，不表述性List在取出元素是只会以Object取出，不会像泛型一样JVM隐形的自动转换为指定的类型，并且取出来没法转换为具体的类型  List&amp;lt;?&amp;gt;,通配符类型，其引用变量同样可以接受对应List的任何参数化类型，包括List,但是不">
+  <meta name="description" content="可以看到从Throwable分化出发两大异常类别  Error(错误)  Exception  运行时异常（RuntimeException） 非运行时异常(IOException输入输出异常)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="List区别">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/Listt/index.html">
+<meta property="og:title" content="异常类型">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/异常类型/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="List ,就是原始类型，其引用变量可以接受任何对应List的参数化类型，包括List&amp;lt;?&amp;gt;,可以接受添加任意类型的元素,缺点就是不安全，不便捷，不表述性List在取出元素是只会以Object取出，不会像泛型一样JVM隐形的自动转换为指定的类型，并且取出来没法转换为具体的类型  List&amp;lt;?&amp;gt;,通配符类型，其引用变量同样可以接受对应List的任何参数化类型，包括List,但是不">
+<meta property="og:description" content="可以看到从Throwable分化出发两大异常类别  Error(错误)  Exception  运行时异常（RuntimeException） 非运行时异常(IOException输入输出异常)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-31T05:48:30.740Z">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/异常类型/Exception.jpg">
+<meta property="og:updated_time" content="2019-03-31T06:05:27.073Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="List区别">
-<meta name="twitter:description" content="List ,就是原始类型，其引用变量可以接受任何对应List的参数化类型，包括List&amp;lt;?&amp;gt;,可以接受添加任意类型的元素,缺点就是不安全，不便捷，不表述性List在取出元素是只会以Object取出，不会像泛型一样JVM隐形的自动转换为指定的类型，并且取出来没法转换为具体的类型  List&amp;lt;?&amp;gt;,通配符类型，其引用变量同样可以接受对应List的任何参数化类型，包括List,但是不">
+<meta name="twitter:title" content="异常类型">
+<meta name="twitter:description" content="可以看到从Throwable分化出发两大异常类别  Error(错误)  Exception  运行时异常（RuntimeException） 非运行时异常(IOException输入输出异常)">
+<meta name="twitter:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/异常类型/Exception.jpg">
 
 
 
@@ -114,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/Listt/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/异常类型/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>List区别 | Blog</title>
+  <title>异常类型 | Blog</title>
   
 
 
@@ -289,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/31/Listt/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/31/异常类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">List区别
+          <h1 class="post-title" itemprop="name headline">异常类型
 
               
             
@@ -332,7 +334,7 @@
                 
               
 
-              <time title="创建时间：2019-03-31 11:22:09 / 修改时间：13:48:30" itemprop="dateCreated datePublished" datetime="2019-03-31T11:22:09+08:00">2019-03-31</time>
+              <time title="创建时间：2019-03-31 14:00:51 / 修改时间：14:05:27" itemprop="dateCreated datePublished" datetime="2019-03-31T14:00:51+08:00">2019-03-31</time>
             
 
             
@@ -371,12 +373,15 @@
       
 
       
-        <ol>
-<li><p>List ,就是原始类型，其引用变量可以接受任何对应List<e>的参数化类型，包括List&lt;?&gt;,可以接受添加任意类型的元素,缺点就是不安全，不便捷，不表述性<br>List在取出元素是只会以Object取出，不会像泛型一样JVM隐形的自动转换为指定的类型，并且取出来没法转换为具体的类型</e></p>
-</li>
-<li><p>List&lt;?>,通配符类型，其引用变量同样可以接受对应List<e>的任何参数化类型，包括List,但是不能添加任何元素，为了保证安全性，因为没办法识别传入的类和定义类匹配或者是它的子类，取出的元素是Object类型，需要手动转换成原本的类型</e></p>
-</li>
-<li><p>List&lt;Object>，即实际类型参数为Object的参数化类型，其引用变量可以接受List，可以添加元素。<br>相当于E定义为最上层的类Object,任何元素都可以加入，并且加入。取出功能正常使用。</p>
+        <p><img src="/ciyunruoshui.github.io/2019/03/31/异常类型/Exception.jpg" alt="异常类型"></p>
+<p>可以看到从Throwable分化出发两大异常类别</p>
+<ol>
+<li>Error(错误) </li>
+<li><p>Exception</p>
+<ol>
+<li>运行时异常（RuntimeException）</li>
+<li>非运行时异常(IOException输入输出异常)</li>
+</ol>
 </li>
 </ol>
 
@@ -409,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/03/30/Map/" rel="next" title="Map集合三种实现区别">
-                <i class="fa fa-chevron-left"></i> Map集合三种实现区别
+              <a href="/ciyunruoshui.github.io/2019/03/31/Listt/" rel="next" title="List区别">
+                <i class="fa fa-chevron-left"></i> List区别
               </a>
             
           </div>
@@ -418,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/03/31/异常类型/" rel="prev" title="异常类型">
-                异常类型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
