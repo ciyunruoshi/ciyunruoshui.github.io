@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="进程是操作系统资源分配的基本单位线程是任务调度和执行的基本单位 进程有独立的运行栈和程序计数器，切换开销小线程共享代码和数据空间，上下文切换开销大 操作系统中能同时运行多个进程，一个进程能同时运行多个线程 进程才有并行 线程只有并发 进程是线程的容器。">
+  <meta name="description" content="介绍  在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。当然这也不是完全正确的这取决于操作系统以及JVM版本。   实例   123456789101112131415161718192021222324252627282930	//线程类public class PriorityTh">
 <meta property="og:type" content="article">
-<meta property="og:title" content="进程与线程区别">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/进程与线程/index.html">
+<meta property="og:title" content="线程优先级">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/线程优先级/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="进程是操作系统资源分配的基本单位线程是任务调度和执行的基本单位 进程有独立的运行栈和程序计数器，切换开销小线程共享代码和数据空间，上下文切换开销大 操作系统中能同时运行多个进程，一个进程能同时运行多个线程 进程才有并行 线程只有并发 进程是线程的容器。">
+<meta property="og:description" content="介绍  在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。当然这也不是完全正确的这取决于操作系统以及JVM版本。   实例   123456789101112131415161718192021222324252627282930	//线程类public class PriorityTh">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-31T11:58:40.682Z">
+<meta property="og:updated_time" content="2019-03-31T12:48:38.008Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="进程与线程区别">
-<meta name="twitter:description" content="进程是操作系统资源分配的基本单位线程是任务调度和执行的基本单位 进程有独立的运行栈和程序计数器，切换开销小线程共享代码和数据空间，上下文切换开销大 操作系统中能同时运行多个进程，一个进程能同时运行多个线程 进程才有并行 线程只有并发 进程是线程的容器。">
+<meta name="twitter:title" content="线程优先级">
+<meta name="twitter:description" content="介绍  在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。当然这也不是完全正确的这取决于操作系统以及JVM版本。   实例   123456789101112131415161718192021222324252627282930	//线程类public class PriorityTh">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/进程与线程/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/线程优先级/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>进程与线程区别 | Blog</title>
+  <title>线程优先级 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/31/进程与线程/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/31/线程优先级/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">进程与线程区别
+          <h1 class="post-title" itemprop="name headline">线程优先级
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-03-31 19:41:16 / 修改时间：19:58:40" itemprop="dateCreated datePublished" datetime="2019-03-31T19:41:16+08:00">2019-03-31</time>
+              <time title="创建时间：2019-03-31 20:31:04 / 修改时间：20:48:38" itemprop="dateCreated datePublished" datetime="2019-03-31T20:31:04+08:00">2019-03-31</time>
             
 
             
@@ -371,11 +371,26 @@
       
 
       
-        <ol>
-<li>进程是操作系统资源分配的基本单位<br>线程是任务调度和执行的基本单位</li>
-<li>进程有独立的运行栈和程序计数器，切换开销小<br>线程共享代码和数据空间，上下文切换开销大</li>
-<li>操作系统中能同时运行多个进程，一个进程能同时运行多个线程<br> 进程才有并行<br> 线程只有并发</li>
-<li>进程是线程的容器。</li>
+        <ul>
+<li><p>介绍</p>
+<blockquote>
+<p>在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.<br>线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。<br><strong>当然这也不是完全正确的</strong>这取决于操作系统以及JVM版本。</p>
+</blockquote>
+</li>
+<li><p>实例</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">	//线程类</span><br><span class="line">public class PriorityThread implements Runnable&#123;</span><br><span class="line">    private boolean flag = true;</span><br><span class="line">    private int num=0;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        while(flag)&#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;--&gt;&quot;+num++);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void stop()&#123;</span><br><span class="line">        this.flag = !this.flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//测试线程优先级</span><br><span class="line">public class PriorityDemo &#123;</span><br><span class="line">    public static void main(String[] args) throws InterruptedException &#123;</span><br><span class="line">        PriorityThread it1 = new PriorityThread();</span><br><span class="line">        PriorityThread it2 = new PriorityThread();</span><br><span class="line">        Thread proxy1 = new Thread(it1,&quot;线程1&quot;);</span><br><span class="line">        Thread proxy2 = new Thread(it2,&quot;线程2&quot;);</span><br><span class="line">        proxy1.setPriority(Thread.MAX_PRIORITY);//设置为最高优先级</span><br><span class="line">        proxy2.setPriority(Thread.MIN_PRIORITY);//设置为最低优先级</span><br><span class="line">        proxy1.start();</span><br><span class="line">        proxy2.start();</span><br><span class="line">        Thread.sleep(1000);</span><br><span class="line">        it1.stop();</span><br><span class="line">        it2.stop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<blockquote>
+<p>线程1执行了87540次<br>线程2执行了29515次</p>
+</blockquote>
+<p>这里设置了线程1最高和线程2最低优先级后，并不是说线程1就优先执行等到线程1执行完才执行线程2。而是说线程1被执行的概率高。</p>
+<p>+总结</p>
+<ol>
+<li>每个线程都有一个默认的优先级，默认情况下是NORM_PRIORITY = 5。</li>
+<li><code>线程的优先级表示的是被执行的概率，并不是绝对的优先执行。</code></li>
+<li>设置线程优先级的方法setPriority(Thread.MAX_PRIORITY)</li>
 </ol>
 
       
@@ -407,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/03/31/守护线程/" rel="next" title="守护线程">
-                <i class="fa fa-chevron-left"></i> 守护线程
+              <a href="/ciyunruoshui.github.io/2019/03/31/线程池submit与execute/" rel="next" title="线程池submit与execute">
+                <i class="fa fa-chevron-left"></i> 线程池submit与execute
               </a>
             
           </div>
@@ -416,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/03/31/线程池submit与execute/" rel="prev" title="线程池submit与execute">
-                线程池submit与execute <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
