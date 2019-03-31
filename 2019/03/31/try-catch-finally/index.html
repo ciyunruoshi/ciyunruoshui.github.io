@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="HashTable HashMapHashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全  他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用） 他们底层实现是相同，都是散列表的分离链接法。 HashMap能够存储null">
+  <meta name="description" content="1.try和catch存在return，finally无return123456789101112131415161718192021	public class Main &amp;#123;    public static String retry()&amp;#123;        String s = &amp;quot;null&amp;quot;;        try&amp;#123;            s=&amp;qu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Map集合三种实现区别">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/Map/index.html">
+<meta property="og:title" content="try-catch-finally">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/try-catch-finally/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="HashTable HashMapHashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全  他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用） 他们底层实现是相同，都是散列表的分离链接法。 HashMap能够存储null">
+<meta property="og:description" content="1.try和catch存在return，finally无return123456789101112131415161718192021	public class Main &amp;#123;    public static String retry()&amp;#123;        String s = &amp;quot;null&amp;quot;;        try&amp;#123;            s=&amp;qu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T13:29:21.299Z">
+<meta property="og:updated_time" content="2019-03-31T08:29:23.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Map集合三种实现区别">
-<meta name="twitter:description" content="HashTable HashMapHashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全  他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用） 他们底层实现是相同，都是散列表的分离链接法。 HashMap能够存储null">
+<meta name="twitter:title" content="try-catch-finally">
+<meta name="twitter:description" content="1.try和catch存在return，finally无return123456789101112131415161718192021	public class Main &amp;#123;    public static String retry()&amp;#123;        String s = &amp;quot;null&amp;quot;;        try&amp;#123;            s=&amp;qu">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/Map/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/try-catch-finally/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Map集合三种实现区别 | Blog</title>
+  <title>try-catch-finally | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/Map/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/31/try-catch-finally/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Map集合三种实现区别
+          <h1 class="post-title" itemprop="name headline">try-catch-finally
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-03-30 21:27:24 / 修改时间：21:29:21" itemprop="dateCreated datePublished" datetime="2019-03-30T21:27:24+08:00">2019-03-30</time>
+              <time title="创建时间：2019-03-31 16:20:15 / 修改时间：16:29:23" itemprop="dateCreated datePublished" datetime="2019-03-31T16:20:15+08:00">2019-03-31</time>
             
 
             
@@ -371,14 +371,14 @@
       
 
       
-        <h1 id="HashTable-HashMap"><a href="#HashTable-HashMap" class="headerlink" title="HashTable HashMap"></a>HashTable HashMap</h1><p>HashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全</p>
-<ol>
-<li>他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用）</li>
-<li>他们底层实现是相同，都是散列表的分离链接法。</li>
-<li>HashMap能够存储null键，HashTable不能存储。主要是HashMap在判断null键，会把它存储在数组下表为0的地方，但是只能存储一个。</li>
-<li>HashMap的默认容量是16？<br> index=HashCode(s)&amp;(Length-1);来求余值判断下标<br>余数只取决于哈希数的最后几位，令Length-1的二进制上全为1，符合均匀分布的原则，也就是说容量大小一定为2的幂次，保持长度的二进制表达全为1</li>
+        <p>1.try和catch存在return，finally无return<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">	public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static String retry()&#123;</span><br><span class="line">        String s = &quot;null&quot;;</span><br><span class="line">        try&#123;</span><br><span class="line">            s=&quot;first&quot;;</span><br><span class="line">            return s;</span><br><span class="line">        &#125;catch(Exception e)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">			System.out.println(&quot;finally代码&quot;);</span><br><span class="line">            s=&quot;second&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        return &quot;null&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line"></span><br><span class="line">       System.out.println(retry());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回值：<br>finally代码<br>first<br>如果程序是从try代码块或者catch代码块中返回时，finally中的代码总会执行。<strong>而且finally语句在return语句执行之后return返回之前执行的</strong>，并且不会影响返回值，但是会影响变量s,也就是在看到return命令的时候回保存副本，然后执行finally中的代码，最后返回这个副本。</p>
+<ol start="2">
+<li>try和catch存在return，finally存在return<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">	public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static String retry()&#123;</span><br><span class="line">        String s = &quot;null&quot;;</span><br><span class="line">        try&#123;</span><br><span class="line">            s=&quot;first&quot;;</span><br><span class="line">            return s;</span><br><span class="line">        &#125;catch(Exception e)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">			System.out.println(&quot;finally代码&quot;);</span><br><span class="line">            s=&quot;second&quot;;</span><br><span class="line">            return s;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line"></span><br><span class="line">       System.out.println(retry());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h1 id="CurrentHashMap"><a href="#CurrentHashMap" class="headerlink" title="CurrentHashMap"></a>CurrentHashMap</h1><p>在HashMap线程不安全的基础上设计的线程安全类<br>但是由于锁的粒度变小，因此执行效率比HashTable高，但是这三个的底层实现都是一样。</p>
+<p>返回值：<br>finally代码<br>second<br>我们可以看到当finally有返回值时，会直接返回。不会再去返回try或者catch中的返回值。</p>
+<p>结论：<br>如果try和catch的return是一个变量时且函数的是从其中一个返回时，后面finally中语句即使有对返回的变量进行赋值的操作时，也不会影响返回的值。</p>
 
       
     </div>
@@ -409,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/03/30/Vector/" rel="next" title="Vector容器">
-                <i class="fa fa-chevron-left"></i> Vector容器
+              <a href="/ciyunruoshui.github.io/2019/03/31/句柄知识/" rel="next" title="句柄知识">
+                <i class="fa fa-chevron-left"></i> 句柄知识
               </a>
             
           </div>
@@ -418,10 +418,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/03/31/Listt/" rel="prev" title="List区别">
-                List区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -465,17 +461,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -521,23 +508,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HashTable-HashMap"><span class="nav-number">1.</span> <span class="nav-text">HashTable HashMap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CurrentHashMap"><span class="nav-number">2.</span> <span class="nav-text">CurrentHashMap</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
