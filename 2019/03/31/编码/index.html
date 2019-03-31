@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="HashTable HashMapHashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全  他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用） 他们底层实现是相同，都是散列表的分离链接法。 HashMap能够存储null">
+  <meta name="description" content="title: 编码date: 2019-03-31 16:43:36 tags:ASCII Unicode UTF-8编码 ASCII码 ASCII是最早的编码，使用一个字节也就是8bit来表示128位英文字符，2^7=128 2^8=256,所以ASII码的最高为全设为0，这样利用ASCII就可以表示所有的英文，非常好用。  Unicode  但是，当网络成为互联网的时候，出现了问题，英文用1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Map集合三种实现区别">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/Map/index.html">
+<meta property="og:title" content="Blog">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/编码/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="HashTable HashMapHashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全  他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用） 他们底层实现是相同，都是散列表的分离链接法。 HashMap能够存储null">
+<meta property="og:description" content="title: 编码date: 2019-03-31 16:43:36 tags:ASCII Unicode UTF-8编码 ASCII码 ASCII是最早的编码，使用一个字节也就是8bit来表示128位英文字符，2^7=128 2^8=256,所以ASII码的最高为全设为0，这样利用ASCII就可以表示所有的英文，非常好用。  Unicode  但是，当网络成为互联网的时候，出现了问题，英文用1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T13:29:21.299Z">
+<meta property="og:updated_time" content="2019-03-31T09:01:50.342Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Map集合三种实现区别">
-<meta name="twitter:description" content="HashTable HashMapHashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全  他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用） 他们底层实现是相同，都是散列表的分离链接法。 HashMap能够存储null">
+<meta name="twitter:title" content="Blog">
+<meta name="twitter:description" content="title: 编码date: 2019-03-31 16:43:36 tags:ASCII Unicode UTF-8编码 ASCII码 ASCII是最早的编码，使用一个字节也就是8bit来表示128位英文字符，2^7=128 2^8=256,所以ASII码的最高为全设为0，这样利用ASCII就可以表示所有的英文，非常好用。  Unicode  但是，当网络成为互联网的时候，出现了问题，英文用1">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/Map/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/编码/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Map集合三种实现区别 | Blog</title>
+  <title> | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/Map/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/31/编码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Map集合三种实现区别
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-03-30 21:27:24 / 修改时间：21:29:21" itemprop="dateCreated datePublished" datetime="2019-03-30T21:27:24+08:00">2019-03-30</time>
+              <time title="创建时间：2019-03-31 16:43:36 / 修改时间：17:01:50" itemprop="dateCreated datePublished" datetime="2019-03-31T16:43:36+08:00">2019-03-31</time>
             
 
             
@@ -371,14 +371,27 @@
       
 
       
-        <h1 id="HashTable-HashMap"><a href="#HashTable-HashMap" class="headerlink" title="HashTable HashMap"></a>HashTable HashMap</h1><p>HashTable 和 HashMap都是最早的类，他们的区别只在于HashMap不是线程安全的，而HashTable线程安全</p>
-<ol>
-<li>他们的继承不同，HashMap是AbstractMap,HashTable继承的是Dictionary类（这个类已经被抛弃，所以HashTable也基本不用）</li>
-<li>他们底层实现是相同，都是散列表的分离链接法。</li>
-<li>HashMap能够存储null键，HashTable不能存储。主要是HashMap在判断null键，会把它存储在数组下表为0的地方，但是只能存储一个。</li>
-<li>HashMap的默认容量是16？<br> index=HashCode(s)&amp;(Length-1);来求余值判断下标<br>余数只取决于哈希数的最后几位，令Length-1的二进制上全为1，符合均匀分布的原则，也就是说容量大小一定为2的幂次，保持长度的二进制表达全为1</li>
+        <hr>
+<p>title: 编码<br>date: 2019-03-31 16:43:36</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><h2 id="ASCII-Unicode-UTF-8编码"><a href="#ASCII-Unicode-UTF-8编码" class="headerlink" title="ASCII Unicode UTF-8编码"></a>ASCII Unicode UTF-8编码</h2><ol>
+<li><h2 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h2><p> ASCII是最早的编码，使用一个字节也就是8bit来表示128位英文字符，2^7=128 2^8=256,所以ASII码的最高为全设为0，这样利用ASCII就可以表示所有的英文，非常好用。</p>
+</li>
+<li><h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2></li>
 </ol>
-<h1 id="CurrentHashMap"><a href="#CurrentHashMap" class="headerlink" title="CurrentHashMap"></a>CurrentHashMap</h1><p>在HashMap线程不安全的基础上设计的线程安全类<br>但是由于锁的粒度变小，因此执行效率比HashTable高，但是这三个的底层实现都是一样。</p>
+<pre><code>但是，当网络成为互联网的时候，出现了问题，英文用128个字符就可以，但是法语，德语等就不止128个，于是这些国家把一个字节的8位全部用于编码，中文不够怎么办，按照逻辑可以在增加字节，比如用两个字节表示一个中文符号。
+
+上面问题可以解决的话，传输问题就没法解决了，每个国家都有编码表，中国人用中文编码发送个法国人，法国人按照法语编码就是乱码，没法通行。
+
+于是，国际上就提出Unicode编码用来包含世界上所有的符号，这是国际确认的标准表，对所有字符用二进制表示。
+
+同样这也带来了问题，就是有的英文字符很简单，如a,A只需要一个字节表示，如果使用完整的Unicode码，大量二进制为0，浪费，于是对Unicode码的不同编码规则出现，进过编码后更易传输，减少成本，UTF-8就是编码规则之一。
+</code></pre><ol start="3">
+<li><h2 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h2><p> 上面说了，UTF-8是Unicode的编码传输实现方式之一，采用变长编码。是互联网主要使用的编码。</p>
+</li>
+</ol>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>Unicode 是「字符集」<br>UTF-8 是「编码规则」</p>
+<p>字符集：为每一个「字符」分配一个唯一的 ID（学名为码位 / 码点 / Code Point）<br>编码规则：将「码位」转换为字节序列的规则（编码/解码 可以理解为 加密/解密 的过程）</p>
+<p>PS.要实现Unicode编码，首先要面对的问题就是，如何区分ASCII和Unicode，因为ASCII编码只需要使用一个字节，而Unicode明显要使用多个字节，不同的Unicode编码实现方式不同。</p>
 
       
     </div>
@@ -409,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/03/30/Vector/" rel="next" title="Vector容器">
-                <i class="fa fa-chevron-left"></i> Vector容器
+              <a href="/ciyunruoshui.github.io/2019/03/31/try-catch-finally/" rel="next" title="try-catch-finally">
+                <i class="fa fa-chevron-left"></i> try-catch-finally
               </a>
             
           </div>
@@ -418,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/03/31/Listt/" rel="prev" title="List区别">
-                List区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -532,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HashTable-HashMap"><span class="nav-number">1.</span> <span class="nav-text">HashTable HashMap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CurrentHashMap"><span class="nav-number">2.</span> <span class="nav-text">CurrentHashMap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags"><span class="nav-number">1.</span> <span class="nav-text">tags:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASCII-Unicode-UTF-8编码"><span class="nav-number">2.</span> <span class="nav-text">ASCII Unicode UTF-8编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASCII码"><span class="nav-number">3.</span> <span class="nav-text">ASCII码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode"><span class="nav-number">4.</span> <span class="nav-text">Unicode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-8"><span class="nav-number">5.</span> <span class="nav-text">UTF-8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">6.</span> <span class="nav-text">区别</span></a></li></ol></div>
             
 
           </div>
