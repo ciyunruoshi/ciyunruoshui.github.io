@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="transient关键字序列化java中对象的序列化指的是将对象转换成以字节序列的形式来表示，这些字节序列包含了对象的数据和信息，一个序列化后的对象可以被写到数据库或文件中，也可用于网络传输，一般当我们使用缓存cache（内存空间不够有可能会本地存储到硬盘）或远程调用rpc（网络传输）的时候，经常需要让我们的实体类实现Serializable接口，目的就是为了让其可序列化。 当然，序列化后的最终目">
+  <meta name="description" content="Thread线程包括两类:  User Thread 用户线程 守护线程  任何一个守护线程都是整个JVM中所有非守护线程得保姆。 守护线程的作用： 为其他线程的运行提供便利服务，守护线程最典型的应用就是GC，垃圾回收期。 但是两者几乎没有区别，不同之处在于虚拟机的离开：    如果用户线程全部退出运行，只剩下守护线程，则虚拟机也会退出。    没有了用户线程，守护线程也就没有了意义。 PS:守护">
 <meta property="og:type" content="article">
-<meta property="og:title" content="transient关键字">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/transient关键字/index.html">
+<meta property="og:title" content="守护线程">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/守护线程/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="transient关键字序列化java中对象的序列化指的是将对象转换成以字节序列的形式来表示，这些字节序列包含了对象的数据和信息，一个序列化后的对象可以被写到数据库或文件中，也可用于网络传输，一般当我们使用缓存cache（内存空间不够有可能会本地存储到硬盘）或远程调用rpc（网络传输）的时候，经常需要让我们的实体类实现Serializable接口，目的就是为了让其可序列化。 当然，序列化后的最终目">
+<meta property="og:description" content="Thread线程包括两类:  User Thread 用户线程 守护线程  任何一个守护线程都是整个JVM中所有非守护线程得保姆。 守护线程的作用： 为其他线程的运行提供便利服务，守护线程最典型的应用就是GC，垃圾回收期。 但是两者几乎没有区别，不同之处在于虚拟机的离开：    如果用户线程全部退出运行，只剩下守护线程，则虚拟机也会退出。    没有了用户线程，守护线程也就没有了意义。 PS:守护">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T12:42:24.510Z">
+<meta property="og:updated_time" content="2019-03-31T11:51:03.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="transient关键字">
-<meta name="twitter:description" content="transient关键字序列化java中对象的序列化指的是将对象转换成以字节序列的形式来表示，这些字节序列包含了对象的数据和信息，一个序列化后的对象可以被写到数据库或文件中，也可用于网络传输，一般当我们使用缓存cache（内存空间不够有可能会本地存储到硬盘）或远程调用rpc（网络传输）的时候，经常需要让我们的实体类实现Serializable接口，目的就是为了让其可序列化。 当然，序列化后的最终目">
+<meta name="twitter:title" content="守护线程">
+<meta name="twitter:description" content="Thread线程包括两类:  User Thread 用户线程 守护线程  任何一个守护线程都是整个JVM中所有非守护线程得保姆。 守护线程的作用： 为其他线程的运行提供便利服务，守护线程最典型的应用就是GC，垃圾回收期。 但是两者几乎没有区别，不同之处在于虚拟机的离开：    如果用户线程全部退出运行，只剩下守护线程，则虚拟机也会退出。    没有了用户线程，守护线程也就没有了意义。 PS:守护">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/transient关键字/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/守护线程/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>transient关键字 | Blog</title>
+  <title>守护线程 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/transient关键字/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/31/守护线程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">transient关键字
+          <h1 class="post-title" itemprop="name headline">守护线程
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-03-30 19:46:08 / 修改时间：20:42:24" itemprop="dateCreated datePublished" datetime="2019-03-30T19:46:08+08:00">2019-03-30</time>
+              <time title="创建时间：2019-03-31 19:17:26 / 修改时间：19:51:03" itemprop="dateCreated datePublished" datetime="2019-03-31T19:17:26+08:00">2019-03-31</time>
             
 
             
@@ -371,12 +371,16 @@
       
 
       
-        <h3 id="transient关键字"><a href="#transient关键字" class="headerlink" title="transient关键字"></a>transient关键字</h3><h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>java中对象的序列化指的是将对象转换成以字节序列的形式来表示，这些字节序列包含了对象的数据和信息，一个序列化后的对象可以被写到数据库或文件中，也可用于网络传输，一般当我们使用缓存cache（内存空间不够有可能会本地存储到硬盘）或远程调用rpc（网络传输）的时候，经常需要让我们的实体类实现Serializable接口，目的就是为了让其可序列化。</p>
-<p>当然，序列化后的最终目的是为了反序列化，恢复成原先的Java对象，要不然序列化后干嘛呢，所以序列化后的字节序列都是可以恢复成Java对象的，这个过程就是反序列化。</p>
-<h2 id="transient"><a href="#transient" class="headerlink" title="transient"></a>transient</h2><p>Java中transient关键字的作用，简单地说，就是让某些被修饰的成员属性变量不被序列化，这一看好像很好理解，就是不被序列化，那么什么情况下，一个对象的某些字段不需要被序列化呢？如果有如下情况，可以考虑使用关键字transient修饰：</p>
-<p>1、类中的字段值可以根据其它字段推导出来，如一个长方形类有三个属性：长度、宽度、面积（示例而已，一般不会这样设计），那么在序列化的时候，面积这个属性就没必要被序列化了；</p>
-<p>2、其它，看具体业务需求吧，哪些字段不想被序列化；</p>
-<p>PS，记得之前看HashMap源码的时候，发现有个字段是用transient修饰的，我觉得还是有道理的，确实没必要对这个modCount字段进行序列化，因为没有意义，modCount主要用于判断HashMap是否被修改（像put、remove操作的时候，modCount都会自增），对于这种变量，一开始可以为任何值，0当然也是可以（new出来、反序列化出来、或者克隆clone出来的时候都是为0的），没必要持久化其值。</p>
+        <p>Thread线程包括两类:</p>
+<ol>
+<li>User Thread 用户线程</li>
+<li>守护线程</li>
+</ol>
+<p>任何一个守护线程都是整个JVM中所有非守护线程得保姆。</p>
+<p>守护线程的作用：</p>
+<p>为其他线程的运行提供便利服务，守护线程最典型的应用就是GC，垃圾回收期。</p>
+<p>但是两者几乎没有区别，不同之处在于虚拟机的离开：<br>    如果用户线程全部退出运行，只剩下守护线程，则虚拟机也会退出。<br>    没有了用户线程，守护线程也就没有了意义。</p>
+<p>PS:守护线程和用户线程都可以自己创建。</p>
 
       
     </div>
@@ -407,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/03/30/泛型/" rel="next" title="泛型">
-                <i class="fa fa-chevron-left"></i> 泛型
+              <a href="/ciyunruoshui.github.io/2019/03/31/编码/" rel="next" title="ASCII Unicode UTF-8编码">
+                <i class="fa fa-chevron-left"></i> ASCII Unicode UTF-8编码
               </a>
             
           </div>
@@ -417,8 +421,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/03/30/for-String/" rel="prev" title="+ for String">
-                + for String <i class="fa fa-chevron-right"></i>
+              <a href="/ciyunruoshui.github.io/2019/03/31/进程与线程/" rel="prev" title="进程与线程区别">
+                进程与线程区别 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -463,17 +467,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -519,23 +514,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#transient关键字"><span class="nav-number">1.</span> <span class="nav-text">transient关键字</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化"><span class="nav-number"></span> <span class="nav-text">序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transient"><span class="nav-number"></span> <span class="nav-text">transient</span></a></li></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
