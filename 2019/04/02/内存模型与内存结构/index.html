@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/ciyunruoshui.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/ciyunruoshui.github.io/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ciyunruoshui.github.io/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/ciyunruoshui.github.io/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/ciyunruoshui.github.io/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/ciyunruoshui.github.io/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/ciyunruoshui.github.io/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="参考博文https://my.oschina.net/u/3687664/blog/2051646 首先区分，内存结构和内存模型？内存模型 为了保证共享内存的正确性（可见性、有序性、原子性），内存模型定义了共享内存系统中多线程程序读写操作行为的规范。   它解决了 CPU 多级缓存、处理器优化、指令重排等导致的内存访问问题，保证了并发场景下的一致性、原子性和有序性。   内存模型解决并发问题主要采">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内存模型与内存结构">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/内存模型与内存结构/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="参考博文https://my.oschina.net/u/3687664/blog/2051646 首先区分，内存结构和内存模型？内存模型 为了保证共享内存的正确性（可见性、有序性、原子性），内存模型定义了共享内存系统中多线程程序读写操作行为的规范。   它解决了 CPU 多级缓存、处理器优化、指令重排等导致的内存访问问题，保证了并发场景下的一致性、原子性和有序性。   内存模型解决并发问题主要采">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-02T13:36:59.763Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内存模型与内存结构">
+<meta name="twitter:description" content="参考博文https://my.oschina.net/u/3687664/blog/2051646 首先区分，内存结构和内存模型？内存模型 为了保证共享内存的正确性（可见性、有序性、原子性），内存模型定义了共享内存系统中多线程程序读写操作行为的规范。   它解决了 CPU 多级缓存、处理器优化、指令重排等导致的内存访问问题，保证了并发场景下的一致性、原子性和有序性。   内存模型解决并发问题主要采">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/内存模型与内存结构/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>内存模型与内存结构 | Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/ciyunruoshui.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/ciyunruoshui.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/ciyunruoshui.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/02/内存模型与内存结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">内存模型与内存结构
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-02 15:55:03 / 修改时间：21:36:59" itemprop="dateCreated datePublished" datetime="2019-04-02T15:55:03+08:00">2019-04-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>参考博文<a href="https://my.oschina.net/u/3687664/blog/2051646" title="参考" target="_blank" rel="noopener">https://my.oschina.net/u/3687664/blog/2051646</a></p>
+<h2 id="首先区分，内存结构和内存模型？"><a href="#首先区分，内存结构和内存模型？" class="headerlink" title="首先区分，内存结构和内存模型？"></a>首先区分，内存结构和内存模型？</h2><h3 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h3><blockquote>
+<p>为了保证共享内存的正确性（可见性、有序性、原子性），内存模型定义了共享内存系统中多线程程序读写操作行为的规范。</p>
+</blockquote>
+<blockquote>
+<p>它解决了 CPU 多级缓存、处理器优化、指令重排等导致的内存访问问题，保证了并发场景下的一致性、原子性和有序性。</p>
+</blockquote>
+<blockquote>
+<p>内存模型解决并发问题主要采用两种方式：</p>
+<pre><code>1. 限制处理器优化
+2. 使用内存屏障
+</code></pre></blockquote>
+<blockquote>
+<p>Java 内存模型（Java Memory Model，JMM）就是一种符合内存模型规范的，屏蔽了各种硬件和操作系统的访问差异的，保证了 Java 程序在各种平台下对内存的访问都能保证效果一致的机制及规范。</p>
+</blockquote>
+<blockquote>
+<p>java 内存模型规定了所有的变量都存储在主内存中，每条线程还有自己的工作内存。</p>
+</blockquote>
+<blockquote>
+<p>线程的工作内存中保存了该线程中用到的变量的主内存副本拷贝，线程对变量的所有操作都必须在工作内存中进行，而不能直接读写主内存。</p>
+</blockquote>
+<blockquote>
+<p>不同的线程之间也无法直接访问对方工作内存中的变量，线程间变量的传递均需要自己的工作内存和主存之间进行数据同步进行。</p>
+</blockquote>
+<blockquote>
+<p>而 JMM 就作用于工作内存和主存之间数据同步过程。它规定了如何做数据同步以及什么时候做数据同步，也就是保证线程安全。</p>
+</blockquote>
+<hr>
+<ul>
+<li><p>线程安全实现方式</p>
+<blockquote>
+<ol>
+<li>volitate变量，原子类</li>
+<li>synchornized 利用内置的对象和类的监视器锁实现，是内置特性<br>   synchronized修饰的方法和代码块在JVM编译以监视器锁指定包围，是利用JVM内置特性，使得只能有一个线程进入加锁代码块，实现并行安全线程。</li>
+<li>Lock类 实现是利用<br>   Lock出现的原因是为了弥补synchronized的一些缺陷，synchronized修饰的方法会获取类或者对象的内置监视器锁，其他线程只能等待获取锁的线程结束才能执行方法，导致效率变低。<br>Lock类可以让等待的线程不在无限期的等待下去。<br>例子，读写锁。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>LOCK类实现原理：</p>
+<pre><code>public class Lock {
+private boolean locked = false;
+
+public Lock() {
+}
+
+public final synchronized void lock() throws InterruptedException {
+    while(this.locked) {
+        this.wait();
+    }
+
+    this.locked = true;
+}
+
+public final synchronized void unlock() {
+    this.locked = false;
+    this.notifyAll();
+}
+
+}
+</code></pre></li>
+</ul>
+<blockquote>
+<p>Lock类只定义了lock()，unlock(),并且是个很简答的自旋锁</p>
+</blockquote>
+<blockquote>
+<p>以AbstractQueuedSyvchronized.java方法来分析LOCK锁的底层原理</p>
+</blockquote>
+<pre><code>/**
+ * The synchronization state.
+ */
+private volatile int state;
+</code></pre><blockquote>
+<p>这个<code>state</code>是Lock类实现的基础，通过volitate和CAS操作，来state表示“持有锁的线程已经重复获取该锁的次数”。当state等于0时，表示当前没有线程持有锁 <strong>通过软件层面来实现并发线程加锁</strong>。</p>
+</blockquote>
+<blockquote>
+<p>以公平锁为例：</p>
+</blockquote>
+<pre><code>final void lock() {
+            acquire(1);
+        }
+</code></pre><blockquote>
+<p>其中acquire(1)方法是获取指定类和对象的锁，如果获取失败，则将其加入到等待队列。</p>
+</blockquote>
+<pre><code>public final void acquire(int arg) {
+    if (!tryAcquire(arg) &amp;&amp;
+        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+        selfInterrupt();
+}
+</code></pre><blockquote>
+<p>先看tryAcquire(1)的源代码，这是在<code>ReentrantLock.FairSync</code>中实现的方法。</p>
+</blockquote>
+<pre><code>rotected final boolean tryAcquire(int acquires) {
+        final Thread current = Thread.currentThread();
+        int c = getState();
+        if (c == 0) {
+            if (!hasQueuedPredecessors() &amp;&amp;
+                compareAndSetState(0, acquires)) {
+                setExclusiveOwnerThread(current);
+                return true;
+            }
+        }
+        else if (current == getExclusiveOwnerThread()) {
+            int nextc = c + acquires;
+            if (nextc &lt; 0)
+                throw new Error(&quot;Maximum lock count exceeded&quot;);
+            setState(nextc);
+            return true;
+        }
+        return false;
+    }
+</code></pre><blockquote>
+<p>可以看到，方法先得到当前线程，然后得到当前<code>state</code>值，如果值为0，说明没有线程获取对象的锁，则让当前线程得到锁，并利用CAS操作，改变<code>state</code>值。<br>如果值不为0，说明已经有线程得到锁，如果当前线程就是得到锁的线程，<code>state</code>增加1，实现可重入得锁。<br>如果不为0，并且当前线程未持有锁，则获取锁失败，接下来的操作就是<code>acquireQueued(addWaiter(Node.EXCLUSIVE), arg)</code>来加入等待线程。</p>
+</blockquote>
+<hr>
+<h3 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h3><blockquote>
+<p>内存结构就是JVM中内存按照不同功能划分为不同部分。</p>
+</blockquote>
+<h4 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h4><ol>
+<li>堆</li>
+<li><h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2>之前谈论的运行时常量池的一部分在方法区，字符串常量池则在堆内，并且在JDK8中，方法区的实现方式发生改变，废除了永久代使用元空间。</li>
+</ol>
+<hr>
+<h3 id="线程私有"><a href="#线程私有" class="headerlink" title="线程私有"></a>线程私有</h3><ol>
+<li>虚拟机栈</li>
+<li>本地方法区 </li>
+<li>程序计数器</li>
+</ol>
+<hr>
+<h2 id="同样之前的内存模型规定的就是工作内存和主内存的之间数据的同步过程，也就是虚拟机栈和堆。"><a href="#同样之前的内存模型规定的就是工作内存和主内存的之间数据的同步过程，也就是虚拟机栈和堆。" class="headerlink" title="同样之前的内存模型规定的就是工作内存和主内存的之间数据的同步过程，也就是虚拟机栈和堆。"></a>同样之前的内存模型规定的就是工作内存和主内存的之间数据的同步过程，也就是虚拟机栈和堆。</h2>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ciyunruoshui.github.io/2019/03/31/线程优先级/" rel="next" title="线程优先级">
+                <i class="fa fa-chevron-left"></i> 线程优先级
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ciyunroshui</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/ciyunruoshui.github.io/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先区分，内存结构和内存模型？"><span class="nav-number">1.</span> <span class="nav-text">首先区分，内存结构和内存模型？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内存模型"><span class="nav-number">1.1.</span> <span class="nav-text">内存模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存结构"><span class="nav-number">1.2.</span> <span class="nav-text">内存结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#共享内存"><span class="nav-number">1.2.1.</span> <span class="nav-text">共享内存</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区"><span class="nav-number">2.</span> <span class="nav-text">方法区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程私有"><span class="nav-number">2.1.</span> <span class="nav-text">线程私有</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同样之前的内存模型规定的就是工作内存和主内存的之间数据的同步过程，也就是虚拟机栈和堆。"><span class="nav-number">3.</span> <span class="nav-text">同样之前的内存模型规定的就是工作内存和主内存的之间数据的同步过程，也就是虚拟机栈和堆。</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ciyunroshui</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/ciyunruoshui.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/ciyunruoshui.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/ciyunruoshui.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/ciyunruoshui.github.io/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/ciyunruoshui.github.io/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/ciyunruoshui.github.io/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/ciyunruoshui.github.io/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
