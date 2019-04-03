@@ -96,17 +96,23 @@
 
 
 
-  <meta name="description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+  <meta name="description" content="数据库报存的数据量一般都很大，如果只采用顺序储存，则搜索一条数据的时间复杂度为O(n),在排序算法中这是很好的算法，但是在数据访问中这回带来极大的延迟。  ###数据库索引 以Mysql为例，建立索引存在两种方式：  Mysql有两种存储引擎，MyISAM和InnoDB，InnoDB常听说，好像用的也是最多的，MyISAM不常听说。   MyISAM使用B+树作为引擎    可以看见索引文件和数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="泛型">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/泛型/index.html">
+<meta property="og:title" content="数据库索引原理">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+<meta property="og:description" content="数据库报存的数据量一般都很大，如果只采用顺序储存，则搜索一条数据的时间复杂度为O(n),在排序算法中这是很好的算法，但是在数据访问中这回带来极大的延迟。  ###数据库索引 以Mysql为例，建立索引存在两种方式：  Mysql有两种存储引擎，MyISAM和InnoDB，InnoDB常听说，好像用的也是最多的，MyISAM不常听说。   MyISAM使用B+树作为引擎    可以看见索引文件和数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T12:42:23.580Z">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/1.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/2.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/3.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/4.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/5.jpg">
+<meta property="og:updated_time" content="2019-04-03T12:02:45.300Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泛型">
-<meta name="twitter:description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+<meta name="twitter:title" content="数据库索引原理">
+<meta name="twitter:description" content="数据库报存的数据量一般都很大，如果只采用顺序储存，则搜索一条数据的时间复杂度为O(n),在排序算法中这是很好的算法，但是在数据访问中这回带来极大的延迟。  ###数据库索引 以Mysql为例，建立索引存在两种方式：  Mysql有两种存储引擎，MyISAM和InnoDB，InnoDB常听说，好像用的也是最多的，MyISAM不常听说。   MyISAM使用B+树作为引擎    可以看见索引文件和数">
+<meta name="twitter:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/1.jpg">
 
 
 
@@ -114,7 +120,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/泛型/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/">
 
 
 
@@ -124,7 +130,7 @@
   };
 </script>
 
-  <title>泛型 | Blog</title>
+  <title>数据库索引原理 | Blog</title>
   
 
 
@@ -289,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/泛型/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">泛型
+          <h1 class="post-title" itemprop="name headline">数据库索引原理
 
               
             
@@ -332,7 +338,7 @@
                 
               
 
-              <time title="创建时间：2019-03-30 16:52:21 / 修改时间：20:42:23" itemprop="dateCreated datePublished" datetime="2019-03-30T16:52:21+08:00">2019-03-30</time>
+              <time title="创建时间：2019-04-03 17:00:31 / 修改时间：20:02:45" itemprop="dateCreated datePublished" datetime="2019-04-03T17:00:31+08:00">2019-04-03</time>
             
 
             
@@ -371,21 +377,57 @@
       
 
       
-        <h3 id="lt-T-与-lt-的区别"><a href="#lt-T-与-lt-的区别" class="headerlink" title="&lt;T>与&lt;?>的区别"></a>&lt;T>与&lt;?>的区别</h3><p>首先，前提目的是传入某个类以及继承类。</p>
+        <blockquote>
+<p>数据库报存的数据量一般都很大，如果只采用顺序储存，则搜索一条数据的时间复杂度为O(n),在排序算法中这是很好的算法，但是在数据访问中这回带来极大的延迟。</p>
+</blockquote>
+<p>###数据库索引</p>
+<p>以Mysql为例，建立索引存在两种方式：</p>
+<blockquote>
+<p>Mysql有两种存储引擎，MyISAM和InnoDB，InnoDB常听说，好像用的也是最多的，MyISAM不常听说。</p>
+</blockquote>
 <ol>
-<li><p>&lt;T>用于声明泛型类和泛型方法，具有约束的作用：</p>
-<pre><code><figure class="highlight plain"><figcaption><span>class Node<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	T valu1;</span><br><span class="line">	T value2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><p> 中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&lt;?>，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&lt;?&gt;</p>
+<li>MyISAM使用B+树作为引擎</li>
+</ol>
+<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/1.jpg" alt="数据库索引原理"></p>
+<blockquote>
+<p>可以看见索引文件和数据记录其实是分开来的，索引文件里存储的其实是<strong>数据记录的地址</strong></p>
+</blockquote>
+<ol start="2">
+<li>2.MyISAM辅助索引和主键索引类似，但是辅助索引的key可以重复，这是和主键不同的地方，叶子节点中保存的也是数据记录的地址，可以不通过主键值B+树来搜索。</li>
+</ol>
+<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/2.jpg" alt="数据库索引原理"></p>
+<p>InnoDB的索引实现也是B+树，但是具体的方式确不一样。</p>
+<ol>
+<li><p>数据文件本身就是索引文件，这一点怎么理解呢？还记得B+树的叶子节点存储了具体数据嘛，在InnoDB里，叶子节点存储的树真正的数据值，而不是MyISAM里存储的是地址。索引的key就是数据表的主键。</p>
 </li>
-<li><p>&lt;?>用于运行中使用：</p>
- <figure class="highlight plain"><figcaption><span>class Plate<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	T value;</span><br><span class="line">	public Plate(T t)&#123;</span><br><span class="line">		this.value=t;</span><br><span class="line">	&#125;</span><br><span class="line">	public void set(T t)&#123;</span><br><span class="line">		this.value = t;</span><br><span class="line">	&#125;</span><br><span class="line">	public T get()&#123;</span><br><span class="line">		return value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Plate&lt;? exitends Fruit&gt; p = new Plate(new Apple());</span><br><span class="line">p.set(new Apple());//Error</span><br><span class="line">Fruit k = p.get();//right</span><br></pre></td></tr></table></figure>
-<p> 这样就可以定义p为装水果的盘子,使用&lt;?>传入的具体类就不能判断。<br> 使用上限符extends,但是set()方法就出现问题，用?不能判断传入的Apple()实例是否与之前的一致，对具体类未知，因此ERROR,而由于继承中，子类可以赋值给父类，所以，get方法依然可以使用，但只能放在他们的基类里面。</p>
- <figure class="highlight plain"><figcaption><span>super Fruit> p </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.set(new Fruit());//right</span><br><span class="line">p.get();//Error</span><br></pre></td></tr></table></figure>
-<p> 同样使用下限符super，set()传入的父类，虽然同样没有确定父类的类型是那些，但是如果传入Fruit类以及继承类，因为子类可以传入父类，但是反过来不能，所以get()方法取到的类不知具体类型，没法得到，比他高的父类也不知道，多以没有变量能接受该实例。</p>
+<li><p>InnoDB主索引的示意图如下，可以看见叶节点包含了完整的数据记录，这种索引也叫<strong>做聚集索引</strong>。因为InnoDB的数据文件本身要按照主键聚集，所以必须要有主键。如果没有显示指定，则Mysql会自动选择可以唯一标识的数据列作为主键，如果不存在这种列，则Mysql自动为InnoDB生成一个隐含字段，占位6字节，长整型。</p>
 </li>
 </ol>
-<pre><code><figure class="highlight plain"><figcaption><span>class Main &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">       // List&lt;Fruit&gt; l = new ArrayList&lt;Apple&gt;();错误</span><br><span class="line">        List&lt;Fruit&gt; l = new ArrayList&lt;Fruit&gt;();正确，多态唯一不能用的就是创建的时候</span><br><span class="line">        l.add(new Apple());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>
+<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/3.jpg" alt="数据库索引原理"></p>
+<ol start="3">
+<li>InnoDB辅助索引（<strong>非聚集索引</strong>）也和MyISAM不同，辅助索引里面存储的是<strong>数据的主键而不是地址</strong>，可以这么说InnoDB的辅助索引最终还是要依赖主键索引来实现。</li>
+</ol>
+<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/4.jpg" alt="数据库索引原理"></p>
+<ol start="4">
+<li><p>辅助索引里面有一个比较特殊的索引叫<strong>覆盖索引</strong>，指从<strong>辅助索引中就能获取到需要的记录</strong>，而不需要查找聚簇索引中的记录。使用覆盖索引的一个好处是因为辅助索引不包括一条记录的整行信息，所以数据量较聚集索引要少，可以减少大量io操作，也就是在辅助索引中叶子节点不仅包含主键值，还包括有限的多个字段，直接可以获取。</p>
+</li>
+<li><p>它奇特在哪边呢？从2我们知道辅助索引的data区域其实存储的是主键的地址，需要通过主键进行再一次定位访问到具体的数据。那么假设：</p>
+<p> select uage,uname from user where uage = 12; </p>
+</li>
+</ol>
+<p>如果我们建立的是复合索引(uage,uname)的话，上面一条语句会用到索引，而且能够直接返回出ucard和uname，而不需要再去进行主键定位的操作，这就是特别之处。所以这个复合索引其实可以说成是一种覆盖索引。</p>
+<p><strong>辅助索引：</strong></p>
+<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/5.jpg" alt="数据库索引原理"></p>
+<blockquote>
+<p>总结，InnoDB的聚集索引是按照主键保存搜索的，是最高效的，辅助索引需要走两次索引，首先咨询辅助索引得到主键，在跟进主键查询获得记录。</p>
+</blockquote>
+<p>###索引缺点</p>
+<ol>
+<li>创建索引和维护索引要耗费时间，随着数据量的增加而增加。</li>
+<li>索引需要占物理空间。</li>
+<li>对表中的数据进行增加、删除和修改的时候，索引也要动态维护，降低了数据访问速度。</li>
+</ol>
+
       
     </div>
 
@@ -415,14 +457,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/ciyunruoshui.github.io/2019/04/02/CAS/" rel="next" title="CAS">
+                <i class="fa fa-chevron-left"></i> CAS
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/03/30/transient关键字/" rel="prev" title="transient关键字">
-                transient关键字 <i class="fa fa-chevron-right"></i>
+              <a href="/ciyunruoshui.github.io/2019/04/03/分布式锁/" rel="prev" title="分布式锁">
+                分布式锁 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -467,17 +513,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -523,23 +560,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-T-与-lt-的区别"><span class="nav-number">1.</span> <span class="nav-text">&lt;T&gt;与&lt;?&gt;的区别</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

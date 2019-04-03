@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+  <meta name="description" content="分布式锁 在单机情况下，如果多个线程对共享资源进行访问，可以采用线程间加锁的机制，保持对共享资源的一致性访问。但是在分布式系统中，这种进程间的锁机制没作用了，系统部署在不同机器上，浙西资源不再线程间共享，而是属于进程间共享的资源。为了解决这个问题，引入了分布式锁。分布式锁，是指在分布式的部署情况下，通过锁机制让多客户端互斥的对共享资源访问。满足的要求：   排他性 避免死锁 高公用  ###分布式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="泛型">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/泛型/index.html">
+<meta property="og:title" content="分布式锁">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/分布式锁/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+<meta property="og:description" content="分布式锁 在单机情况下，如果多个线程对共享资源进行访问，可以采用线程间加锁的机制，保持对共享资源的一致性访问。但是在分布式系统中，这种进程间的锁机制没作用了，系统部署在不同机器上，浙西资源不再线程间共享，而是属于进程间共享的资源。为了解决这个问题，引入了分布式锁。分布式锁，是指在分布式的部署情况下，通过锁机制让多客户端互斥的对共享资源访问。满足的要求：   排他性 避免死锁 高公用  ###分布式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T12:42:23.580Z">
+<meta property="og:updated_time" content="2019-04-03T12:21:38.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泛型">
-<meta name="twitter:description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+<meta name="twitter:title" content="分布式锁">
+<meta name="twitter:description" content="分布式锁 在单机情况下，如果多个线程对共享资源进行访问，可以采用线程间加锁的机制，保持对共享资源的一致性访问。但是在分布式系统中，这种进程间的锁机制没作用了，系统部署在不同机器上，浙西资源不再线程间共享，而是属于进程间共享的资源。为了解决这个问题，引入了分布式锁。分布式锁，是指在分布式的部署情况下，通过锁机制让多客户端互斥的对共享资源访问。满足的要求：   排他性 避免死锁 高公用  ###分布式">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/泛型/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/分布式锁/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>泛型 | Blog</title>
+  <title>分布式锁 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/泛型/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/03/分布式锁/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">泛型
+          <h1 class="post-title" itemprop="name headline">分布式锁
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-03-30 16:52:21 / 修改时间：20:42:23" itemprop="dateCreated datePublished" datetime="2019-03-30T16:52:21+08:00">2019-03-30</time>
+              <time title="创建时间：2019-04-03 20:04:23 / 修改时间：20:21:38" itemprop="dateCreated datePublished" datetime="2019-04-03T20:04:23+08:00">2019-04-03</time>
             
 
             
@@ -371,21 +371,27 @@
       
 
       
-        <h3 id="lt-T-与-lt-的区别"><a href="#lt-T-与-lt-的区别" class="headerlink" title="&lt;T>与&lt;?>的区别"></a>&lt;T>与&lt;?>的区别</h3><p>首先，前提目的是传入某个类以及继承类。</p>
+        <h3 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h3><blockquote>
+<p>在单机情况下，如果多个线程对共享资源进行访问，可以采用线程间加锁的机制，保持对共享资源的一致性访问。<br>但是在分布式系统中，这种进程间的锁机制没作用了，系统部署在不同机器上，浙西资源不再线程间共享，而是属于进程间共享的资源。<br>为了解决这个问题，引入了分布式锁。<br>分布式锁，是指在分布式的部署情况下，通过锁机制让多客户端互斥的对共享资源访问。<br>满足的要求：</p>
+</blockquote>
 <ol>
-<li><p>&lt;T>用于声明泛型类和泛型方法，具有约束的作用：</p>
-<pre><code><figure class="highlight plain"><figcaption><span>class Node<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	T valu1;</span><br><span class="line">	T value2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><p> 中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&lt;?>，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&lt;?&gt;</p>
-</li>
-<li><p>&lt;?>用于运行中使用：</p>
- <figure class="highlight plain"><figcaption><span>class Plate<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	T value;</span><br><span class="line">	public Plate(T t)&#123;</span><br><span class="line">		this.value=t;</span><br><span class="line">	&#125;</span><br><span class="line">	public void set(T t)&#123;</span><br><span class="line">		this.value = t;</span><br><span class="line">	&#125;</span><br><span class="line">	public T get()&#123;</span><br><span class="line">		return value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Plate&lt;? exitends Fruit&gt; p = new Plate(new Apple());</span><br><span class="line">p.set(new Apple());//Error</span><br><span class="line">Fruit k = p.get();//right</span><br></pre></td></tr></table></figure>
-<p> 这样就可以定义p为装水果的盘子,使用&lt;?>传入的具体类就不能判断。<br> 使用上限符extends,但是set()方法就出现问题，用?不能判断传入的Apple()实例是否与之前的一致，对具体类未知，因此ERROR,而由于继承中，子类可以赋值给父类，所以，get方法依然可以使用，但只能放在他们的基类里面。</p>
- <figure class="highlight plain"><figcaption><span>super Fruit> p </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.set(new Fruit());//right</span><br><span class="line">p.get();//Error</span><br></pre></td></tr></table></figure>
-<p> 同样使用下限符super，set()传入的父类，虽然同样没有确定父类的类型是那些，但是如果传入Fruit类以及继承类，因为子类可以传入父类，但是反过来不能，所以get()方法取到的类不知具体类型，没法得到，比他高的父类也不知道，多以没有变量能接受该实例。</p>
-</li>
+<li>排他性</li>
+<li>避免死锁</li>
+<li>高公用</li>
 </ol>
-<pre><code><figure class="highlight plain"><figcaption><span>class Main &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">       // List&lt;Fruit&gt; l = new ArrayList&lt;Apple&gt;();错误</span><br><span class="line">        List&lt;Fruit&gt; l = new ArrayList&lt;Fruit&gt;();正确，多态唯一不能用的就是创建的时候</span><br><span class="line">        l.add(new Apple());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>
+<p>###分布式锁的实现方式</p>
+<ol>
+<li>基于数据库实现</li>
+<li>基于Redis实现</li>
+<li>基于Zookepper实现</li>
+</ol>
+<p>基于数据库的锁分为乐观锁和悲观锁：</p>
+<ol>
+<li>乐观锁类似于CAS，加入版本号，实现多线程访问安全</li>
+<li>悲观锁通过对访问的记录加上排他锁。</li>
+</ol>
+<p><a href="https://blog.51cto.com/13732225/2165988" title="参考" target="_blank" rel="noopener">https://blog.51cto.com/13732225/2165988</a></p>
+
       
     </div>
 
@@ -415,15 +421,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/" rel="next" title="数据库索引原理">
+                <i class="fa fa-chevron-left"></i> 数据库索引原理
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/03/30/transient关键字/" rel="prev" title="transient关键字">
-                transient关键字 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -534,7 +540,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-T-与-lt-的区别"><span class="nav-number">1.</span> <span class="nav-text">&lt;T&gt;与&lt;?&gt;的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式锁"><span class="nav-number">1.</span> <span class="nav-text">分布式锁</span></a></li></ol></div>
             
 
           </div>
