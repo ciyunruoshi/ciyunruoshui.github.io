@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+  <meta name="description" content="synchronized和Lock Lcok依赖于CAS操作，而CAS依赖CPU指令集实现原子操作，因此Lock是依赖于硬件实现。synchronized依赖jvm的内置特性，monitor内置的监视器锁，是依赖jvm软件层面实现。java的线程是映射到操作系统的原生线程之上的，如果要阻塞或者唤醒一个线程就需要操作系统的帮忙，这就要使操作系统从用户态转换到核心态，这种切换需要花费很多的处理器时间，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="泛型">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/泛型/index.html">
+<meta property="og:title" content="不使用synchronized和lock，如何实现一个线程安全的单例">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/04/不使用synchronized和lock，如何实现一个线程安全的单例/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+<meta property="og:description" content="synchronized和Lock Lcok依赖于CAS操作，而CAS依赖CPU指令集实现原子操作，因此Lock是依赖于硬件实现。synchronized依赖jvm的内置特性，monitor内置的监视器锁，是依赖jvm软件层面实现。java的线程是映射到操作系统的原生线程之上的，如果要阻塞或者唤醒一个线程就需要操作系统的帮忙，这就要使操作系统从用户态转换到核心态，这种切换需要花费很多的处理器时间，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T12:42:23.580Z">
+<meta property="og:updated_time" content="2019-04-04T13:38:36.617Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泛型">
-<meta name="twitter:description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+<meta name="twitter:title" content="不使用synchronized和lock，如何实现一个线程安全的单例">
+<meta name="twitter:description" content="synchronized和Lock Lcok依赖于CAS操作，而CAS依赖CPU指令集实现原子操作，因此Lock是依赖于硬件实现。synchronized依赖jvm的内置特性，monitor内置的监视器锁，是依赖jvm软件层面实现。java的线程是映射到操作系统的原生线程之上的，如果要阻塞或者唤醒一个线程就需要操作系统的帮忙，这就要使操作系统从用户态转换到核心态，这种切换需要花费很多的处理器时间，">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/泛型/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/04/不使用synchronized和lock，如何实现一个线程安全的单例/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>泛型 | Blog</title>
+  <title>不使用synchronized和lock，如何实现一个线程安全的单例 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/泛型/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/04/不使用synchronized和lock，如何实现一个线程安全的单例/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">泛型
+          <h1 class="post-title" itemprop="name headline">不使用synchronized和lock，如何实现一个线程安全的单例
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-03-30 16:52:21 / 修改时间：20:42:23" itemprop="dateCreated datePublished" datetime="2019-03-30T16:52:21+08:00">2019-03-30</time>
+              <time title="创建时间：2019-04-04 17:04:21 / 修改时间：21:38:36" itemprop="dateCreated datePublished" datetime="2019-04-04T17:04:21+08:00">2019-04-04</time>
             
 
             
@@ -371,21 +371,69 @@
       
 
       
-        <h3 id="lt-T-与-lt-的区别"><a href="#lt-T-与-lt-的区别" class="headerlink" title="&lt;T>与&lt;?>的区别"></a>&lt;T>与&lt;?>的区别</h3><p>首先，前提目的是传入某个类以及继承类。</p>
-<ol>
-<li><p>&lt;T>用于声明泛型类和泛型方法，具有约束的作用：</p>
-<pre><code><figure class="highlight plain"><figcaption><span>class Node<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	T valu1;</span><br><span class="line">	T value2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><p> 中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&lt;?>，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&lt;?&gt;</p>
-</li>
-<li><p>&lt;?>用于运行中使用：</p>
- <figure class="highlight plain"><figcaption><span>class Plate<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	T value;</span><br><span class="line">	public Plate(T t)&#123;</span><br><span class="line">		this.value=t;</span><br><span class="line">	&#125;</span><br><span class="line">	public void set(T t)&#123;</span><br><span class="line">		this.value = t;</span><br><span class="line">	&#125;</span><br><span class="line">	public T get()&#123;</span><br><span class="line">		return value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Plate&lt;? exitends Fruit&gt; p = new Plate(new Apple());</span><br><span class="line">p.set(new Apple());//Error</span><br><span class="line">Fruit k = p.get();//right</span><br></pre></td></tr></table></figure>
-<p> 这样就可以定义p为装水果的盘子,使用&lt;?>传入的具体类就不能判断。<br> 使用上限符extends,但是set()方法就出现问题，用?不能判断传入的Apple()实例是否与之前的一致，对具体类未知，因此ERROR,而由于继承中，子类可以赋值给父类，所以，get方法依然可以使用，但只能放在他们的基类里面。</p>
- <figure class="highlight plain"><figcaption><span>super Fruit> p </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.set(new Fruit());//right</span><br><span class="line">p.get();//Error</span><br></pre></td></tr></table></figure>
-<p> 同样使用下限符super，set()传入的父类，虽然同样没有确定父类的类型是那些，但是如果传入Fruit类以及继承类，因为子类可以传入父类，但是反过来不能，所以get()方法取到的类不知具体类型，没法得到，比他高的父类也不知道，多以没有变量能接受该实例。</p>
-</li>
-</ol>
-<pre><code><figure class="highlight plain"><figcaption><span>class Main &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">       // List&lt;Fruit&gt; l = new ArrayList&lt;Apple&gt;();错误</span><br><span class="line">        List&lt;Fruit&gt; l = new ArrayList&lt;Fruit&gt;();正确，多态唯一不能用的就是创建的时候</span><br><span class="line">        l.add(new Apple());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>
+        <h3 id="synchronized和Lock"><a href="#synchronized和Lock" class="headerlink" title="synchronized和Lock"></a>synchronized和Lock</h3><blockquote>
+<p>Lcok依赖于CAS操作，而CAS依赖CPU指令集实现原子操作，因此Lock是依赖于硬件实现。<br>synchronized依赖jvm的内置特性，monitor内置的监视器锁，是依赖jvm软件层面实现。<br>java的线程是映射到操作系统的原生线程之上的，如果要阻塞或者唤醒一个线程就需要操作系统的帮忙，这就要使操作系统从用户态转换到核心态，这种切换需要花费很多的处理器时间，对于简单的代码块被synchronized修饰，状态转换消耗的时间可能比用户代码执行的时间都长，所以JDK1.6之前，synchronized被称为重量级锁，耗时很多。<br>那么就看单例模式的实现方法</p>
+</blockquote>
+<blockquote>
+<p>枚举<br>    public enum Singleton{<br>        INSTANCE;<br>        public void whareverMethos(){}<br>    }<br>静态内部类</p>
+</blockquote>
+<pre><code>public class Singleton{
+    private static class SingletonHolder{
+        private static final Singleton INSTANCE = NEW Singleton();
+    }
+    publilc Singleton(){}
+    public static final Singleton getInstance(){
+        return SingletonHolder.INSTANCE;
+    }
+}
+</code></pre><blockquote>
+<p>恶汉</p>
+</blockquote>
+<pre><code>public class Singleton{
+    private static final Singleton INSTANCE = new Singleton();
+    private Singleton(){}
+    public static final Singleton getInstance(){
+        return INSTANCE;
+    }
+}
+</code></pre><blockquote>
+<p>恶汉变种</p>
+</blockquote>
+<pre><code>public class Singleton{
+    private static class SingletonHolder{
+        private static final Singleton INSTANCE = NEW Singleton();
+    }
+    publilc Singleton(){}
+    public static final Singleton getInstance(){
+        return SingletonHolder.INSTANCE;
+    }
+}
+</code></pre><blockquote>
+<p>这几种实现单例的方式的真正原理是什么？<br>这几种实现都是借助了ClassLoader的线程安全机制。<br>为什么ClassLoader加载类是线程安全的？<br>因为加载类的时候使用了synchronized关键字。<br>可以说单例模式的实现说到底还是用到synchronized关键字，不能称之为不适用synchroized.</p>
+</blockquote>
+<p>所以和synchronized想对应的就是CAS操作，CAS是非阻塞算法的一种常见实现。</p>
+<pre><code>public class Singleton{
+    private static final AtomicReference&lt;Singleton&gt; INSTANCE=new AtomicReference&lt;Singleton&lt;&gt;();
+
+    private Singleton(){}
+
+    public static Singleton getInstance(){
+        for(;;){
+            Singleton singleton = INSTANCE.get();
+            if(null!=singleton){
+                return singleton;
+            }
+        }
+
+        singleton = new Singleton();
+        if(INSTANCE.compareAndSet(null,singleton))
+            return singleton;
+    }
+}
+</code></pre><blockquote>
+<p>CAS的好处在于不需要使用传统的锁机制来保证线程安全,CAS是一种基于忙等待的算法,依赖底层硬件的实现,相对于锁它没有线程切换和阻塞的额外消耗,可以支持较大的并行度。<br>CAS的一个重要缺点在于如果忙等待一直执行不成功(一直在死循环中),会对CPU造成较大的执行开销。</p>
+</blockquote>
+
       
     </div>
 
@@ -415,15 +463,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/ciyunruoshui.github.io/2019/04/04/各种锁机制/" rel="next" title="各种锁机制">
+                <i class="fa fa-chevron-left"></i> 各种锁机制
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/03/30/transient关键字/" rel="prev" title="transient关键字">
-                transient关键字 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -534,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-T-与-lt-的区别"><span class="nav-number">1.</span> <span class="nav-text">&lt;T&gt;与&lt;?&gt;的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized和Lock"><span class="nav-number">1.</span> <span class="nav-text">synchronized和Lock</span></a></li></ol></div>
             
 
           </div>
