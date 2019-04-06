@@ -96,17 +96,19 @@
 
 
 
-  <meta name="description" content="介绍  在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。当然这也不是完全正确的这取决于操作系统以及JVM版本。   实例   123456789101112131415161718192021222324252627282930	//线程类public class PriorityTh">
+  <meta name="description" content="###概述  虚拟机把描述类的文件机载到内存，并对数据进行校验、转换解析和初始化，最终形成能被虚拟机直接用的java类型，这就是虚拟机的类加载机制。  ###类加载的时机  类从class二进制文件加载到jvm内存中开始到卸载出内存，整个生命周期包括：加载、验证、准备、解析和初始化、使用。 任何一个class文件都对应唯一一个类或者接口    什么情况下需要开始类加载的第一个阶段？加载。   使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线程优先级">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/线程优先级/index.html">
+<meta property="og:title" content="类加载机制">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/类加载机制/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="介绍  在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。当然这也不是完全正确的这取决于操作系统以及JVM版本。   实例   123456789101112131415161718192021222324252627282930	//线程类public class PriorityTh">
+<meta property="og:description" content="###概述  虚拟机把描述类的文件机载到内存，并对数据进行校验、转换解析和初始化，最终形成能被虚拟机直接用的java类型，这就是虚拟机的类加载机制。  ###类加载的时机  类从class二进制文件加载到jvm内存中开始到卸载出内存，整个生命周期包括：加载、验证、准备、解析和初始化、使用。 任何一个class文件都对应唯一一个类或者接口    什么情况下需要开始类加载的第一个阶段？加载。   使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-31T12:48:38.008Z">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/类加载机制/1.jpg">
+<meta property="og:updated_time" content="2019-04-06T13:42:37.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线程优先级">
-<meta name="twitter:description" content="介绍  在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。当然这也不是完全正确的这取决于操作系统以及JVM版本。   实例   123456789101112131415161718192021222324252627282930	//线程类public class PriorityTh">
+<meta name="twitter:title" content="类加载机制">
+<meta name="twitter:description" content="###概述  虚拟机把描述类的文件机载到内存，并对数据进行校验、转换解析和初始化，最终形成能被虚拟机直接用的java类型，这就是虚拟机的类加载机制。  ###类加载的时机  类从class二进制文件加载到jvm内存中开始到卸载出内存，整个生命周期包括：加载、验证、准备、解析和初始化、使用。 任何一个class文件都对应唯一一个类或者接口    什么情况下需要开始类加载的第一个阶段？加载。   使用">
+<meta name="twitter:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/类加载机制/1.jpg">
 
 
 
@@ -114,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/线程优先级/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/类加载机制/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>线程优先级 | Blog</title>
+  <title>类加载机制 | Blog</title>
   
 
 
@@ -289,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/31/线程优先级/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/06/类加载机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">线程优先级
+          <h1 class="post-title" itemprop="name headline">类加载机制
 
               
             
@@ -332,7 +334,7 @@
                 
               
 
-              <time title="创建时间：2019-03-31 20:31:04 / 修改时间：20:48:38" itemprop="dateCreated datePublished" datetime="2019-03-31T20:31:04+08:00">2019-03-31</time>
+              <time title="创建时间：2019-04-06 16:23:42 / 修改时间：21:42:37" itemprop="dateCreated datePublished" datetime="2019-04-06T16:23:42+08:00">2019-04-06</time>
             
 
             
@@ -371,27 +373,86 @@
       
 
       
-        <ul>
-<li><p>介绍</p>
+        <p>###概述</p>
 <blockquote>
-<p>在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.<br>线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。<br><strong>当然这也不是完全正确的</strong>这取决于操作系统以及JVM版本。</p>
+<p>虚拟机把描述类的文件机载到内存，并对数据进行校验、转换解析和初始化，最终形成能被虚拟机直接用的java类型，这就是虚拟机的类加载机制。</p>
 </blockquote>
-</li>
-<li><p>实例</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">	//线程类</span><br><span class="line">public class PriorityThread implements Runnable&#123;</span><br><span class="line">    private boolean flag = true;</span><br><span class="line">    private int num=0;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        while(flag)&#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;--&gt;&quot;+num++);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void stop()&#123;</span><br><span class="line">        this.flag = !this.flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//测试线程优先级</span><br><span class="line">public class PriorityDemo &#123;</span><br><span class="line">    public static void main(String[] args) throws InterruptedException &#123;</span><br><span class="line">        PriorityThread it1 = new PriorityThread();</span><br><span class="line">        PriorityThread it2 = new PriorityThread();</span><br><span class="line">        Thread proxy1 = new Thread(it1,&quot;线程1&quot;);</span><br><span class="line">        Thread proxy2 = new Thread(it2,&quot;线程2&quot;);</span><br><span class="line">        proxy1.setPriority(Thread.MAX_PRIORITY);//设置为最高优先级</span><br><span class="line">        proxy2.setPriority(Thread.MIN_PRIORITY);//设置为最低优先级</span><br><span class="line">        proxy1.start();</span><br><span class="line">        proxy2.start();</span><br><span class="line">        Thread.sleep(1000);</span><br><span class="line">        it1.stop();</span><br><span class="line">        it2.stop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
+<p>###类加载的时机</p>
 <blockquote>
-<p>线程1执行了87540次<br>线程2执行了29515次</p>
+<p>类从class二进制文件加载到jvm内存中开始到卸载出内存，整个生命周期包括：加载、验证、准备、解析和初始化、使用。<br><strong> 任何一个class文件都对应唯一一个类或者接口 </strong></p>
 </blockquote>
-<p>这里设置了线程1最高和线程2最低优先级后，并不是说线程1就优先执行等到线程1执行完才执行线程2。而是说线程1被执行的概率高。</p>
-<p>+总结</p>
+<blockquote>
+<p>什么情况下需要开始类加载的第一个阶段？加载。</p>
+</blockquote>
 <ol>
-<li>每个线程都有一个默认的优先级，默认情况下是NORM_PRIORITY = 5。</li>
-<li><code>线程的优先级表示的是被执行的概率，并不是绝对的优先执行。</code></li>
-<li>设置线程优先级的方法setPriority(Thread.MAX_PRIORITY)</li>
+<li>使用new创建实例，读取或者设置一个类的静态字段，调用类的静态方法。<strong>特例：final修饰的变量在编译器就已经把结果放入常量池，可以直接在class文件的常亮池中提取，不需要进行类机载</strong></li>
+<li>对类进行反射调用<strong>反射需要使用类的运行时数据，这就需要类机载</strong></li>
+<li>初始化类的时候，发现父类还没有进行初始化，则需要先出发父类的初始化。</li>
+<li>启动类需要初始化，包含main函数的类。</li>
+<li>使用JDK1.7的动态语言支持时，没有初始化则需要初始化。</li>
 </ol>
+<p>####特例</p>
+<ol>
+<li>通过子类调用父类的静态字段，不会导致子类的初始化。<blockquote>
+<p>书上的解释是<strong>对于静态字段，只有直接定义这个字段的类会被初始化。通过子类引用父类中的静态变量只会触发父类的初始化而不会触发子类的初始化</strong></p>
+</blockquote>
+</li>
+<li><strong>final修饰的类变量值在编译期就存储入NontInitialization常量池，以后对类.finalval变量的引用实际都被转化为NotInitialization类对自身常量池的引用，也就是说NontInitialization的Class文件中并没有关于此类的符号引用的入口，这两个类在编译成Class文件后就不存在任何联系</strong></li>
+</ol>
+<blockquote>
+<p>所有final修饰的static量将会在编译期间传播优化，连同类名+变量名+值存储在特定的类中，如果要回去该变量也只会从特定的NontInitialization类中查找，与原来的类已经无关了。<strong>因此不需要加载创建它的类</strong></p>
+</blockquote>
+<p>###类加载的过程</p>
+<p>####加载</p>
+<blockquote>
+<p>“加载”是类加载的一个阶段，需要完成三件事：</p>
+<ol>
+<li>通过一个类的全限定名来获取定义的二进制字节流</li>
+<li>将这个字节流所代表的的静态储存结构转换为方法区的运行时数据结构</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>这里是指，字节流中保存了一个类的类名，字段，方法等所有信息，JVM将涉及到类的信息全部在方法区（特殊的堆）开辟空间保存。</p>
+</blockquote>
+<ol start="3">
+<li>在内存（堆）中生成一个代表这个类的的java.lang.Class对象，作为方法区这个类的各种数据的访问接口。</li>
+</ol>
+<p><img src="/ciyunruoshui.github.io/2019/04/06/类加载机制/1.jpg" alt="类加载机制"></p>
+<blockquote>
+<p>图中的“到对象数据类型的指针”就是在堆中创建的方法区中类的各类数据的范文几口。</p>
+</blockquote>
+<p>####准备</p>
+<blockquote>
+<p>准备阶段是正式为<strong>类变量，也就是静态变量</strong>分配内存并设置类变量初始值的过程，这些变量所<strong>使用的内存都在方法区中进行分配</strong>。<strong>PS：这里不包括实例变量，仅包括被static修饰的变量，实例变量将在对象实例化时随对象一起分配在java堆中</strong>。</p>
+</blockquote>
+<blockquote>
+<p><strong>final修饰的变量初始值就是程序员自定义的值，在这里直接会初始化。</strong></p>
+</blockquote>
+<p>####解析</p>
+<blockquote>
+<p>解析阶段是虚拟机将常量池中的符号引用替换为直接引用。</p>
+</blockquote>
+<p>####初始化</p>
+<blockquote>
+<p>类初始化阶段是类加载过程的最后一步，在前面类加载的过程中，除了在加载阶段用户应用可以通过自定义类加载器参与之外，其余所有的动作都由虚拟机控制。类初始化，才真正的执行类中定义的JAVA程序代码。</p>
+</blockquote>
+<blockquote>
+<p>初始化是执行类构造器<clinit>()方法的过程。</clinit></p>
+</blockquote>
+<blockquote>
+<p><clinit>方法是有编译器<strong>自动收集类中的所有类变量的赋值动作和静态语句块（static{}）中的语句合并产生的，收集的顺序是由语句在源代码中出现顺序决定。</strong></clinit></p>
+</blockquote>
+<blockquote>
+<p>静态语句块只能访问到定义在静态语句块之前的静态变量，定义在之后的变量，在前面的静态语句块可以赋值，但不能访问。</p>
+</blockquote>
+<blockquote>
+<p><clinit>()方法与类的构造函数不同，它不需要<strong>显示的调用父类构造器</strong>，虚拟机会保证子类的<clinit>()方法执行前，父类的<clinit>()方法已经执行完毕，因为虚拟机中第一个被执行的<clinit>()方法的类肯定是Object类。<br>由于父类的<clinit>()方法先执行，也以为这父类中定义的静态语句块优先于子类的变量赋值操作。</clinit></clinit></clinit></clinit></clinit></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>到现在已经明朗：<br>类加载的过程从加载到类初始化过程，首先是类的方法区的运行时数据，接着是准备阶段对类变量的固定初始化，再到解析阶段的转化，最后类初始化阶段对类的静态变量和静态代码块的执行都<strong>是针对类的加载和初始化</strong>，也就是知道<clinit>()方法就结束了<br><strong>上面只是对类的载入，而具体到创建对象还需要在载入类之后再次调用<init>()方法来为对象分配内存，初始化实例对象。</init></strong></clinit></p>
+<p><init>()方法收集实例变量和实例代码块。</init></p>
+</blockquote>
 
       
     </div>
@@ -422,8 +483,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/03/31/线程池submit与execute/" rel="next" title="线程池submit与execute">
-                <i class="fa fa-chevron-left"></i> 线程池submit与execute
+              <a href="/ciyunruoshui.github.io/2019/04/06/动态代理/" rel="next" title="动态代理">
+                <i class="fa fa-chevron-left"></i> 动态代理
               </a>
             
           </div>
@@ -431,10 +492,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/04/02/内存模型与内存结构/" rel="prev" title="内存模型与内存结构">
-                内存模型与内存结构 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

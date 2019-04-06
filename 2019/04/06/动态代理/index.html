@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="介绍  在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。当然这也不是完全正确的这取决于操作系统以及JVM版本。   实例   123456789101112131415161718192021222324252627282930	//线程类public class PriorityTh">
+  <meta name="description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线程优先级">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/线程优先级/index.html">
+<meta property="og:title" content="动态代理">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="介绍  在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。当然这也不是完全正确的这取决于操作系统以及JVM版本。   实例   123456789101112131415161718192021222324252627282930	//线程类public class PriorityTh">
+<meta property="og:description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-31T12:48:38.008Z">
+<meta property="og:updated_time" content="2019-04-06T08:23:11.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线程优先级">
-<meta name="twitter:description" content="介绍  在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。当然这也不是完全正确的这取决于操作系统以及JVM版本。   实例   123456789101112131415161718192021222324252627282930	//线程类public class PriorityTh">
+<meta name="twitter:title" content="动态代理">
+<meta name="twitter:description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/31/线程优先级/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>线程优先级 | Blog</title>
+  <title>动态代理 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/31/线程优先级/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">线程优先级
+          <h1 class="post-title" itemprop="name headline">动态代理
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-03-31 20:31:04 / 修改时间：20:48:38" itemprop="dateCreated datePublished" datetime="2019-03-31T20:31:04+08:00">2019-03-31</time>
+              <time title="创建时间：2019-04-06 13:54:47 / 修改时间：16:23:11" itemprop="dateCreated datePublished" datetime="2019-04-06T13:54:47+08:00">2019-04-06</time>
             
 
             
@@ -371,27 +371,23 @@
       
 
       
-        <ul>
-<li><p>介绍</p>
-<blockquote>
-<p>在JAVA中，每个线程都有优先级，默认继承父线程的优先级，默认的优先级是5.<br>线程的优先级并不决定线程的执行顺序，如果线程的优先级高，那么此线程被执行的概率就高。<br><strong>当然这也不是完全正确的</strong>这取决于操作系统以及JVM版本。</p>
-</blockquote>
-</li>
-<li><p>实例</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">	//线程类</span><br><span class="line">public class PriorityThread implements Runnable&#123;</span><br><span class="line">    private boolean flag = true;</span><br><span class="line">    private int num=0;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        while(flag)&#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;--&gt;&quot;+num++);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void stop()&#123;</span><br><span class="line">        this.flag = !this.flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//测试线程优先级</span><br><span class="line">public class PriorityDemo &#123;</span><br><span class="line">    public static void main(String[] args) throws InterruptedException &#123;</span><br><span class="line">        PriorityThread it1 = new PriorityThread();</span><br><span class="line">        PriorityThread it2 = new PriorityThread();</span><br><span class="line">        Thread proxy1 = new Thread(it1,&quot;线程1&quot;);</span><br><span class="line">        Thread proxy2 = new Thread(it2,&quot;线程2&quot;);</span><br><span class="line">        proxy1.setPriority(Thread.MAX_PRIORITY);//设置为最高优先级</span><br><span class="line">        proxy2.setPriority(Thread.MIN_PRIORITY);//设置为最低优先级</span><br><span class="line">        proxy1.start();</span><br><span class="line">        proxy2.start();</span><br><span class="line">        Thread.sleep(1000);</span><br><span class="line">        it1.stop();</span><br><span class="line">        it2.stop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<blockquote>
-<p>线程1执行了87540次<br>线程2执行了29515次</p>
-</blockquote>
-<p>这里设置了线程1最高和线程2最低优先级后，并不是说线程1就优先执行等到线程1执行完才执行线程2。而是说线程1被执行的概率高。</p>
-<p>+总结</p>
+        <p>###动态代理的实现方式</p>
 <ol>
-<li>每个线程都有一个默认的优先级，默认情况下是NORM_PRIORITY = 5。</li>
-<li><code>线程的优先级表示的是被执行的概率，并不是绝对的优先执行。</code></li>
-<li>设置线程优先级的方法setPriority(Thread.MAX_PRIORITY)</li>
+<li>jdk内置的反射机制实现的额</li>
+<li>cglib实现动态代理。</li>
 </ol>
+<p>###静态代理和动态代理</p>
+<ol>
+<li>静态代理<blockquote>
+<p>由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。<br>具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。<br>缺点：<br>代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。<br>代理对象只服务于一种类型的对象，如果要服务多种类型的对象，势必要为每一种对象都创建代理，所以静态代理在程序规模稍大的时候就无法胜任。</p>
+</blockquote>
+</li>
+<li>动态代理<blockquote>
+<p>在程序运行期间利用发射机制动态创建而成。</p>
+</blockquote>
+</li>
+</ol>
+<p>###深入理解发射实现的动态代理</p>
 
       
     </div>
@@ -422,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/03/31/线程池submit与execute/" rel="next" title="线程池submit与execute">
-                <i class="fa fa-chevron-left"></i> 线程池submit与execute
+              <a href="/ciyunruoshui.github.io/2019/04/05/线程三大特性/" rel="next" title="JMM(java内存模型)线程三大特性">
+                <i class="fa fa-chevron-left"></i> JMM(java内存模型)线程三大特性
               </a>
             
           </div>
@@ -432,8 +428,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/02/内存模型与内存结构/" rel="prev" title="内存模型与内存结构">
-                内存模型与内存结构 <i class="fa fa-chevron-right"></i>
+              <a href="/ciyunruoshui.github.io/2019/04/06/类加载机制/" rel="prev" title="类加载机制">
+                类加载机制 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
