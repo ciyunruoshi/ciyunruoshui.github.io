@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
+  <meta name="description" content="核心思路，从起点p1出发，一共两个旅行商不断朝着终点前进，最后全部到达终点是，得到最小的距离；dp[i][j]代表从起点出发到pi,pj，并且i&amp;lt;=j,那么这就转换为一个动态规划问题，怎么找到子结构；  Ps:这里的思路就是在动态规划表格中会有不同的（i,j）组合，但是A,B两条路是“等价”的，所以（i,j）=(j,i) 所以可以永远计算i&amp;lt;=j的数组元素，其他的忽略。  首先，一共">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态代理">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/index.html">
+<meta property="og:title" content="欧几里得旅行商问题">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/欧几里得旅行商问题/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
+<meta property="og:description" content="核心思路，从起点p1出发，一共两个旅行商不断朝着终点前进，最后全部到达终点是，得到最小的距离；dp[i][j]代表从起点出发到pi,pj，并且i&amp;lt;=j,那么这就转换为一个动态规划问题，怎么找到子结构；  Ps:这里的思路就是在动态规划表格中会有不同的（i,j）组合，但是A,B两条路是“等价”的，所以（i,j）=(j,i) 所以可以永远计算i&amp;lt;=j的数组元素，其他的忽略。  首先，一共">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-06T08:23:11.892Z">
+<meta property="og:updated_time" content="2019-04-11T01:38:07.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态代理">
-<meta name="twitter:description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
+<meta name="twitter:title" content="欧几里得旅行商问题">
+<meta name="twitter:description" content="核心思路，从起点p1出发，一共两个旅行商不断朝着终点前进，最后全部到达终点是，得到最小的距离；dp[i][j]代表从起点出发到pi,pj，并且i&amp;lt;=j,那么这就转换为一个动态规划问题，怎么找到子结构；  Ps:这里的思路就是在动态规划表格中会有不同的（i,j）组合，但是A,B两条路是“等价”的，所以（i,j）=(j,i) 所以可以永远计算i&amp;lt;=j的数组元素，其他的忽略。  首先，一共">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/欧几里得旅行商问题/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>动态代理 | Blog</title>
+  <title>欧几里得旅行商问题 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/11/欧几里得旅行商问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">动态代理
+          <h1 class="post-title" itemprop="name headline">欧几里得旅行商问题
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-04-06 13:54:47 / 修改时间：16:23:11" itemprop="dateCreated datePublished" datetime="2019-04-06T13:54:47+08:00">2019-04-06</time>
+              <time title="创建时间：2019-04-11 09:33:22 / 修改时间：09:38:07" itemprop="dateCreated datePublished" datetime="2019-04-11T09:33:22+08:00">2019-04-11</time>
             
 
             
@@ -371,23 +371,30 @@
       
 
       
-        <p>###动态代理的实现方式</p>
+        <blockquote>
+<p>核心思路，从起点p1出发，一共两个旅行商不断朝着终点前进，最后全部到达终点是，得到最小的距离；<br>dp[i][j]代表从起点出发到pi,pj，并且i&lt;=j,那么这就转换为一个动态规划问题，怎么找到子结构； </p>
+<p>Ps:这里的思路就是在动态规划表格中会有不同的（i,j）组合，但是A,B两条路是“等价”的，所以（i,j）=(j,i) 所以可以永远计算i&lt;=j的数组元素，其他的忽略。 </p>
+<p>首先，一共两条路径，到达i的为A路径，到达j的为B路径 核心，找到此次点的同一路径中上一个点，遍历。 </p>
+</blockquote>
+<p>dp[i][j] : </p>
 <ol>
-<li>jdk内置的反射机制实现的额</li>
-<li>cglib实现动态代理。</li>
-</ol>
-<p>###静态代理和动态代理</p>
-<ol>
-<li>静态代理<blockquote>
-<p>由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。<br>具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。<br>缺点：<br>代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。<br>代理对象只服务于一种类型的对象，如果要服务多种类型的对象，势必要为每一种对象都创建代理，所以静态代理在程序规模稍大的时候就无法胜任。</p>
+<li><p>当i&lt;j-1,</p>
+<blockquote>
+<p>也就是说在j点的前一个点为j-1,A路径的最后点为i,但是i!=j-1,说明，j-1,j都在B路径上，那么 dp[i][j]=dp[i][j-1]+distance(j-1,j); </p>
 </blockquote>
 </li>
-<li>动态代理<blockquote>
-<p>在程序运行期间利用发射机制动态创建而成。</p>
+<li><p>当i=j-1</p>
+<blockquote>
+<p>也就是说里j最近的点在A路径上，而B路径上距离j最近的点是未知的？</p>
+<p>那么就要遍历 1&lt;=k&lt;j-1,判断 不同最近的点中最小的路径 dp[i][j]=Min{dp[i][k]+distance(k,j)} 3 当i=j,dp[i][j]=Min{dp[i][j-1]+distance(j-1,j),dp[i-1][j]+distance(i,i-1)};</p>
 </blockquote>
 </li>
 </ol>
-<p>###深入理解发射实现的动态代理</p>
+<blockquote>
+<p>这里子结构分段的依据不同于其他动态规划，.</p>
+<p>其他的动态规划是寻找不同决定中最优决定，例如上台阶，每个元素都是在跳两步 和跳一步之间寻找最优的值</p>
+<p>但是TSP问题在这基础上多了一个限制，那就是路径，dp的双下标决定了i,j一定在不同的路径，那么选择的 范围也就少了，就是判断距离j最近的点不同带来的不同路径，寻找最优路径。 那么同样存在 dp[4][2]这样的组合，但是dp[2][4]=dp[4][2],因为实质是一样的，在1-&gt;4个点找到两条路劲，并且2,4在不同路径上的最短路径。</p>
+</blockquote>
 
       
     </div>
@@ -418,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/05/线程三大特性/" rel="next" title="JMM(java内存模型)线程三大特性">
-                <i class="fa fa-chevron-left"></i> JMM(java内存模型)线程三大特性
+              <a href="/ciyunruoshui.github.io/2019/04/07/指令重排序/" rel="next" title="指令重排序">
+                <i class="fa fa-chevron-left"></i> 指令重排序
               </a>
             
           </div>
@@ -428,8 +435,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/06/类加载机制/" rel="prev" title="类加载机制">
-                类加载机制 <i class="fa fa-chevron-right"></i>
+              <a href="/ciyunruoshui.github.io/2019/04/11/Dijstra算法/" rel="prev" title="Dijstra算法">
+                Dijstra算法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

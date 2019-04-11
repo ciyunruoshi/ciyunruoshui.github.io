@@ -96,17 +96,14 @@
 
 
 
-  <meta name="description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
-<meta property="og:type" content="article">
-<meta property="og:title" content="动态代理">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="指令重排序">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/07/指令重排序/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-06T08:23:11.892Z">
+<meta property="og:updated_time" content="2019-04-07T12:15:48.736Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态代理">
-<meta name="twitter:description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
+<meta name="twitter:title" content="指令重排序">
 
 
 
@@ -114,7 +111,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/07/指令重排序/">
 
 
 
@@ -124,7 +121,7 @@
   };
 </script>
 
-  <title>动态代理 | Blog</title>
+  <title>指令重排序 | Blog</title>
   
 
 
@@ -289,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/07/指令重排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">动态代理
+          <h1 class="post-title" itemprop="name headline">指令重排序
 
               
             
@@ -332,13 +329,9 @@
                 
               
 
-              <time title="创建时间：2019-04-06 13:54:47 / 修改时间：16:23:11" itemprop="dateCreated datePublished" datetime="2019-04-06T13:54:47+08:00">2019-04-06</time>
+              <time title="创建时间：2019-04-07 20:15:48" itemprop="dateCreated datePublished" datetime="2019-04-07T20:15:48+08:00">2019-04-07</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -371,24 +364,7 @@
       
 
       
-        <p>###动态代理的实现方式</p>
-<ol>
-<li>jdk内置的反射机制实现的额</li>
-<li>cglib实现动态代理。</li>
-</ol>
-<p>###静态代理和动态代理</p>
-<ol>
-<li>静态代理<blockquote>
-<p>由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。<br>具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。<br>缺点：<br>代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。<br>代理对象只服务于一种类型的对象，如果要服务多种类型的对象，势必要为每一种对象都创建代理，所以静态代理在程序规模稍大的时候就无法胜任。</p>
-</blockquote>
-</li>
-<li>动态代理<blockquote>
-<p>在程序运行期间利用发射机制动态创建而成。</p>
-</blockquote>
-</li>
-</ol>
-<p>###深入理解发射实现的动态代理</p>
-
+        
       
     </div>
 
@@ -418,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/05/线程三大特性/" rel="next" title="JMM(java内存模型)线程三大特性">
-                <i class="fa fa-chevron-left"></i> JMM(java内存模型)线程三大特性
+              <a href="/ciyunruoshui.github.io/2019/04/06/类加载机制/" rel="next" title="类加载机制">
+                <i class="fa fa-chevron-left"></i> 类加载机制
               </a>
             
           </div>
@@ -428,8 +404,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/06/类加载机制/" rel="prev" title="类加载机制">
-                类加载机制 <i class="fa fa-chevron-right"></i>
+              <a href="/ciyunruoshui.github.io/2019/04/11/欧几里得旅行商问题/" rel="prev" title="欧几里得旅行商问题">
+                欧几里得旅行商问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

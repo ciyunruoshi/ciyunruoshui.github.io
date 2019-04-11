@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
+  <meta name="description" content="###Dijstra算法问题  Dijstra算法是用于求有权重边无向表的单源点最短路径算法  ####基本思路  每条边 e= v-&amp;gt;w都被放松一次，当端点v是放松的,判断distTo[w]&amp;lt;=distTo[v]+e.weight(); 持续判断不等式知道算法结束，因为 distTo[w] cannot increase &amp;lt;- distTo[]的值单调减少 distTo[v]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态代理">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/index.html">
+<meta property="og:title" content="Dijstra算法">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/Dijstra算法/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
+<meta property="og:description" content="###Dijstra算法问题  Dijstra算法是用于求有权重边无向表的单源点最短路径算法  ####基本思路  每条边 e= v-&amp;gt;w都被放松一次，当端点v是放松的,判断distTo[w]&amp;lt;=distTo[v]+e.weight(); 持续判断不等式知道算法结束，因为 distTo[w] cannot increase &amp;lt;- distTo[]的值单调减少 distTo[v]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-06T08:23:11.892Z">
+<meta property="og:updated_time" content="2019-04-11T02:40:55.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态代理">
-<meta name="twitter:description" content="###动态代理的实现方式  jdk内置的反射机制实现的额 cglib实现动态代理。  ###静态代理和动态代理  静态代理 由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。代理对象只">
+<meta name="twitter:title" content="Dijstra算法">
+<meta name="twitter:description" content="###Dijstra算法问题  Dijstra算法是用于求有权重边无向表的单源点最短路径算法  ####基本思路  每条边 e= v-&amp;gt;w都被放松一次，当端点v是放松的,判断distTo[w]&amp;lt;=distTo[v]+e.weight(); 持续判断不等式知道算法结束，因为 distTo[w] cannot increase &amp;lt;- distTo[]的值单调减少 distTo[v]">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/Dijstra算法/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>动态代理 | Blog</title>
+  <title>Dijstra算法 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/11/Dijstra算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">动态代理
+          <h1 class="post-title" itemprop="name headline">Dijstra算法
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-04-06 13:54:47 / 修改时间：16:23:11" itemprop="dateCreated datePublished" datetime="2019-04-06T13:54:47+08:00">2019-04-06</time>
+              <time title="创建时间：2019-04-11 09:33:47 / 修改时间：10:40:55" itemprop="dateCreated datePublished" datetime="2019-04-11T09:33:47+08:00">2019-04-11</time>
             
 
             
@@ -371,23 +371,69 @@
       
 
       
-        <p>###动态代理的实现方式</p>
-<ol>
-<li>jdk内置的反射机制实现的额</li>
-<li>cglib实现动态代理。</li>
-</ol>
-<p>###静态代理和动态代理</p>
-<ol>
-<li>静态代理<blockquote>
-<p>由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。<br>具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。<br>缺点：<br>代理类和委托类实现了相同的接口，代理类通过委托类实现相同的方法。这样就出现了大量的代码重复。<br>代理对象只服务于一种类型的对象，如果要服务多种类型的对象，势必要为每一种对象都创建代理，所以静态代理在程序规模稍大的时候就无法胜任。</p>
+        <p>###Dijstra算法问题</p>
+<blockquote>
+<p>Dijstra算法是用于求有权重边无向表的单源点最短路径算法</p>
 </blockquote>
+<p>####基本思路</p>
+<ol>
+<li>每条边 e= v-&gt;w都被放松一次，当端点v是放松的,判断distTo[w]&lt;=distTo[v]+e.weight();</li>
+<li>持续判断不等式知道算法结束，因为<ul>
+<li>distTo[w] cannot increase &lt;- distTo[]的值单调减少</li>
+<li>distTo[v] will not change &lt;- 我们在每次循环选择最小的distTo[] 值</li>
+</ul>
 </li>
-<li>动态代理<blockquote>
-<p>在程序运行期间利用发射机制动态创建而成。</p>
-</blockquote>
-</li>
+<li>因此，持续循环直到结束，保持最短路径</li>
 </ol>
-<p>###深入理解发射实现的动态代理</p>
+<p>###代码</p>
+<p><code>package com.chen;</code></p>
+<p><code>import edu.princeton.cs.algs4.DirectedEdge;</code><br><code>import edu.princeton.cs.algs4.EdgeWeightedDigraph;</code><br><code>import edu.princeton.cs.algs4.IndexMinPQ;</code></p>
+<pre><code>public class DijstraFormal {
+
+    Double[] distTo;
+    int[] path;
+    IndexMinPQ&lt;Double&gt; pq;
+    public DijstraFormal(EdgeWeightedDigraph G,int s){
+        distTo = new Double[G.V()];
+        path = new int[G.V()];
+        pq = new IndexMinPQ&lt;&gt;(G.V());
+        for(int i=0;i&lt;G.V();i++)
+            distTo[i]=Double.MAX_VALUE;
+        distTo[s]=0.0;
+        path[s]=s;
+        pq.insert(s,distTo[s]);
+        while(!pq.isEmpty()){
+            int v = pq.delMin();
+            for(DirectedEdge e:G.adj(v)){
+                update(e);
+            }
+        }
+    }
+    public void update(DirectedEdge e){
+    //出边决定了每此迭代都能找到确定的最短路径，因为deletaMin()得到的就是已经确定的点
+        int v = e.from();
+        int w = e.to();
+        if(distTo[w]&gt;distTo[v]+e.weight()){
+            distTo[w]=distTo[v]+e.weight();
+            path[w]=v;
+            if(pq.contains(w)) pq.decreaseKey(w,distTo[w]);
+            else pq.insert(w,distTo[w]);
+        }
+    }
+}
+</code></pre><blockquote>
+<p>代码很简答，利用优先队列<code>IndexMinPQ</code>来每次选择与源点最短的路径节点v，然后更新v节点的出路径的节点w，即v-&gt;w</p>
+</blockquote>
+<blockquote>
+<p>distTo[w]&gt;distTo[v]+e.weight()判断w路径是否需要修改？</p>
+</blockquote>
+<blockquote>
+<p>Yes.修改路径和距离，并加入pq队列，因为w的最短路径修改意味着依赖w的最短路径节点也需要跟新最短路径。</p>
+<p>No.以为这w节点不需要修改路径参数。</p>
+</blockquote>
+<blockquote>
+<p>这里面最难得的就是每次迭代都需要找到最短路径，因为从源点出发，<br>第一次找最短路径，那就是已经确定的最短路径，不需要后续修改<br>第二次找最短路径，那也就是目前最佳的最短路径节点<br>从普遍规律上来看，离源点近的点最短路径小，也就是Dijstra算法可以以源点为中心，不断向外扩展来寻找所有点的最短路径。</p>
+</blockquote>
 
       
     </div>
@@ -418,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/05/线程三大特性/" rel="next" title="JMM(java内存模型)线程三大特性">
-                <i class="fa fa-chevron-left"></i> JMM(java内存模型)线程三大特性
+              <a href="/ciyunruoshui.github.io/2019/04/11/欧几里得旅行商问题/" rel="next" title="欧几里得旅行商问题">
+                <i class="fa fa-chevron-left"></i> 欧几里得旅行商问题
               </a>
             
           </div>
@@ -427,10 +473,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/04/06/类加载机制/" rel="prev" title="类加载机制">
-                类加载机制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
