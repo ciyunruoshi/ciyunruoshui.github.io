@@ -104,7 +104,7 @@
 <meta property="og:description" content="###概述  虚拟机把描述类的文件机载到内存，并对数据进行校验、转换解析和初始化，最终形成能被虚拟机直接用的java类型，这就是虚拟机的类加载机制。  ###类加载的时机  类从class二进制文件加载到jvm内存中开始到卸载出内存，整个生命周期包括：加载、验证、准备、解析和初始化、使用。 任何一个class文件都对应唯一一个类或者接口    什么情况下需要开始类加载的第一个阶段？加载。   使用">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/06/类加载机制/1.jpg">
-<meta property="og:updated_time" content="2019-04-06T13:42:37.809Z">
+<meta property="og:updated_time" content="2019-04-12T13:58:34.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类加载机制">
 <meta name="twitter:description" content="###概述  虚拟机把描述类的文件机载到内存，并对数据进行校验、转换解析和初始化，最终形成能被虚拟机直接用的java类型，这就是虚拟机的类加载机制。  ###类加载的时机  类从class二进制文件加载到jvm内存中开始到卸载出内存，整个生命周期包括：加载、验证、准备、解析和初始化、使用。 任何一个class文件都对应唯一一个类或者接口    什么情况下需要开始类加载的第一个阶段？加载。   使用">
@@ -334,12 +334,24 @@
                 
               
 
-              <time title="创建时间：2019-04-06 16:23:42 / 修改时间：21:42:37" itemprop="dateCreated datePublished" datetime="2019-04-06T16:23:42+08:00">2019-04-06</time>
+              <time title="创建时间：2019-04-06 16:23:42" itemprop="dateCreated datePublished" datetime="2019-04-06T16:23:42+08:00">2019-04-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-12 21:58:34" itemprop="dateModified" datetime="2019-04-12T21:58:34+08:00">2019-04-12</time>
               
             
           </span>
@@ -453,6 +465,8 @@
 <p>到现在已经明朗：<br>类加载的过程从加载到类初始化过程，首先是类的方法区的运行时数据，接着是准备阶段对类变量的固定初始化，再到解析阶段的转化，最后类初始化阶段对类的静态变量和静态代码块的执行都<strong>是针对类的加载和初始化</strong>，也就是知道<clinit>()方法就结束了<br><strong>上面只是对类的载入，而具体到创建对象还需要在载入类之后再次调用<init>()方法来为对象分配内存，初始化实例对象。</init></strong></clinit></p>
 <p><init>()方法收集实例变量和实例代码块。</init></p>
 </blockquote>
+<p>####双亲委派模型<br>启动类加载器<br>扩展类加载器<br>应用程序类加载器</p>
+<p>概念：如果一个类加载器收到了加载某个类的请求，则该类加载器并不会去加载该类，而是把这个请求委派给父类加载器，每个层次的类加载器都是如此，因此，所有的类加载器请求都会传送到顶端的启动类加载器，只有当父类加载器在其所搜范围内无法找到所需的类，并将该结果反馈给子类加载器，子类加载器才回去尝试自己加载</p>
 
       
     </div>
@@ -555,7 +569,7 @@
                 
                   <a href="/ciyunruoshui.github.io/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

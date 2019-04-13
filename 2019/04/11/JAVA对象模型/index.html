@@ -96,17 +96,19 @@
 
 
 
-  <meta name="description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+  <meta name="description" content="java对象包括三部分：  对象头 实例数据 对齐填充  ###对象头  对象头包含两部分信息，第一部分用于存储对象自身运行时数据，如哈希吗、GC分代年龄、锁状态标志、线程持有的锁、偏向锁ID、偏向时间戳等，这部分数据的长度在32位和64位虚拟机中分别为32个bit和64个bit,官方称它为“Mark Word”.   例如在32位的HotSpot虚拟机 中对象未被锁定的状态下，Mark Word">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CAS">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/CAS/index.html">
+<meta property="og:title" content="JAVA对象模型">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+<meta property="og:description" content="java对象包括三部分：  对象头 实例数据 对齐填充  ###对象头  对象头包含两部分信息，第一部分用于存储对象自身运行时数据，如哈希吗、GC分代年龄、锁状态标志、线程持有的锁、偏向锁ID、偏向时间戳等，这部分数据的长度在32位和64位虚拟机中分别为32个bit和64个bit,官方称它为“Mark Word”.   例如在32位的HotSpot虚拟机 中对象未被锁定的状态下，Mark Word">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T13:59:58.360Z">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/21.jpg">
+<meta property="og:updated_time" content="2019-04-13T08:06:36.145Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CAS">
-<meta name="twitter:description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+<meta name="twitter:title" content="JAVA对象模型">
+<meta name="twitter:description" content="java对象包括三部分：  对象头 实例数据 对齐填充  ###对象头  对象头包含两部分信息，第一部分用于存储对象自身运行时数据，如哈希吗、GC分代年龄、锁状态标志、线程持有的锁、偏向锁ID、偏向时间戳等，这部分数据的长度在32位和64位虚拟机中分别为32个bit和64个bit,官方称它为“Mark Word”.   例如在32位的HotSpot虚拟机 中对象未被锁定的状态下，Mark Word">
+<meta name="twitter:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/21.jpg">
 
 
 
@@ -114,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/CAS/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>CAS | Blog</title>
+  <title>JAVA对象模型 | Blog</title>
   
 
 
@@ -289,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/02/CAS/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CAS
+          <h1 class="post-title" itemprop="name headline">JAVA对象模型
 
               
             
@@ -332,12 +334,24 @@
                 
               
 
-              <time title="创建时间：2019-04-02 21:40:40 / 修改时间：21:59:58" itemprop="dateCreated datePublished" datetime="2019-04-02T21:40:40+08:00">2019-04-02</time>
+              <time title="创建时间：2019-04-11 21:11:37" itemprop="dateCreated datePublished" datetime="2019-04-11T21:11:37+08:00">2019-04-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-13 16:06:36" itemprop="dateModified" datetime="2019-04-13T16:06:36+08:00">2019-04-13</time>
               
             
           </span>
@@ -371,28 +385,32 @@
       
 
       
-        <p>在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在共享资源访问时没有冲突，无需加锁，一旦发生冲突，无锁策略采用CAS技术保证线程执行的安全性。</p>
-<p>##无锁的执行者-CAS</p>
-<p>##CAS<br>CAS的全称是Compare And Swap 即比较交换，其算法核心思想如下:</p>
+        <p>java对象包括三部分：</p>
+<ol>
+<li>对象头</li>
+<li>实例数据</li>
+<li>对齐填充</li>
+</ol>
+<p>###对象头</p>
 <blockquote>
-<p>执行函数 CAS(V,E,N)</p>
+<p>对象头包含两部分信息，第一部分用于存储对象自身运行时数据，如哈希吗、GC分代年龄、锁状态标志、线程持有的锁、偏向锁ID、偏向时间戳等，这部分数据的长度在32位和64位虚拟机中分别为32个bit和64个bit,官方称它为“Mark Word”.</p>
 </blockquote>
-<p>其中包含三个参数：</p>
-<ol>
-<li>V表示要跟新的变量</li>
-<li>E表示预期值</li>
-<li>N表示新值</li>
-</ol>
-<p>如果V值等于E值，则将V的值设为N。若V值和E值不同，则说明已经有其他线程做了更新，则当前线程什么都不做。通俗的理解就是CAS操作需要我们提供一个期望值，当期望值与当前线程的变量值相同时，说明还没线程修改该值，当前线程可以进行修改，也就是执行CAS操作，但如果期望值与当前线程不符，则说明该值已被其他线程修改，此时不执行更新操作，但可以选择重新读取该变量再尝试再次修改该变量，也可以放弃操作。</p>
-<p>##CAS的ABA问题</p>
-<ol>
-<li>thread-1 获取变量S值为 A,保存在工作内存，还未用CAS修改,此时S的值为 A</li>
-<li>thread-2 获取变量S值为 A,保存在工作内存，用CAS修改S为 B,并刷新到主内存,此时S的值为 B</li>
-<li>thread-3 获取变量S值为 B,保存在工作内存，用CAS修改S为 A,并刷新到主内存,此时S的值为 A</li>
-<li>thread-1 想要修改S的值，V=S,E=A,N=C,此时S的值为 A，能够修改为C，修改成功，此时S的值为 C</li>
-</ol>
-<p>虽然修改成功，但是中间经历了两个线程的修改，S的值在多次改变后依旧为A,但是thread-1预期值是当时状态为A,thread-1的目标为在第一个A的时候执行修改，现在1，2，3，4后并不符合预期。</p>
-<p>修改方式就是在每个值前面添加版本号。</p>
+<blockquote>
+<p>例如在32位的HotSpot虚拟机 中对象未被锁定的状态下，Mark Word的32个Bits空间中的25Bits用于存储对象哈希码（HashCode），4Bits用于存储对象分代年龄，2Bits用于存储锁标志 位，1Bit固定为0，在其他状态（轻量级锁定、重量级锁定、GC标记、可偏向）下对象的存储内容如下表所示。</p>
+</blockquote>
+<p><img src="/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/21.jpg" alt="JAVA对象模型"></p>
+<p>对象头的另一部分是类型指针，即使对象指向它的类的元数据的指针，虚拟机通过这个指针来确定这个对象是哪个类的实例。并不是所有的虚拟机实现都必须在对象数据上保留指针，换句话来说查找对象的元数据信息并不一定要经过数据本身，另外，如果对象是一个Java数组，那在对象头中还必须有一块用于记录数组长度的数据，因为虚拟机可以通过普通Java对象的元数据信息确定Java对象的大小，但是从数组的元数据中无法确定数组的大小。</p>
+<p>###锁的标志位，对应个唯一的锁状态。</p>
+<blockquote>
+<p>所以。锁的状态保存在对象头中：</p>
+</blockquote>
+<ul>
+<li>Synchronized锁的到底是什么, 锁住的是代码还是对象)（答案锁的是对象）？ </li>
+<li>java中锁，锁的是对象，它是怎么实现的？</li>
+</ul>
+<blockquote>
+<p>这两个问题就有了解答：<br>synchronized 加锁的方法就是利用对象的锁或者是类的锁，那么执行和判断哪个线程获取了锁，状态就存储在对象头中。<br>同样，java中锁对象就是在对象头中实现了，利用了指针和线程ID等来判断锁的的归属。</p>
+</blockquote>
 
       
     </div>
@@ -423,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/02/内存模型与内存结构/" rel="next" title="内存模型与内存结构">
-                <i class="fa fa-chevron-left"></i> 内存模型与内存结构
+              <a href="/ciyunruoshui.github.io/2019/04/11/GC算法/" rel="next" title="GC算法">
+                <i class="fa fa-chevron-left"></i> GC算法
               </a>
             
           </div>
@@ -433,8 +451,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/" rel="prev" title="数据库索引原理">
-                数据库索引原理 <i class="fa fa-chevron-right"></i>
+              <a href="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/" rel="prev" title="synzhronized 对象头和monitor">
+                synzhronized 对象头和monitor <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

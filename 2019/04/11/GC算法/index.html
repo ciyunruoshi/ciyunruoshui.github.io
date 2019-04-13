@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+  <meta name="description" content="本文主要内容：  GC概念 GC算法 引用计数法 根搜索法   现代虚拟机中的垃圾搜索算法  标记-清除 赋值算法 新生代 标记-压缩 老年代   分代收集   ###GC概念java中，GC的对象是Java堆和方法区(永久区)  GC:垃圾收集算法。这里的垃圾指的是在系统运行过程中所产生的一些无用的对象，这些对象占据一定的内存空间，如果长期不释放，可能导致oom. GC算法将内存权限控制在JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CAS">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/CAS/index.html">
+<meta property="og:title" content="GC算法">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/GC算法/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+<meta property="og:description" content="本文主要内容：  GC概念 GC算法 引用计数法 根搜索法   现代虚拟机中的垃圾搜索算法  标记-清除 赋值算法 新生代 标记-压缩 老年代   分代收集   ###GC概念java中，GC的对象是Java堆和方法区(永久区)  GC:垃圾收集算法。这里的垃圾指的是在系统运行过程中所产生的一些无用的对象，这些对象占据一定的内存空间，如果长期不释放，可能导致oom. GC算法将内存权限控制在JVM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T13:59:58.360Z">
+<meta property="og:updated_time" content="2019-04-11T12:38:28.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CAS">
-<meta name="twitter:description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+<meta name="twitter:title" content="GC算法">
+<meta name="twitter:description" content="本文主要内容：  GC概念 GC算法 引用计数法 根搜索法   现代虚拟机中的垃圾搜索算法  标记-清除 赋值算法 新生代 标记-压缩 老年代   分代收集   ###GC概念java中，GC的对象是Java堆和方法区(永久区)  GC:垃圾收集算法。这里的垃圾指的是在系统运行过程中所产生的一些无用的对象，这些对象占据一定的内存空间，如果长期不释放，可能导致oom. GC算法将内存权限控制在JVM">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/CAS/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/GC算法/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>CAS | Blog</title>
+  <title>GC算法 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/02/CAS/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/11/GC算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CAS
+          <h1 class="post-title" itemprop="name headline">GC算法
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-04-02 21:40:40 / 修改时间：21:59:58" itemprop="dateCreated datePublished" datetime="2019-04-02T21:40:40+08:00">2019-04-02</time>
+              <time title="创建时间：2019-04-11 19:54:26 / 修改时间：20:38:28" itemprop="dateCreated datePublished" datetime="2019-04-11T19:54:26+08:00">2019-04-11</time>
             
 
             
@@ -371,28 +371,96 @@
       
 
       
-        <p>在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在共享资源访问时没有冲突，无需加锁，一旦发生冲突，无锁策略采用CAS技术保证线程执行的安全性。</p>
-<p>##无锁的执行者-CAS</p>
-<p>##CAS<br>CAS的全称是Compare And Swap 即比较交换，其算法核心思想如下:</p>
+        <p>本文主要内容：</p>
+<ul>
+<li>GC概念</li>
+<li>GC算法<ul>
+<li>引用计数法</li>
+<li>根搜索法</li>
+</ul>
+</li>
+<li><p>现代虚拟机中的垃圾搜索算法</p>
+<ul>
+<li>标记-清除</li>
+<li>赋值算法 新生代</li>
+<li>标记-压缩 老年代</li>
+</ul>
+</li>
+<li><p>分代收集</p>
+</li>
+</ul>
+<p>###GC概念<br>java中，GC的对象是Java堆和方法区(永久区)</p>
+<ol>
+<li>GC:垃圾收集算法。这里的垃圾指的是<strong>在系统运行过程中所产生的一些无用的对象，这些对象占据一定的内存空间，如果长期不释放，可能导致oom</strong>.</li>
+<li>GC算法将内存权限控制在JVM，<strong>目的在于防止由程序员引入的人为的内存泄漏</strong>。</li>
+</ol>
+<p>###引用计数算法：老牌垃圾回收算法，无法处理循环引用，没有被JAVA采纳</p>
+<ol>
+<li><p>引用计数法的概念</p>
 <blockquote>
-<p>执行函数 CAS(V,E,N)</p>
+<p>给对象添加一个引用计数器，每当有一个地方引用它时，计数器就加一，引用失效，就减一，任何时刻计数器为0的对象就将其释放。</p>
 </blockquote>
-<p>其中包含三个参数：</p>
-<ol>
-<li>V表示要跟新的变量</li>
-<li>E表示预期值</li>
-<li>N表示新值</li>
+</li>
+<li><p>缺点</p>
+<blockquote>
+<p>引用计数无法解决两个对象相互引用，导致循环引用的问题。</p>
+</blockquote>
+</li>
 </ol>
-<p>如果V值等于E值，则将V的值设为N。若V值和E值不同，则说明已经有其他线程做了更新，则当前线程什么都不做。通俗的理解就是CAS操作需要我们提供一个期望值，当期望值与当前线程的变量值相同时，说明还没线程修改该值，当前线程可以进行修改，也就是执行CAS操作，但如果期望值与当前线程不符，则说明该值已被其他线程修改，此时不执行更新操作，但可以选择重新读取该变量再尝试再次修改该变量，也可以放弃操作。</p>
-<p>##CAS的ABA问题</p>
+<p>###根搜索算法</p>
+<blockquote>
+<p>由于引用计数算法的缺陷，所以JVM一般会采用根搜索算法。设立若干种根对象，当任何一个根对象到某一个对象均不可到达时，则认为这个对象可以被回收。</p>
+</blockquote>
+<p>####标记-清除算法</p>
+<blockquote>
+<p>在标记阶段，首先通过根节点，标记所有从根节点开始的可达对象，因此，未标记的对象就是未被引用的垃圾对象；然后，在清除阶段，清除所有未被标记的对象。</p>
+</blockquote>
 <ol>
-<li>thread-1 获取变量S值为 A,保存在工作内存，还未用CAS修改,此时S的值为 A</li>
-<li>thread-2 获取变量S值为 A,保存在工作内存，用CAS修改S为 B,并刷新到主内存,此时S的值为 B</li>
-<li>thread-3 获取变量S值为 B,保存在工作内存，用CAS修改S为 A,并刷新到主内存,此时S的值为 A</li>
-<li>thread-1 想要修改S的值，V=S,E=A,N=C,此时S的值为 A，能够修改为C，修改成功，此时S的值为 C</li>
+<li>当堆中的有效内存空间被耗尽的时候，就会停止整个程序，然后进行标记和清除程序：</li>
 </ol>
-<p>虽然修改成功，但是中间经历了两个线程的修改，S的值在多次改变后依旧为A,但是thread-1预期值是当时状态为A,thread-1的目标为在第一个A的时候执行修改，现在1，2，3，4后并不符合预期。</p>
-<p>修改方式就是在每个值前面添加版本号。</p>
+<ul>
+<li>标记阶段：标记的过程其实就是，遍历所有的GC Roots，然后将所有GC Roots可达的对象标记为存活的对象</li>
+<li>清除：清除的过程将遍历堆中所有的对象，将没有标记的对象全部清除掉。<br>#####Stop-the-World<br>也就是说，就是当程序运行期间，若可以使用的内存被耗尽的时候，GC线程就会被触发并将程序暂停，随后将依旧存活的对象标记一遍，最终再将堆中所有没被标记的对象全部清除掉，接下来便让程序恢复运行</li>
+</ul>
+<ol start="2">
+<li>缺点<blockquote>
+<p>效率比较低，递归与全堆对象遍历<br>这种方式清理的空闲内存是不连续的</p>
+</blockquote>
+</li>
+</ol>
+<p>####复制算法 新生代的GC</p>
+<blockquote>
+<p>将原有的内存空间分为两块，每次只使用其中一块，在垃圾回收时，将正在使用的内存中的存活对象复制到未使用的内存块中，之后，清除正在使用的内存块中的所有对象，交换两个内存的角色，完成垃圾回收。</p>
+</blockquote>
+<ul>
+<li>与标记-清除算法相比，复制算法是一种相对高效的回收方法</li>
+<li>不适用于存活对象较多的场合，如老年代（复制算法适合做新生代的GC）</li>
+<li>复制算法的最大的问题是：空间的浪费</li>
+</ul>
+<p>####标记-整理算法 老年代的GC</p>
+<blockquote>
+<p>标记-压缩算法适合用于存活对象较多的场合，如老年代。它在标记-清除算法的基础上做了一些优化。和标记-清除算法一样，标记-压缩算法也首先需要从根节点开始，对所有可达对象做一次标记；但之后，它并不简单的清理未标记的对象，而是将所有的存活对象压缩到内存的一端；之后，清理边界外所有的空间。</p>
+</blockquote>
+<ul>
+<li>标记：它的第一个阶段与标记/清除算法是一模一样的，均是遍历GC Roots，然后将存活的对象标记</li>
+<li>整理：移动所有存活的对象，且按照内存地址次序依次排列，然后将末端内存地址以后的内存全部回收。因此，第二阶段才称为整理阶段</li>
+</ul>
+<p>#####缺点</p>
+<blockquote>
+<p><strong>标记/整理算法不仅可以弥补标记/清除算法当中，内存区域分散的缺点，也消除了复制算法当中，内存减半的高额代价。</strong></p>
+</blockquote>
+<p>####区别</p>
+<ol>
+<li>效率：复制算法&gt;标记/整理算法&gt;标记/清除算法</li>
+<li>内存整齐度：复制算法=标记/整理算法&gt;标记/清除算法</li>
+<li>内存利用率：标记/整理算法=标记/清除算法&gt;复制算法</li>
+</ol>
+<p>####分代收集算法</p>
+<ul>
+<li>少量对象存活，适合复制算法：在新生代中，每次GC时都发现有大批对象死去，只有少量存活，那就选用复制算法，只需要付出少量存活对象的复制成本就可以完成GC</li>
+<li>大量对象存活，适合用标记-清理/标记-整理：在老年代中，因为对象存活率高、没有额外空间对他进行分配担保，就必须使用“标记-清理”/“标记-整理”算法进行GC。</li>
+</ul>
+<p>#####所有的垃圾收集算法在执行时，JVM所有程序都要暂停等待。</p>
 
       
     </div>
@@ -423,8 +491,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/02/内存模型与内存结构/" rel="next" title="内存模型与内存结构">
-                <i class="fa fa-chevron-left"></i> 内存模型与内存结构
+              <a href="/ciyunruoshui.github.io/2019/04/11/Dijstra算法/" rel="next" title="Dijstra算法">
+                <i class="fa fa-chevron-left"></i> Dijstra算法
               </a>
             
           </div>
@@ -433,8 +501,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/" rel="prev" title="数据库索引原理">
-                数据库索引原理 <i class="fa fa-chevron-right"></i>
+              <a href="/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/" rel="prev" title="JAVA对象模型">
+                JAVA对象模型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

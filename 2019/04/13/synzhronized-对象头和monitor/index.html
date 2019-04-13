@@ -96,17 +96,22 @@
 
 
 
-  <meta name="description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+  <meta name="description" content="####代码编写层面  synchronized使我们在代码编辑层面使用的关键字，用于对方法和代码块加锁，一般有有三种实现形式：   对于实例方法，锁是当前实例对象。 对于类方法，锁是当前类的Class对象。 对于同步代码块，锁是synchronized关键字括号内的对象  12345public void test()&amp;#123;	synchronized(this)&amp;#123;		i++;	&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CAS">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/CAS/index.html">
+<meta property="og:title" content="synzhronized 对象头和monitor">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+<meta property="og:description" content="####代码编写层面  synchronized使我们在代码编辑层面使用的关键字，用于对方法和代码块加锁，一般有有三种实现形式：   对于实例方法，锁是当前实例对象。 对于类方法，锁是当前类的Class对象。 对于同步代码块，锁是synchronized关键字括号内的对象  12345public void test()&amp;#123;	synchronized(this)&amp;#123;		i++;	&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T13:59:58.360Z">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/21.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/4.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/1.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/3.jpg">
+<meta property="og:updated_time" content="2019-04-13T11:48:34.067Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CAS">
-<meta name="twitter:description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+<meta name="twitter:title" content="synzhronized 对象头和monitor">
+<meta name="twitter:description" content="####代码编写层面  synchronized使我们在代码编辑层面使用的关键字，用于对方法和代码块加锁，一般有有三种实现形式：   对于实例方法，锁是当前实例对象。 对于类方法，锁是当前类的Class对象。 对于同步代码块，锁是synchronized关键字括号内的对象  12345public void test()&amp;#123;	synchronized(this)&amp;#123;		i++;	&amp;">
+<meta name="twitter:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/21.jpg">
 
 
 
@@ -114,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/CAS/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/">
 
 
 
@@ -124,7 +129,7 @@
   };
 </script>
 
-  <title>CAS | Blog</title>
+  <title>synzhronized 对象头和monitor | Blog</title>
   
 
 
@@ -289,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/02/CAS/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CAS
+          <h1 class="post-title" itemprop="name headline">synzhronized 对象头和monitor
 
               
             
@@ -332,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2019-04-02 21:40:40 / 修改时间：21:59:58" itemprop="dateCreated datePublished" datetime="2019-04-02T21:40:40+08:00">2019-04-02</time>
+              <time title="创建时间：2019-04-13 16:07:22 / 修改时间：19:48:34" itemprop="dateCreated datePublished" datetime="2019-04-13T16:07:22+08:00">2019-04-13</time>
             
 
             
@@ -371,28 +376,90 @@
       
 
       
-        <p>在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在共享资源访问时没有冲突，无需加锁，一旦发生冲突，无锁策略采用CAS技术保证线程执行的安全性。</p>
-<p>##无锁的执行者-CAS</p>
-<p>##CAS<br>CAS的全称是Compare And Swap 即比较交换，其算法核心思想如下:</p>
+        <p>####代码编写层面</p>
 <blockquote>
-<p>执行函数 CAS(V,E,N)</p>
+<p>synchronized使我们在代码编辑层面使用的关键字，用于对方法和代码块加锁，一般有有三种实现形式：</p>
 </blockquote>
-<p>其中包含三个参数：</p>
 <ol>
-<li>V表示要跟新的变量</li>
-<li>E表示预期值</li>
-<li>N表示新值</li>
+<li>对于实例方法，锁是当前实例对象。</li>
+<li>对于类方法，锁是当前类的Class对象。</li>
+<li>对于同步代码块，锁是synchronized关键字括号内的对象</li>
 </ol>
-<p>如果V值等于E值，则将V的值设为N。若V值和E值不同，则说明已经有其他线程做了更新，则当前线程什么都不做。通俗的理解就是CAS操作需要我们提供一个期望值，当期望值与当前线程的变量值相同时，说明还没线程修改该值，当前线程可以进行修改，也就是执行CAS操作，但如果期望值与当前线程不符，则说明该值已被其他线程修改，此时不执行更新操作，但可以选择重新读取该变量再尝试再次修改该变量，也可以放弃操作。</p>
-<p>##CAS的ABA问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void test()&#123;</span><br><span class="line">	synchronized(this)&#123;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###jvm层面</p>
 <ol>
-<li>thread-1 获取变量S值为 A,保存在工作内存，还未用CAS修改,此时S的值为 A</li>
-<li>thread-2 获取变量S值为 A,保存在工作内存，用CAS修改S为 B,并刷新到主内存,此时S的值为 B</li>
-<li>thread-3 获取变量S值为 B,保存在工作内存，用CAS修改S为 A,并刷新到主内存,此时S的值为 A</li>
-<li>thread-1 想要修改S的值，V=S,E=A,N=C,此时S的值为 A，能够修改为C，修改成功，此时S的值为 C</li>
+<li><strong>对象中</strong><blockquote>
+<p>在JVM中，对象在内存中分为三部分：对象头、实例数据和对齐填充。<br>重点：synchronized使用的锁都是放在对象头里面，每个对象都有一个与生俱来的monitor对象，方面JVM</p>
+</blockquote>
+</li>
 </ol>
-<p>虽然修改成功，但是中间经历了两个线程的修改，S的值在多次改变后依旧为A,但是thread-1预期值是当时状态为A,thread-1的目标为在第一个A的时候执行修改，现在1，2，3，4后并不符合预期。</p>
-<p>修改方式就是在每个值前面添加版本号。</p>
+<p><img src="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/21.jpg" alt="synzhronized-对象头和monitor"></p>
+<blockquote>
+<p>JVM使用2个bit来作为锁的标志位，并且保存一些锁的状态信息。</p>
+</blockquote>
+<ol start="2">
+<li><strong>.class文件中</strong><br>####monitor对象<blockquote>
+<p>什么是Monitor？我们可以把它理解为一个同步工具，也可以描述为一种同步机制，它通常被描述为一个对象。<br>与一切皆对象一样，所有的Java对象是天生的Monitor，每一个Java对象都有成为Monitor的潜质，因为在Java的设计中 ，每一个Java对象自打娘胎里出来就带了一把看不见的锁，它叫做内部锁或者Monitor锁。<br>Monitor 是线程私有的数据结构，每一个线程都有一个可用monitor record列表，同时还有一个全局的可用列表。每一个被锁住的对象都会和一个monitor关联（对象头的MarkWord中的LockWord指向monitor的起始地址），同时monitor中有一个Owner字段存放拥有该锁的线程的唯一标识，表示该锁被这个线程占用。其结构如下</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/4.jpg" alt="synzhronized-对象头和monitor"></p>
+<blockquote>
+<p>monitor的标志位为10，指针指向monitor对象的起始地址，而每个对象都存在一个monitor与之关联，在hotspot中，monitor是由ObjectMonitor类实现的，先来看一下它的数据结构：</p>
+</blockquote>
+<p><img src="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/1.jpg" alt="synzhronized-对象头和monitor"></p>
+<blockquote>
+<p>其中有两个队列，_EntryList和_WaitSet,他们是用来保存ObjectMonitor对象列表，_owner指向持有ObjectMonito的线程，当多个线程访问同步代码块是，线程就会进入_EntryList区，当线程对象的monitor后，（对于线程获取锁的优先级，还有待考究）进入_Owner区并且_Owner指向获取锁的线程，其他线程继续在等待区等待。若线程调用wait方法，则线程进入_WaitSet区等待被唤醒。线程执行完毕后释放monitor锁，并且对ObjectMonitor中的值进行复位。上面说到synchronized使用的锁都放在对象头中，这里大概就是Mark Word中指向互斥量的指针指向的monitor对象内存地址（<strong>也就是，在重量级锁中会指向一个monitor对象，这个monitor对象会控制同步代码，所以synchronized关键字的功能是由monitor对象实现，每个对象实例或者类应该都存在monitor对象来保证代码同步</strong>）</p>
+</blockquote>
+<p>###monitor指令</p>
+<blockquote>
+<p>JVM通过进入和退出monitor对象实现方法和代码块的同步，</p>
+<ol>
+<li><strong>同步方法</strong></li>
+</ol>
+</blockquote>
+<pre><code>public synchronized void test1()
+descriptor: ()V
+ flags: ACC_PUBLIC, ACC_SYNCHRONIZED
+//表示修饰方法的修饰符，public synchronized
+Code:
+stack=3, locals=1, args_size=1
+ 0: aload_0
+1: dup
+2: getfield      #2                  // Field i:I
+5: iconst_1
+6: iadd
+7: putfield      #2                  // Field i:I
+10:return
+  LineNumberTable:
+line 6: 0
+ line 7: 10
+</code></pre><blockquote>
+<p>方法的同步是隐形的，JVM中使用method_info型数据中方法访问标志的ACC_SYNCHRONIZED做分区，当线程执行代码时发现方法访问标志有ACC_SYNCHRONIZED，则当前线程持有monitor对象，接下来执行的细节与同步代码块无异。以上便是synchronized关键字修饰同步方法和同步带吗块的基本原理。</p>
+</blockquote>
+<ol start="2">
+<li><strong>同步代码块</strong></li>
+</ol>
+<p>同步代码块是使用monitorenter和monitorexit指令实现的，</p>
+<pre><code>public class SynchronizedTest {
+public synchronized void test1(){
+
+}
+
+public void test2(){
+    synchronized (this){
+
+    }
+}
+}
+</code></pre><p><img src="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/3.jpg" alt="synzhronized-对象头和monitor"></p>
+<p>###总结</p>
+<blockquote>
+<p>同步代码块：monitorenter指令插入到同步代码块的开始位置，monitorexit指令插入到同步代码块的结束位置，JVM需要保证每一个monitorenter都有一个monitorexit与之相对应。任何对象都有一个monitor与之相关联，当且一个monitor被持有之后，他将处于锁定状态。线程执行到monitorenter指令时，将会尝试获取对象所对应的monitor所有权，即尝试获取对象的锁；<br>同步方法：synchronized方法则会被翻译成普通的方法调用和返回指令如:invokevirtual、areturn指令，在VM字节码层面并没有任何特别的指令来实现被synchronized修饰的方法，而是在Class文件的方法表中将该方法的access_flags字段中的synchronized标志位置1，表示该方法是同步方法并使用调用该方法的对象或该方法所属的Class在JVM的内部对象表示Klass做为锁对象</p>
+</blockquote>
+<blockquote>
+<p><strong>synchronized-&gt;monitor指令-&gt;对象头的锁标志-&gt;对象头中的monitor对象完成同步</strong></p>
+</blockquote>
 
       
     </div>
@@ -423,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/02/内存模型与内存结构/" rel="next" title="内存模型与内存结构">
-                <i class="fa fa-chevron-left"></i> 内存模型与内存结构
+              <a href="/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/" rel="next" title="JAVA对象模型">
+                <i class="fa fa-chevron-left"></i> JAVA对象模型
               </a>
             
           </div>
@@ -432,10 +499,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/" rel="prev" title="数据库索引原理">
-                数据库索引原理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
