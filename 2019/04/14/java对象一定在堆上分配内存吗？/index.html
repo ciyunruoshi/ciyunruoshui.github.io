@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="可重入锁   也叫递归锁，是指统一线程的外层函数获取锁之后，内存递归函数仍然获取该锁的代码，但不收影响，应该是想偏向锁一样会判断当前线程是不是获取锁的线程，是就让线程冲入次数加一，不是就要膨胀去竞争锁。  public class Main implements Runnable{     @Override     public void run(){         set();     }">
+  <meta name="description" content="###JIT及时编译器，是针对解释性语言而言的，而且不是虚拟机必须的，是一种优化的手段。  HotSpot虚拟机的执行引擎在执行Java代码是可以采用【解释执行】和【编译执行】两种方式的，如果采用的是编译执行方式，那么就会使用到JIT，而解释执行就不会使用到JIT，所以，早期说Java是解释型语言，是没有任何问题的，而在拥有JIT的Java虚拟机环境下，说Java是解释型语言严格意义上已经不正确了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="各种锁机制">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/04/各种锁机制/index.html">
+<meta property="og:title" content="java对象一定在堆上分配内存吗？">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/14/java对象一定在堆上分配内存吗？/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="可重入锁   也叫递归锁，是指统一线程的外层函数获取锁之后，内存递归函数仍然获取该锁的代码，但不收影响，应该是想偏向锁一样会判断当前线程是不是获取锁的线程，是就让线程冲入次数加一，不是就要膨胀去竞争锁。  public class Main implements Runnable{     @Override     public void run(){         set();     }">
+<meta property="og:description" content="###JIT及时编译器，是针对解释性语言而言的，而且不是虚拟机必须的，是一种优化的手段。  HotSpot虚拟机的执行引擎在执行Java代码是可以采用【解释执行】和【编译执行】两种方式的，如果采用的是编译执行方式，那么就会使用到JIT，而解释执行就不会使用到JIT，所以，早期说Java是解释型语言，是没有任何问题的，而在拥有JIT的Java虚拟机环境下，说Java是解释型语言严格意义上已经不正确了">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-04T06:45:19.383Z">
+<meta property="og:updated_time" content="2019-04-14T14:53:39.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="各种锁机制">
-<meta name="twitter:description" content="可重入锁   也叫递归锁，是指统一线程的外层函数获取锁之后，内存递归函数仍然获取该锁的代码，但不收影响，应该是想偏向锁一样会判断当前线程是不是获取锁的线程，是就让线程冲入次数加一，不是就要膨胀去竞争锁。  public class Main implements Runnable{     @Override     public void run(){         set();     }">
+<meta name="twitter:title" content="java对象一定在堆上分配内存吗？">
+<meta name="twitter:description" content="###JIT及时编译器，是针对解释性语言而言的，而且不是虚拟机必须的，是一种优化的手段。  HotSpot虚拟机的执行引擎在执行Java代码是可以采用【解释执行】和【编译执行】两种方式的，如果采用的是编译执行方式，那么就会使用到JIT，而解释执行就不会使用到JIT，所以，早期说Java是解释型语言，是没有任何问题的，而在拥有JIT的Java虚拟机环境下，说Java是解释型语言严格意义上已经不正确了">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/04/各种锁机制/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/14/java对象一定在堆上分配内存吗？/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>各种锁机制 | Blog</title>
+  <title>java对象一定在堆上分配内存吗？ | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/04/各种锁机制/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/14/java对象一定在堆上分配内存吗？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">各种锁机制
+          <h1 class="post-title" itemprop="name headline">java对象一定在堆上分配内存吗？
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-04-04 10:04:02 / 修改时间：14:45:19" itemprop="dateCreated datePublished" datetime="2019-04-04T10:04:02+08:00">2019-04-04</time>
+              <time title="创建时间：2019-04-14 22:23:43 / 修改时间：22:53:39" itemprop="dateCreated datePublished" datetime="2019-04-14T22:23:43+08:00">2019-04-14</time>
             
 
             
@@ -371,33 +371,37 @@
       
 
       
-        <ol>
-<li>可重入锁</li>
-</ol>
+        <p>###JIT<br>及时编译器，是针对解释性语言而言的，而且不是虚拟机必须的，是一种优化的手段。</p>
 <blockquote>
-<p>也叫递归锁，是指统一线程的外层函数获取锁之后，内存递归函数仍然获取该锁的代码，但不收影响，<strong>应该是想偏向锁一样会判断当前线程是不是获取锁的线程，是就让线程冲入次数加一，不是就要膨胀去竞争锁。</strong></p>
+<p>HotSpot虚拟机的执行引擎在执行Java代码是可以采用【解释执行】和【编译执行】两种方式的，如果采用的是编译执行方式，那么就会使用到JIT，而解释执行就不会使用到JIT，所以，早期说Java是解释型语言，是没有任何问题的，而在拥有JIT的Java虚拟机环境下，说Java是解释型语言严格意义上已经不正确了。<br>HotSpot中的编译器是javac，他的工作是将源代码编译成字节码，这部分工作是完全独立的，完全不需要运行时参与，所以Java程序的编译是半独立的实现。有了字节码，就有解释器来进行解释执行，这是早期虚拟机的工作流程，后来，虚拟机会将执行频率高的方法或语句块通过JIT编译成本地机器码，提高了代码执行的效率，至此你已经了解了JIT在Java虚拟机中所处的地位和工作的主要内容。</p>
 </blockquote>
-<pre><code>public class Main implements Runnable{
-    @Override
-    public void run(){
-        set();
-    }
-    public synchronized void get(){
-        System.out.println(&quot;get: &quot;+Thread.currentThread().get);
-    }
-    public synchronized void set(){
-        System.out.println(&quot;get: &quot;+Thread.currentThread().getId());
-        get();
-    }
-    public static void main(String[] args) throws Exception{
-        Main m = new Main();
-        new Thread(m).start();
-        new Thread(m).start();
-        new Thread(m).start();
-    }
+<p>###逃逸分析</p>
+<blockquote>
+<p>目的是有效减少内存堆分配压力。<br>逃逸分析(Escape Analysis)是目前Java虚拟机中比较前沿的优化技术。这是一种可以有效减少Java 程序中同步负载和内存堆分配压力的跨函数全局数据流分析算法。通过逃逸分析，Java Hotspot编译器能够分析出<strong>一个新的对象的引用的使用范围从而决定是否要将这个对象分配到堆上</strong><br>针对对象动态作用域：当一个对象在方法中被定义后，他可能被外部方法所引用，例如作为调用参数传递到其他方法中，成为方法逃逸。</p>
+</blockquote>
+<pre><code>public static StringBuffer craeteStringBuffer(String s1, String s2) {
+   StringBuffer sb = new StringBuffer();
+   sb.append(s1);
+   sb.append(s2);
+   return sb;
 }
 </code></pre><blockquote>
-<p>输出结果为：<br>get: 12<br>get: RUNNABLE<br>get: 14<br>get: RUNNABLE<br>get: 13<br>get: RUNNABLE<br>可以看到</p>
+<p>StringBuffer sb是一个方法内部变量，上述代码中直接将sb返回，这样这个StringBuffer有可能被其他方法所改变，这样它的作用域就不只是在方法内部，虽然它是一个局部变量，称其逃逸到了方法外部。甚至还有可能被外部线程访问到，譬如赋值给类变量或可以在其他线程中访问的实例变量，称为线程逃逸</p>
+</blockquote>
+<pre><code>public static String createStringBuffer(String s1, String s2) {
+   StringBuffer sb = new StringBuffer();
+   sb.append(s1);
+   sb.append(s2);
+   return sb.toString();
+}
+</code></pre><p>不直接返回 StringBuffer，那么StringBuffer将不会逃逸出方法。</p>
+<blockquote>
+<p>使用逃逸分析，编译器可以对代码做如下优化:</p>
+<ol>
+<li>同步省略。如果一个对象被发现只能从一个线程被访问到，那么对于这个对象的操作可以不考虑同步</li>
+<li>将堆分配转化为栈分配。如果一个对象在子程序中被分配，要使指向该对象的指针永远不会逃逸，对象可能是栈分配的候选，而不是堆分配。</li>
+<li>分离对象或标量替换。有的对象可能不需要作为一个连续的内存结构存在也可以被访问到，那么对象的部分（或全部）可以不存储在内存，而是存储在CPU寄存器中.</li>
+</ol>
 </blockquote>
 
       
@@ -429,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/03/锁优化与膨胀/" rel="next" title="锁优化与膨胀">
-                <i class="fa fa-chevron-left"></i> 锁优化与膨胀
+              <a href="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/" rel="next" title="synzhronized 对象头和monitor">
+                <i class="fa fa-chevron-left"></i> synzhronized 对象头和monitor
               </a>
             
           </div>
@@ -439,8 +443,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/04/不使用synchronized和lock，如何实现一个线程安全的单例/" rel="prev" title="不使用synchronized和lock，如何实现一个线程安全的单例">
-                不使用synchronized和lock，如何实现一个线程安全的单例 <i class="fa fa-chevron-right"></i>
+              <a href="/ciyunruoshui.github.io/2019/04/16/get和post/" rel="prev" title="get和post">
+                get和post <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
