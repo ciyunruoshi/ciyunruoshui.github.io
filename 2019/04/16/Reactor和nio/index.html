@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+  <meta name="description" content="title:Reactor和nio###线程IO  线程有四种模式   阻塞 非阻塞 同步 异步   nio是同步非阻塞模型，IO多路复用的基础同步是指线程不断轮询 IO 事件是否就绪，非阻塞是指线程在等待 IO 的时候，可以同时做其他任务java IO 的各种流都是阻塞的，这意味着，当一个线程进行流处理(如read()和write())时，无论是否有数据，该线程会一直被阻塞，直到流通信结束。在">
 <meta property="og:type" content="article">
-<meta property="og:title" content="泛型">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/泛型/index.html">
+<meta property="og:title" content="Blog">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/16/Reactor和nio/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+<meta property="og:description" content="title:Reactor和nio###线程IO  线程有四种模式   阻塞 非阻塞 同步 异步   nio是同步非阻塞模型，IO多路复用的基础同步是指线程不断轮询 IO 事件是否就绪，非阻塞是指线程在等待 IO 的时候，可以同时做其他任务java IO 的各种流都是阻塞的，这意味着，当一个线程进行流处理(如read()和write())时，无论是否有数据，该线程会一直被阻塞，直到流通信结束。在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T12:42:23.580Z">
+<meta property="og:updated_time" content="2019-04-16T12:52:36.883Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泛型">
-<meta name="twitter:description" content="&amp;lt;T&amp;gt;与&amp;lt;?&amp;gt;的区别首先，前提目的是传入某个类以及继承类。  &amp;lt;T&amp;gt;用于声明泛型类和泛型方法，具有约束的作用： class Node&amp;#123;123	T valu1;	T value2;&amp;#125;  中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&amp;lt;?&amp;gt;，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&amp;">
+<meta name="twitter:title" content="Blog">
+<meta name="twitter:description" content="title:Reactor和nio###线程IO  线程有四种模式   阻塞 非阻塞 同步 异步   nio是同步非阻塞模型，IO多路复用的基础同步是指线程不断轮询 IO 事件是否就绪，非阻塞是指线程在等待 IO 的时候，可以同时做其他任务java IO 的各种流都是阻塞的，这意味着，当一个线程进行流处理(如read()和write())时，无论是否有数据，该线程会一直被阻塞，直到流通信结束。在">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/03/30/泛型/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/16/Reactor和nio/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>泛型 | Blog</title>
+  <title> | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/03/30/泛型/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/16/Reactor和nio/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">泛型
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-03-30 16:52:21 / 修改时间：20:42:23" itemprop="dateCreated datePublished" datetime="2019-03-30T16:52:21+08:00">2019-03-30</time>
+              <time title="创建时间：2019-04-16 20:51:22 / 修改时间：20:52:36" itemprop="dateCreated datePublished" datetime="2019-04-16T20:51:22+08:00">2019-04-16</time>
             
 
             
@@ -371,21 +371,53 @@
       
 
       
-        <h3 id="lt-T-与-lt-的区别"><a href="#lt-T-与-lt-的区别" class="headerlink" title="&lt;T>与&lt;?>的区别"></a>&lt;T>与&lt;?>的区别</h3><p>首先，前提目的是传入某个类以及继承类。</p>
+        <hr>
+<h2 id="title-Reactor和nio"><a href="#title-Reactor和nio" class="headerlink" title="title:Reactor和nio"></a>title:Reactor和nio</h2><p>###线程IO</p>
+<blockquote>
+<p>线程有四种模式</p>
+</blockquote>
 <ol>
-<li><p>&lt;T>用于声明泛型类和泛型方法，具有约束的作用：</p>
-<pre><code><figure class="highlight plain"><figcaption><span>class Node<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	T valu1;</span><br><span class="line">	T value2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><p> 中的两个值必须都是相同的类，这就是使用T的约束作用，如果使用&lt;?>，?只表示一个类，但我不知道是什么类，这就没有约束作用，也就说凡是定义中的泛型类和泛型方法，一定不能使用&lt;?&gt;</p>
-</li>
-<li><p>&lt;?>用于运行中使用：</p>
- <figure class="highlight plain"><figcaption><span>class Plate<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	T value;</span><br><span class="line">	public Plate(T t)&#123;</span><br><span class="line">		this.value=t;</span><br><span class="line">	&#125;</span><br><span class="line">	public void set(T t)&#123;</span><br><span class="line">		this.value = t;</span><br><span class="line">	&#125;</span><br><span class="line">	public T get()&#123;</span><br><span class="line">		return value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Plate&lt;? exitends Fruit&gt; p = new Plate(new Apple());</span><br><span class="line">p.set(new Apple());//Error</span><br><span class="line">Fruit k = p.get();//right</span><br></pre></td></tr></table></figure>
-<p> 这样就可以定义p为装水果的盘子,使用&lt;?>传入的具体类就不能判断。<br> 使用上限符extends,但是set()方法就出现问题，用?不能判断传入的Apple()实例是否与之前的一致，对具体类未知，因此ERROR,而由于继承中，子类可以赋值给父类，所以，get方法依然可以使用，但只能放在他们的基类里面。</p>
- <figure class="highlight plain"><figcaption><span>super Fruit> p </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.set(new Fruit());//right</span><br><span class="line">p.get();//Error</span><br></pre></td></tr></table></figure>
-<p> 同样使用下限符super，set()传入的父类，虽然同样没有确定父类的类型是那些，但是如果传入Fruit类以及继承类，因为子类可以传入父类，但是反过来不能，所以get()方法取到的类不知具体类型，没法得到，比他高的父类也不知道，多以没有变量能接受该实例。</p>
-</li>
+<li>阻塞</li>
+<li>非阻塞</li>
+<li>同步</li>
+<li>异步</li>
 </ol>
-<pre><code><figure class="highlight plain"><figcaption><span>class Main &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">       // List&lt;Fruit&gt; l = new ArrayList&lt;Apple&gt;();错误</span><br><span class="line">        List&lt;Fruit&gt; l = new ArrayList&lt;Fruit&gt;();正确，多态唯一不能用的就是创建的时候</span><br><span class="line">        l.add(new Apple());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>
+<blockquote>
+<p>nio是同步非阻塞模型，IO多路复用的基础<br>同步是指线程不断轮询 IO 事件是否就绪，非阻塞是指线程在等待 IO 的时候，可以同时做其他任务<br>java IO 的各种流都是阻塞的，这意味着，当一个线程进行流处理(如read()和write())时，无论是否有数据，该线程会一直被阻塞，直到流通信结束。在此期间线程不能干其他的事情，就算当前没有数据，线程依然保持等待状态。这样无疑会浪费大量的资源。而在NIO的非阻塞模式下，线程发送数据与接收数据都是通过“通道”进行的，线程只需要去询问通道是否有数据需要处理，有则处理，无则立即返回不会进行等待。线程通常将非阻塞IO的空闲时间用于处理其他通道上的IO事件，使用一个单独的线程就可以管理多个输入和输出通道。<br>Nio三个主要部分</p>
+</blockquote>
+<ol>
+<li>buffer</li>
+<li>channel</li>
+<li>Selector</li>
+</ol>
+<p>####Buffer</p>
+<blockquote>
+<p>缓冲区，实际上是一个容器，是一个连续数组,用来存放即将发送的数据和即将到来的数据.</p>
+</blockquote>
+<p>####Channel</p>
+<blockquote>
+<p>Channel(通道)，与Stream(流)的不同之处在于通道是双向的，流只能在一个方向上操作(一个流必须是InputStream或者OutputStream的子类)，而通道可以用于读，写或者二者同事进行，最关键的是可以和多路复用器结合起来，提供状态位，多路复用器可识别Channel所处的状态</p>
+</blockquote>
+<p>####Selector</p>
+<blockquote>
+<p>Selector提供选择已经就绪的任务的能力.<br>就是Selector会不断轮询注册在Selector上的通道(Channel)，如果这个通道发生了读写操作，这个通道就会处于就绪状态，会被Selector察觉到，然后通过SelectionKey可以取出就绪的Channel集合，从而进行IO操作</p>
+</blockquote>
+<p>###Reactor反应器模式</p>
+<blockquote>
+<p>Reactor 就是NIO实现多路复用的一种模式</p>
+</blockquote>
+<ol>
+<li>事件驱动</li>
+<li>可以处理一个或者多个输入源</li>
+<li>通过Service Handler同步的将输入事件采用多路复用分发给相应的Request Handler处理。</li>
+</ol>
+<p>角色包括：</p>
+<ol>
+<li>Reactor 将I/O事件分派非对应的Handler</li>
+<li>Acceptor 也可以理解为一个Handler，这个Handler只负责创建具体处理IO请求的Handler</li>
+<li>Handlers执行非阻塞读/写</li>
+</ol>
+
       
     </div>
 
@@ -415,15 +447,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/ciyunruoshui.github.io/2019/04/16/最小公约数算法/" rel="next" title="最小公约数算法">
+                <i class="fa fa-chevron-left"></i> 最小公约数算法
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/03/30/transient关键字/" rel="prev" title="transient关键字">
-                transient关键字 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -534,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-T-与-lt-的区别"><span class="nav-number">1.</span> <span class="nav-text">&lt;T&gt;与&lt;?&gt;的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-Reactor和nio"><span class="nav-number">1.</span> <span class="nav-text">title:Reactor和nio</span></a></li></ol></div>
             
 
           </div>
