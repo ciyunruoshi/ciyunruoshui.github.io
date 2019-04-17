@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="本文主要内容：  GC概念 GC算法 引用计数法 根搜索法   现代虚拟机中的垃圾搜索算法  标记-清除 赋值算法 新生代 标记-压缩 老年代   分代收集   ###GC概念java中，GC的对象是Java堆和方法区(永久区)  GC:垃圾收集算法。这里的垃圾指的是在系统运行过程中所产生的一些无用的对象，这些对象占据一定的内存空间，如果长期不释放，可能导致oom. GC算法将内存权限控制在JVM">
+  <meta name="description" content="加法：利用异或求得每一位进位后留下的数字，用和运算和左移计算进位  public static int add(int a,int b){     //位运算实现     while(b!=0){         int n1 = a;         int n2 = b;         a = n1^n2;         //不包含进位的计算         b = (n1&amp;amp;n2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GC算法">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/GC算法/index.html">
+<meta property="og:title" content="位运算">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/17/位运算/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="本文主要内容：  GC概念 GC算法 引用计数法 根搜索法   现代虚拟机中的垃圾搜索算法  标记-清除 赋值算法 新生代 标记-压缩 老年代   分代收集   ###GC概念java中，GC的对象是Java堆和方法区(永久区)  GC:垃圾收集算法。这里的垃圾指的是在系统运行过程中所产生的一些无用的对象，这些对象占据一定的内存空间，如果长期不释放，可能导致oom. GC算法将内存权限控制在JVM">
+<meta property="og:description" content="加法：利用异或求得每一位进位后留下的数字，用和运算和左移计算进位  public static int add(int a,int b){     //位运算实现     while(b!=0){         int n1 = a;         int n2 = b;         a = n1^n2;         //不包含进位的计算         b = (n1&amp;amp;n2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-11T12:38:28.321Z">
+<meta property="og:updated_time" content="2019-04-17T13:48:12.612Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GC算法">
-<meta name="twitter:description" content="本文主要内容：  GC概念 GC算法 引用计数法 根搜索法   现代虚拟机中的垃圾搜索算法  标记-清除 赋值算法 新生代 标记-压缩 老年代   分代收集   ###GC概念java中，GC的对象是Java堆和方法区(永久区)  GC:垃圾收集算法。这里的垃圾指的是在系统运行过程中所产生的一些无用的对象，这些对象占据一定的内存空间，如果长期不释放，可能导致oom. GC算法将内存权限控制在JVM">
+<meta name="twitter:title" content="位运算">
+<meta name="twitter:description" content="加法：利用异或求得每一位进位后留下的数字，用和运算和左移计算进位  public static int add(int a,int b){     //位运算实现     while(b!=0){         int n1 = a;         int n2 = b;         a = n1^n2;         //不包含进位的计算         b = (n1&amp;amp;n2">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/11/GC算法/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/17/位运算/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>GC算法 | Blog</title>
+  <title>位运算 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/11/GC算法/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/17/位运算/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GC算法
+          <h1 class="post-title" itemprop="name headline">位运算
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-04-11 19:54:26 / 修改时间：20:38:28" itemprop="dateCreated datePublished" datetime="2019-04-11T19:54:26+08:00">2019-04-11</time>
+              <time title="创建时间：2019-04-17 20:58:56 / 修改时间：21:48:12" itemprop="dateCreated datePublished" datetime="2019-04-17T20:58:56+08:00">2019-04-17</time>
             
 
             
@@ -371,96 +371,80 @@
       
 
       
-        <p>本文主要内容：</p>
-<ul>
-<li>GC概念</li>
-<li>GC算法<ul>
-<li>引用计数法</li>
-<li>根搜索法</li>
-</ul>
-</li>
-<li><p>现代虚拟机中的垃圾搜索算法</p>
-<ul>
-<li>标记-清除</li>
-<li>赋值算法 新生代</li>
-<li>标记-压缩 老年代</li>
-</ul>
-</li>
-<li><p>分代收集</p>
-</li>
-</ul>
-<p>###GC概念<br>java中，GC的对象是Java堆和方法区(永久区)</p>
-<ol>
-<li>GC:垃圾收集算法。这里的垃圾指的是<strong>在系统运行过程中所产生的一些无用的对象，这些对象占据一定的内存空间，如果长期不释放，可能导致oom</strong>.</li>
-<li>GC算法将内存权限控制在JVM，<strong>目的在于防止由程序员引入的人为的内存泄漏</strong>。</li>
-</ol>
-<p>###引用计数算法：老牌垃圾回收算法，无法处理循环引用，没有被JAVA采纳</p>
-<ol>
-<li><p>引用计数法的概念</p>
-<blockquote>
-<p>给对象添加一个引用计数器，每当有一个地方引用它时，计数器就加一，引用失效，就减一，任何时刻计数器为0的对象就将其释放。</p>
+        <blockquote>
+<p>加法：利用异或求得每一位进位后留下的数字，用和运算和左移计算进位</p>
 </blockquote>
-</li>
-<li><p>缺点</p>
-<blockquote>
-<p>引用计数无法解决两个对象相互引用，导致循环引用的问题。</p>
+<pre><code>public static int add(int a,int b){
+    //位运算实现
+    while(b!=0){
+        int n1 = a;
+        int n2 = b;
+        a = n1^n2;
+        //不包含进位的计算
+        b = (n1&amp;n2)&lt;&lt;1;
+        //进位表示
+
+    }
+    return a;
+}
+</code></pre><blockquote>
+<p>减法：数的相反数就是先求反码再加1</p>
 </blockquote>
-</li>
-</ol>
-<p>###根搜索算法</p>
-<blockquote>
-<p>由于引用计数算法的缺陷，所以JVM一般会采用根搜索算法。设立若干种根对象，当任何一个根对象到某一个对象均不可到达时，则认为这个对象可以被回收。</p>
+<pre><code>public static int sub(int a,int b){
+    b = add(~b,1);
+
+    return add(a,b);
+}
+</code></pre><blockquote>
+<p>乘法：利用乘法计算式来构建或者直接转为加法</p>
 </blockquote>
-<p>####标记-清除算法</p>
-<blockquote>
-<p>在标记阶段，首先通过根节点，标记所有从根节点开始的可达对象，因此，未标记的对象就是未被引用的垃圾对象；然后，在清除阶段，清除所有未被标记的对象。</p>
+<pre><code>public static int mul(int a,int b){
+    /*
+    *           1 1 0 1
+    * *         1 1 1 0
+    * ----------------
+    *           0 0 0 0
+    *         1 1 0 1
+    *       1 1 0 1
+    *     1 1 0 1
+    *     -----------
+    *   1 0 1 1 0  1 1 0
+    *
+    * 可以看到，每次被乘数左移以为执行加法，乘数右移一位获取最有一位乘数
+    * 如果乘数为0 不执行操作，只让被乘数左移一位
+    * 如果为1    则将被乘数和结果相加并更新结果
+    * */
+    int sum=0;
+    while(b!=0){
+        if((b&amp;1)==1){
+            sum=add(sum,a);
+        }
+        a = a&lt;&lt;1;
+        b= b&gt;&gt;1;
+    }
+    return sum;
+}
+</code></pre><blockquote>
+<p>除法：直接转为减法</p>
 </blockquote>
-<ol>
-<li>当堆中的有效内存空间被耗尽的时候，就会停止整个程序，然后进行标记和清除程序：</li>
-</ol>
-<ul>
-<li>标记阶段：标记的过程其实就是，遍历所有的GC Roots，然后将所有GC Roots可达的对象标记为存活的对象</li>
-<li>清除：清除的过程将遍历堆中所有的对象，将没有标记的对象全部清除掉。<br>#####Stop-the-World<br>也就是说，就是当程序运行期间，若可以使用的内存被耗尽的时候，GC线程就会被触发并将程序暂停，随后将依旧存活的对象标记一遍，最终再将堆中所有没被标记的对象全部清除掉，接下来便让程序恢复运行</li>
-</ul>
-<ol start="2">
-<li>缺点<blockquote>
-<p>效率比较低，递归与全堆对象遍历<br>这种方式清理的空闲内存是不连续的</p>
-</blockquote>
-</li>
-</ol>
-<p>####复制算法 新生代的GC</p>
-<blockquote>
-<p>将原有的内存空间分为两块，每次只使用其中一块，在垃圾回收时，将正在使用的内存中的存活对象复制到未使用的内存块中，之后，清除正在使用的内存块中的所有对象，交换两个内存的角色，完成垃圾回收。</p>
-</blockquote>
-<ul>
-<li>与标记-清除算法相比，复制算法是一种相对高效的回收方法</li>
-<li>不适用于存活对象较多的场合，如老年代（复制算法适合做新生代的GC）</li>
-<li>复制算法的最大的问题是：空间的浪费</li>
-</ul>
-<p>####标记-整理算法 老年代的GC</p>
-<blockquote>
-<p>标记-压缩算法适合用于存活对象较多的场合，如老年代。它在标记-清除算法的基础上做了一些优化。和标记-清除算法一样，标记-压缩算法也首先需要从根节点开始，对所有可达对象做一次标记；但之后，它并不简单的清理未标记的对象，而是将所有的存活对象压缩到内存的一端；之后，清理边界外所有的空间。</p>
-</blockquote>
-<ul>
-<li>标记：它的第一个阶段与标记/清除算法是一模一样的，均是遍历GC Roots，然后将存活的对象标记</li>
-<li>整理：移动所有存活的对象，且按照内存地址次序依次排列，然后将末端内存地址以后的内存全部回收。因此，第二阶段才称为整理阶段</li>
-</ul>
-<p>#####缺点</p>
-<blockquote>
-<p><strong>标记/整理算法不仅可以弥补标记/清除算法当中，内存区域分散的缺点，也消除了复制算法当中，内存减半的高额代价。</strong></p>
-</blockquote>
-<p>####区别</p>
-<ol>
-<li>效率：复制算法&gt;标记/整理算法&gt;标记/清除算法</li>
-<li>内存整齐度：复制算法=标记/整理算法&gt;标记/清除算法</li>
-<li>内存利用率：标记/整理算法=标记/清除算法&gt;复制算法</li>
-</ol>
-<p>####分代收集算法</p>
-<ul>
-<li>少量对象存活，适合复制算法：在新生代中，每次GC时都发现有大批对象死去，只有少量存活，那就选用复制算法，只需要付出少量存活对象的复制成本就可以完成GC</li>
-<li>大量对象存活，适合用标记-清理/标记-整理：在老年代中，因为对象存活率高、没有额外空间对他进行分配担保，就必须使用“标记-清理”/“标记-整理”算法进行GC。</li>
-</ul>
-<p>#####所有的垃圾收集算法在执行时，JVM所有程序都要暂停等待。</p>
+<pre><code>public static int div(int a,int b){
+    /*
+    *也可以把除法转化为减法
+     */
+    int f = 0;
+    while(a&gt;=b){
+        f = add(f,1);
+        a = sub(a,b);
+    }
+    return f;
+}
+public static void main(String[] args){
+    System.out.println(add(25,5));
+    System.out.println(sub(25,5));
+    System.out.println(mul(20,5));
+    System.out.println(div(20,5));
+}
+</code></pre><p>}</p>
 
       
     </div>
@@ -491,8 +475,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/11/Dijstra算法/" rel="next" title="Dijstra算法">
-                <i class="fa fa-chevron-left"></i> Dijstra算法
+              <a href="/ciyunruoshui.github.io/2019/04/16/Reactor和nio/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -500,10 +484,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/" rel="prev" title="JAVA对象模型">
-                JAVA对象模型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
