@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="原子性 可见性 有序性线程安全问题的两大核心：JMM内存模型和happen-before原则  ###关于java内存模型和JVM内存结构  首先，java内存模型把内存划分为工作内存和主内存。jvm内存结构(JVM内存模型)将静态内存划分为 方法区 堆 虚拟机栈 本地方法区 程序计数器 java内存模型是忽略操作系统和硬件差异，提供跨平台多线程对共享资源的一致性访问，内存模型解决并发问题主要采">
+  <meta name="description" content="开闭原则   一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。   里氏代换原则   所有引用基类（父类）的地方必须能透明地使用其子类的对象。因此在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型，用子类对象来替换父类对象。   依赖倒转原则   抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。需要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JMM(java内存模型)线程三大特性">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/05/线程三大特性/index.html">
+<meta property="og:title" content="设计模式六大原则">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/17/设计模式六大原则/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="原子性 可见性 有序性线程安全问题的两大核心：JMM内存模型和happen-before原则  ###关于java内存模型和JVM内存结构  首先，java内存模型把内存划分为工作内存和主内存。jvm内存结构(JVM内存模型)将静态内存划分为 方法区 堆 虚拟机栈 本地方法区 程序计数器 java内存模型是忽略操作系统和硬件差异，提供跨平台多线程对共享资源的一致性访问，内存模型解决并发问题主要采">
+<meta property="og:description" content="开闭原则   一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。   里氏代换原则   所有引用基类（父类）的地方必须能透明地使用其子类的对象。因此在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型，用子类对象来替换父类对象。   依赖倒转原则   抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。需要">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-06T13:09:31.009Z">
+<meta property="og:updated_time" content="2019-04-17T14:00:21.597Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JMM(java内存模型)线程三大特性">
-<meta name="twitter:description" content="原子性 可见性 有序性线程安全问题的两大核心：JMM内存模型和happen-before原则  ###关于java内存模型和JVM内存结构  首先，java内存模型把内存划分为工作内存和主内存。jvm内存结构(JVM内存模型)将静态内存划分为 方法区 堆 虚拟机栈 本地方法区 程序计数器 java内存模型是忽略操作系统和硬件差异，提供跨平台多线程对共享资源的一致性访问，内存模型解决并发问题主要采">
+<meta name="twitter:title" content="设计模式六大原则">
+<meta name="twitter:description" content="开闭原则   一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。   里氏代换原则   所有引用基类（父类）的地方必须能透明地使用其子类的对象。因此在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型，用子类对象来替换父类对象。   依赖倒转原则   抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。需要">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/05/线程三大特性/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/17/设计模式六大原则/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>JMM(java内存模型)线程三大特性 | Blog</title>
+  <title>设计模式六大原则 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/05/线程三大特性/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/17/设计模式六大原则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JMM(java内存模型)线程三大特性
+          <h1 class="post-title" itemprop="name headline">设计模式六大原则
 
               
             
@@ -332,24 +332,12 @@
                 
               
 
-              <time title="创建时间：2019-04-05 10:36:13" itemprop="dateCreated datePublished" datetime="2019-04-05T10:36:13+08:00">2019-04-05</time>
+              <time title="创建时间：2019-04-17 21:50:05 / 修改时间：22:00:21" itemprop="dateCreated datePublished" datetime="2019-04-17T21:50:05+08:00">2019-04-17</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-06 21:09:31" itemprop="dateModified" datetime="2019-04-06T21:09:31+08:00">2019-04-06</time>
               
             
           </span>
@@ -383,50 +371,43 @@
       
 
       
-        <blockquote>
-<p>原子性 可见性 有序性<br>线程安全问题的两大核心：JMM内存模型和happen-before原则</p>
-</blockquote>
-<p>###关于java内存模型和JVM内存结构</p>
-<ol>
-<li>首先，java内存模型把内存划分为工作内存和主内存。jvm内存结构(JVM内存模型)将静态内存划分为 方法区 堆 虚拟机栈 本地方法区 程序计数器</li>
-<li>java内存模型是忽略操作系统和硬件差异，提供跨平台多线程对共享资源的一致性访问，内存模型解决并发问题主要采用两种方式: 限制处理器优化和使用内存屏障。java内存结构是jvm规定划分的不同数据区域。</li>
-<li>可以说jvm的堆栈是一种数据结构，java内存模确定了对内存数据的访问和传输，而JVM内存结构确定了数据在内存中的储存结构。</li>
-<li>jvm从<strong>代码层面对静态内存的划分</strong>，而jmm内存模型<strong>目标是定义程序中各个变量的访问规则，即在JVM中将变量存储到内存和从内存中取出变量这样的底层细节</strong>,此处的变量与Java编程里面的变量有所不同步，它包含了<strong>实例字段、静态字段和构成数组对象的元素</strong>,但不包含局部变量和方法参数，因为后者是线程私有的，不会共享，当然不存在数据竞争问题（如果局部变量是一个reference引用类型，它引用的对象在Java堆中可被各个线程共享，但是reference引用本身在Java栈的局部变量表中，是线程私有的）。为了获得较高的执行效能，Java内存模型并没有限制执行<strong>引起使用处理器的特定寄存器或者缓存来和主内存进行交互</strong>，也没有限制即时编译器进行调整代码执行顺序这类优化措施。</li>
+        <ol>
+<li>开闭原则</li>
 </ol>
-<h3 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h3><blockquote>
-<p>原子性是指操作不可中断，要不全部完成，要不全部失败。<br>synchronized关键字 CAS 实现。 </p>
-</blockquote>
 <blockquote>
-<p>JMM中定义了8中原子操作（这都是jvm指令，不是java代码）</p>
+<p>一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。</p>
 </blockquote>
-<ol>
-<li>lock(锁定) 作用于<strong>主内存</strong>变量，把变量表示位线程独占。</li>
-<li>unlock 用于<strong>主内存</strong>中的变量，它把一个处于锁定状态的变量释放出来，释放后的变量才可以被其他线程锁定</li>
-<li>read(读取) 作用于<strong>主内存</strong>变量，把变量的值存主内存传输到线程的工作内存，便于load指令</li>
-<li>load(载入) 作用于工作内存中的变量，把read操作从主内存得到的值放入工作内存的变量副本中。</li>
-<li>Use(使用) 作用于工作内存中的变量，把工作内存中的变量传递给执行引擎，每当虚拟机遇到需要使用到变量的值的字节码指令是会执行这个操作。</li>
-<li>assign(赋值) 作用于工作内存中变量，他把有一个从执行引擎收到的值赋给工作内存中的变量，每当虚拟机遇到一个变量赋值的字节码指令是执行这个操作。</li>
-<li>store(存储) 总用于工作内存，把工作内存中的变量值传递给主内存以便于后续的write操作使用</li>
-<li>write 作用于<strong>主内存</strong>，把工作内存中传来的值保存在工作内存中。</li>
+<ol start="2">
+<li>里氏代换原则</li>
 </ol>
-<p>###可见性</p>
 <blockquote>
-<p>一个线程对共享变量做了修改之后，其他的线程立即能够看到（感知到）该变量这种修改（变化）。</p>
+<p>所有引用基类（父类）的地方必须能透明地使用其子类的对象。<br>因此在程序中<strong>尽量使用基类类型来对对象进行定义</strong>，而在运行时再确定其子类类型，用子类对象来替换父类对象。</p>
 </blockquote>
+<ol start="3">
+<li>依赖倒转原则</li>
+</ol>
 <blockquote>
-<p>volatile实现</p>
+<p>抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。<br>需要针对抽象层编程，而<strong>将具体类的对象通过依赖注入</strong>(DependencyInjection, DI)的方式注入到其他对象中,<br>也就是具体类程序以来的实例对象有第三方控制，也就是依赖实例的控制权倒转。</p>
 </blockquote>
-<p>###有序性</p>
+<ol start="4">
+<li>接口隔离原则</li>
+</ol>
 <blockquote>
-<p>在本线程内观察，操作都是有序的；如果在一个线程中观察另外一个线程，所有的操作都是无序的。<br>前半句是指“线程内表现为串行语义（WithIn Thread As-if-Serial Semantics）”,后半句是指“指令重排”现象和“工作内存和主内存同步延迟”现象。<br>在单线程程序中，不会发生“指令重排”和“工作内存和主内存同步延迟”现象，只在多线程程序中出现。</p>
+<p>使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它不需要的接口。</p>
 </blockquote>
+<ol start="5">
+<li>迪米特法则</li>
+</ol>
 <blockquote>
-<p>synchronized关键字 volatile 保证有序性，再加上先行发生原则。</p>
+<p>一个软件实体应当尽可能少地与其他实体发生相互作用</p>
 </blockquote>
-<p>###happen-before规则</p>
+<ol start="6">
+<li>合成复用法则</li>
+</ol>
 <blockquote>
-<p>利用内存屏障和hapen-before规则保证重排序优化不出现问题，以及实现部分线程安全。</p>
+<p><strong>一个新的对象里面使用一些已有的对象，使之成为新对象的一部分</strong>；新的对象通过向这些对象的委派达到复用已有功能的目的<br>很想责任链模式</p>
 </blockquote>
+<p>7. </p>
 
       
     </div>
@@ -457,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/04/不使用synchronized和lock，如何实现一个线程安全的单例/" rel="next" title="不使用synchronized和lock，如何实现一个线程安全的单例">
-                <i class="fa fa-chevron-left"></i> 不使用synchronized和lock，如何实现一个线程安全的单例
+              <a href="/ciyunruoshui.github.io/2019/04/17/位运算/" rel="next" title="位运算">
+                <i class="fa fa-chevron-left"></i> 位运算
               </a>
             
           </div>
@@ -466,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/04/06/动态代理/" rel="prev" title="动态代理">
-                动态代理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -513,17 +490,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -569,23 +537,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原子性"><span class="nav-number">1.</span> <span class="nav-text">原子性</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
