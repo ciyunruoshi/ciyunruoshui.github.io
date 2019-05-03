@@ -103,15 +103,15 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="####代码编写层面  synchronized使我们在代码编辑层面使用的关键字，用于对方法和代码块加锁，一般有有三种实现形式：   对于实例方法，锁是当前实例对象。 对于类方法，锁是当前类的Class对象。 对于同步代码块，锁是synchronized关键字括号内的对象  12345public void test()&amp;#123;	synchronized(this)&amp;#123;		i++;	&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/21.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/4.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/1.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/3.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/synzhronized-对象头和monitor/21.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/synzhronized-对象头和monitor/4.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/synzhronized-对象头和monitor/1.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/synzhronized-对象头和monitor/3.jpg">
 <meta property="og:updated_time" content="2019-04-16T02:38:49.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="synzhronized 对象头和monitor">
 <meta name="twitter:description" content="####代码编写层面  synchronized使我们在代码编辑层面使用的关键字，用于对方法和代码块加锁，一般有有三种实现形式：   对于实例方法，锁是当前实例对象。 对于类方法，锁是当前类的Class对象。 对于同步代码块，锁是synchronized关键字括号内的对象  12345public void test()&amp;#123;	synchronized(this)&amp;#123;		i++;	&amp;">
-<meta name="twitter:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/21.jpg">
+<meta name="twitter:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/synzhronized-对象头和monitor/21.jpg">
 
 
 
@@ -405,7 +405,7 @@
 </blockquote>
 </li>
 </ol>
-<p><img src="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/21.jpg" alt="synzhronized-对象头和monitor"></p>
+<p><img src="synzhronized-对象头和monitor/21.jpg" alt="synzhronized-对象头和monitor"></p>
 <blockquote>
 <p>JVM使用2个bit来作为锁的标志位，并且保存一些锁的状态信息。</p>
 </blockquote>
@@ -416,11 +416,11 @@
 <blockquote>
 <p>什么是Monitor？我们可以把它理解为一个同步工具，也可以描述为一种同步机制，它通常被描述为一个对象。<br>与一切皆对象一样，所有的Java对象是天生的Monitor，每一个Java对象都有成为Monitor的潜质，因为在Java的设计中 ，每一个Java对象自打娘胎里出来就带了一把看不见的锁，它叫做内部锁或者Monitor锁。<br>Monitor 是线程私有的数据结构，每一个线程都有一个可用monitor record列表，同时还有一个全局的可用列表。每一个被锁住的对象都会和一个monitor关联（对象头的MarkWord中的LockWord指向monitor的起始地址），同时monitor中有一个Owner字段存放拥有该锁的线程的唯一标识，表示该锁被这个线程占用。其结构如下</p>
 </blockquote>
-<p><img src="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/4.jpg" alt="synzhronized-对象头和monitor"></p>
+<p><img src="synzhronized-对象头和monitor/4.jpg" alt="synzhronized-对象头和monitor"></p>
 <blockquote>
 <p>monitor的标志位为10，指针指向monitor对象的起始地址，而每个对象都存在一个monitor与之关联，在hotspot中，monitor是由ObjectMonitor类实现的，先来看一下它的数据结构：</p>
 </blockquote>
-<p><img src="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/1.jpg" alt="synzhronized-对象头和monitor"></p>
+<p><img src="synzhronized-对象头和monitor/1.jpg" alt="synzhronized-对象头和monitor"></p>
 <blockquote>
 <p>其中有两个队列，_EntryList和_WaitSet,他们是用来保存ObjectMonitor对象列表，_owner指向持有ObjectMonito的线程，当多个线程访问同步代码块是，线程就会进入_EntryList区，当线程对象的monitor后，（对于线程获取锁的优先级，还有待考究）进入_Owner区并且_Owner指向获取锁的线程，其他线程继续在等待区等待。若线程调用wait方法，则线程进入_WaitSet区等待被唤醒。线程执行完毕后释放monitor锁，并且对ObjectMonitor中的值进行复位。上面说到synchronized使用的锁都放在对象头中，这里大概就是Mark Word中指向互斥量的指针指向的monitor对象内存地址（<strong>也就是，在重量级锁中会指向一个monitor对象，这个monitor对象会控制同步代码，所以synchronized关键字的功能是由monitor对象实现，每个对象实例或者类应该都存在monitor对象来保证代码同步</strong>）</p>
 </blockquote>
@@ -465,7 +465,7 @@ public void test2(){
     }
 }
 }
-</code></pre><p><img src="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/3.jpg" alt="synzhronized-对象头和monitor"></p>
+</code></pre><p><img src="synzhronized-对象头和monitor/3.jpg" alt="synzhronized-对象头和monitor"></p>
 <p>###总结</p>
 <blockquote>
 <p>同步代码块：monitorenter指令插入到同步代码块的开始位置，monitorexit指令插入到同步代码块的结束位置，JVM需要保证每一个monitorenter都有一个monitorexit与之相对应。任何对象都有一个monitor与之相关联，当且一个monitor被持有之后，他将处于锁定状态。线程执行到monitorenter指令时，将会尝试获取对象所对应的monitor所有权，即尝试获取对象的锁；<br>同步方法：synchronized方法则会被翻译成普通的方法调用和返回指令如:invokevirtual、areturn指令，在VM字节码层面并没有任何特别的指令来实现被synchronized修饰的方法，而是在Class文件的方法表中将该方法的access_flags字段中的synchronized标志位置1，表示该方法是同步方法并使用调用该方法的对象或该方法所属的Class在JVM的内部对象表示Klass做为锁对象</p>
@@ -575,7 +575,7 @@ public void test2(){
                 
                   <a href="/ciyunruoshui.github.io/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

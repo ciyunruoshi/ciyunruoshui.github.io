@@ -103,16 +103,16 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="数据库报存的数据量一般都很大，如果只采用顺序储存，则搜索一条数据的时间复杂度为O(n),在排序算法中这是很好的算法，但是在数据访问中这回带来极大的延迟。  ###数据库索引 以Mysql为例，建立索引存在两种方式：  Mysql有两种存储引擎，MyISAM和InnoDB，InnoDB常听说，好像用的也是最多的，MyISAM不常听说。   MyISAM使用B+树作为引擎    可以看见索引文件和数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/1.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/2.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/3.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/4.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/5.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/数据库索引原理/1.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/数据库索引原理/2.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/数据库索引原理/3.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/数据库索引原理/4.jpg">
+<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/数据库索引原理/5.jpg">
 <meta property="og:updated_time" content="2019-04-03T12:02:45.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库索引原理">
 <meta name="twitter:description" content="数据库报存的数据量一般都很大，如果只采用顺序储存，则搜索一条数据的时间复杂度为O(n),在排序算法中这是很好的算法，但是在数据访问中这回带来极大的延迟。  ###数据库索引 以Mysql为例，建立索引存在两种方式：  Mysql有两种存储引擎，MyISAM和InnoDB，InnoDB常听说，好像用的也是最多的，MyISAM不常听说。   MyISAM使用B+树作为引擎    可以看见索引文件和数">
-<meta name="twitter:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/1.jpg">
+<meta name="twitter:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/数据库索引原理/1.jpg">
 
 
 
@@ -388,14 +388,14 @@
 <ol>
 <li>MyISAM使用B+树作为引擎</li>
 </ol>
-<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/1.jpg" alt="数据库索引原理"></p>
+<p><img src="数据库索引原理/1.jpg" alt="数据库索引原理"></p>
 <blockquote>
 <p>可以看见索引文件和数据记录其实是分开来的，索引文件里存储的其实是<strong>数据记录的地址</strong></p>
 </blockquote>
 <ol start="2">
 <li>2.MyISAM辅助索引和主键索引类似，但是辅助索引的key可以重复，这是和主键不同的地方，叶子节点中保存的也是数据记录的地址，可以不通过主键值B+树来搜索。</li>
 </ol>
-<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/2.jpg" alt="数据库索引原理"></p>
+<p><img src="数据库索引原理/2.jpg" alt="数据库索引原理"></p>
 <p>InnoDB的索引实现也是B+树，但是具体的方式确不一样。</p>
 <ol>
 <li><p>数据文件本身就是索引文件，这一点怎么理解呢？还记得B+树的叶子节点存储了具体数据嘛，在InnoDB里，叶子节点存储的树真正的数据值，而不是MyISAM里存储的是地址。索引的key就是数据表的主键。</p>
@@ -403,11 +403,11 @@
 <li><p>InnoDB主索引的示意图如下，可以看见叶节点包含了完整的数据记录，这种索引也叫<strong>做聚集索引</strong>。因为InnoDB的数据文件本身要按照主键聚集，所以必须要有主键。如果没有显示指定，则Mysql会自动选择可以唯一标识的数据列作为主键，如果不存在这种列，则Mysql自动为InnoDB生成一个隐含字段，占位6字节，长整型。</p>
 </li>
 </ol>
-<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/3.jpg" alt="数据库索引原理"></p>
+<p><img src="数据库索引原理/3.jpg" alt="数据库索引原理"></p>
 <ol start="3">
 <li>InnoDB辅助索引（<strong>非聚集索引</strong>）也和MyISAM不同，辅助索引里面存储的是<strong>数据的主键而不是地址</strong>，可以这么说InnoDB的辅助索引最终还是要依赖主键索引来实现。</li>
 </ol>
-<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/4.jpg" alt="数据库索引原理"></p>
+<p><img src="数据库索引原理/4.jpg" alt="数据库索引原理"></p>
 <ol start="4">
 <li><p>辅助索引里面有一个比较特殊的索引叫<strong>覆盖索引</strong>，指从<strong>辅助索引中就能获取到需要的记录</strong>，而不需要查找聚簇索引中的记录。使用覆盖索引的一个好处是因为辅助索引不包括一条记录的整行信息，所以数据量较聚集索引要少，可以减少大量io操作，也就是在辅助索引中叶子节点不仅包含主键值，还包括有限的多个字段，直接可以获取。</p>
 </li>
@@ -417,7 +417,7 @@
 </ol>
 <p>如果我们建立的是复合索引(uage,uname)的话，上面一条语句会用到索引，而且能够直接返回出ucard和uname，而不需要再去进行主键定位的操作，这就是特别之处。所以这个复合索引其实可以说成是一种覆盖索引。</p>
 <p><strong>辅助索引：</strong></p>
-<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/5.jpg" alt="数据库索引原理"></p>
+<p><img src="数据库索引原理/5.jpg" alt="数据库索引原理"></p>
 <blockquote>
 <p>总结，InnoDB的聚集索引是按照主键保存搜索的，是最高效的，辅助索引需要走两次索引，首先咨询辅助索引得到主键，在跟进主键查询获得记录。</p>
 </blockquote>
@@ -529,7 +529,7 @@
                 
                   <a href="/ciyunruoshui.github.io/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
