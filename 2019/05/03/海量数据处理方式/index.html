@@ -96,23 +96,17 @@
 
 
 
-  <meta name="description" content="数据库报存的数据量一般都很大，如果只采用顺序储存，则搜索一条数据的时间复杂度为O(n),在排序算法中这是很好的算法，但是在数据访问中这回带来极大的延迟。  ###数据库索引 以Mysql为例，建立索引存在两种方式：  Mysql有两种存储引擎，MyISAM和InnoDB，InnoDB常听说，好像用的也是最多的，MyISAM不常听说。   MyISAM使用B+树作为引擎    可以看见索引文件和数">
+  <meta name="description" content="—title: 海量数据处理方式date: 2019-05-03 19:17:29 tags:#海量数据处理  海量数据处理的困难就是   时间受限。无法在优先时间内，完成对海量数据的某项处理工作 空间受限。无法将海量数据一次性读入内存。将大的数据块分为小数据块，然后分别处理。   处理手段   时间受限，利用高效的算法配合恰当的数据结构。散列表，布隆过滤，堆，倒排索引 tries">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库索引原理">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/index.html">
+<meta property="og:title" content="Blog">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/03/海量数据处理方式/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="数据库报存的数据量一般都很大，如果只采用顺序储存，则搜索一条数据的时间复杂度为O(n),在排序算法中这是很好的算法，但是在数据访问中这回带来极大的延迟。  ###数据库索引 以Mysql为例，建立索引存在两种方式：  Mysql有两种存储引擎，MyISAM和InnoDB，InnoDB常听说，好像用的也是最多的，MyISAM不常听说。   MyISAM使用B+树作为引擎    可以看见索引文件和数">
+<meta property="og:description" content="—title: 海量数据处理方式date: 2019-05-03 19:17:29 tags:#海量数据处理  海量数据处理的困难就是   时间受限。无法在优先时间内，完成对海量数据的某项处理工作 空间受限。无法将海量数据一次性读入内存。将大的数据块分为小数据块，然后分别处理。   处理手段   时间受限，利用高效的算法配合恰当的数据结构。散列表，布隆过滤，堆，倒排索引 tries">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/1.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/2.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/3.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/4.jpg">
-<meta property="og:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/5.jpg">
-<meta property="og:updated_time" content="2019-04-03T12:02:45.300Z">
+<meta property="og:updated_time" content="2019-05-03T12:16:24.677Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库索引原理">
-<meta name="twitter:description" content="数据库报存的数据量一般都很大，如果只采用顺序储存，则搜索一条数据的时间复杂度为O(n),在排序算法中这是很好的算法，但是在数据访问中这回带来极大的延迟。  ###数据库索引 以Mysql为例，建立索引存在两种方式：  Mysql有两种存储引擎，MyISAM和InnoDB，InnoDB常听说，好像用的也是最多的，MyISAM不常听说。   MyISAM使用B+树作为引擎    可以看见索引文件和数">
-<meta name="twitter:image" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/1.jpg">
+<meta name="twitter:title" content="Blog">
+<meta name="twitter:description" content="—title: 海量数据处理方式date: 2019-05-03 19:17:29 tags:#海量数据处理  海量数据处理的困难就是   时间受限。无法在优先时间内，完成对海量数据的某项处理工作 空间受限。无法将海量数据一次性读入内存。将大的数据块分为小数据块，然后分别处理。   处理手段   时间受限，利用高效的算法配合恰当的数据结构。散列表，布隆过滤，堆，倒排索引 tries">
 
 
 
@@ -120,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/03/海量数据处理方式/">
 
 
 
@@ -130,7 +124,7 @@
   };
 </script>
 
-  <title>数据库索引原理 | Blog</title>
+  <title> | Blog</title>
   
 
 
@@ -295,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/03/数据库索引原理/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/03/海量数据处理方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -312,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据库索引原理
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -338,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-04-03 17:00:31 / 修改时间：20:02:45" itemprop="dateCreated datePublished" datetime="2019-04-03T17:00:31+08:00">2019-04-03</time>
+              <time title="创建时间：2019-05-03 19:17:29 / 修改时间：20:16:24" itemprop="dateCreated datePublished" datetime="2019-05-03T19:17:29+08:00">2019-05-03</time>
             
 
             
@@ -377,56 +371,76 @@
       
 
       
-        <blockquote>
-<p>数据库报存的数据量一般都很大，如果只采用顺序储存，则搜索一条数据的时间复杂度为O(n),在排序算法中这是很好的算法，但是在数据访问中这回带来极大的延迟。</p>
+        <p>﻿﻿﻿﻿﻿﻿﻿﻿—<br>title: 海量数据处理方式<br>date: 2019-05-03 19:17:29</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>#海量数据处理</p>
+<blockquote>
+<p>海量数据处理的困难就是</p>
+</blockquote>
+<ul>
+<li>时间受限。无法在优先时间内，完成对海量数据的某项处理工作</li>
+<li>空间受限。无法将海量数据一次性读入内存。将大的数据块分为小数据块，然后分别处理。</li>
+</ul>
+<blockquote>
+<p>处理手段</p>
+</blockquote>
+<ul>
+<li>时间受限，利用高效的算法配合恰当的数据结构。散列表，布隆过滤，堆，倒排索引 tries树。</li>
+<li>空间受限，利用分治的思想</li>
+</ul>
+<ol>
+<li>哈希映射+统计+排序</li>
+</ol>
+<blockquote>
+<p>利用哈希算法将数据映射到不同数据块中，对小数据块分别做处理，然后按照归并的思路合并成完整的数据块。</p>
+</blockquote>
+<ol>
+<li>哈希映射</li>
+<li>哈希统计</li>
+<li>堆、快速、归并排序</li>
+</ol>
+<p>##多层桶排序</p>
+<blockquote>
+<p>多层桶结构其实和最开始我们用hash映射分割大文件的思路是一致的，都是一种“分而治之”的策略。只不过多层桶结构是对有些桶分割之后再分割，构成了一种层次化的结构，它主要应用于一次分割的结果依然不能解决内存限制的情况</p>
+</blockquote>
+<p>##Bloom filter/Bitmap</p>
+<blockquote>
+<p>Bloom filter是位图的一种使用方式，用来动态过滤重复元素<br>原理：，当一个元素被加入集合时，通过K个Hash函数将这个元素映射成一个位阵列（Bit array）中的K个点，把它们置为1。检索时，我们只要看看这些点是不是都是1就（大约）知道集合中有没有它了：如果这些点有任何一个0，则被检索元素一定不在；如果都是1，则被检索元素很可能在。</p>
+</blockquote>
+<blockquote>
+<p>当然，这里面有可能出现多个元素的hash值共同作用将某个元素的k个位置为1，这就导致某个元素被错误认为已经存在。</p>
+</blockquote>
+<p>##Trie树/数据库/倒排索引</p>
+<p>###Tries</p>
+<blockquote>
+<p>适用范围：数据量大，重复多，但是数据种类小可以放入内存</p>
 </blockquote>
 <p>###数据库索引</p>
-<p>以Mysql为例，建立索引存在两种方式：</p>
 <blockquote>
-<p>Mysql有两种存储引擎，MyISAM和InnoDB，InnoDB常听说，好像用的也是最多的，MyISAM不常听说。</p>
+<p>数据库索引使用的是B+树来实现的。</p>
+</blockquote>
+<p>###倒排索引(Inverted index)</p>
+<blockquote>
+<p>适用范围：搜索引擎，关键字查询<br>基本原理及要点：为何叫倒排索引？一种索引方法，被用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。<br>也就是将每个单词作为主体，保存它所在的文档索引，能够方便搜索引擎，但是不适合作为全文搜索，搜索主体有差别。</p>
+</blockquote>
+<blockquote>
+<p>正向索引开发出来用来存储每个文档的单词的列表。正向索引的查询往往满足每个文档有序频繁的全文查询和每个单词在校验文档中的验证这样的查询。在正向索引中，文档占据了中心的位置，每个文档指向了一个它所包含的索引项的序列。也就是说文档指向了它包含的那些单词，而反向索引则是单词指向了包含它的文档，很容易看到这个反向的关系。</p>
+</blockquote>
+<p>##外排序</p>
+<blockquote>
+<p>适用范围：大数据的排序，去重<br>外排序是经典的排序方法之一，主要是针对大数据不能直接读入内存的情况，通过内存与外存之间的数据交换，实现海量数据排序的</p>
 </blockquote>
 <ol>
-<li>MyISAM使用B+树作为引擎</li>
+<li>现在外部对分割好的小数据块进行排序</li>
+<li>内存中要做的工作就是读入排好序的内存块，归并知道所有的数据。</li>
 </ol>
-<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/1.jpg" alt="数据库索引原理"></p>
+<p>##分布式MapReduce</p>
 <blockquote>
-<p>可以看见索引文件和数据记录其实是分开来的，索引文件里存储的其实是<strong>数据记录的地址</strong></p>
+<p>MapReduce是一种计算模型，分为”Map”和”Reduce”两个阶段。<br>适用范围：数据量大，但是数据种类小可以放入内存<br>基本原理及要点：将数据交给不同的机器去处理，数据划分，结果归约。</p>
 </blockquote>
-<ol start="2">
-<li>2.MyISAM辅助索引和主键索引类似，但是辅助索引的key可以重复，这是和主键不同的地方，叶子节点中保存的也是数据记录的地址，可以不通过主键值B+树来搜索。</li>
-</ol>
-<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/2.jpg" alt="数据库索引原理"></p>
-<p>InnoDB的索引实现也是B+树，但是具体的方式确不一样。</p>
-<ol>
-<li><p>数据文件本身就是索引文件，这一点怎么理解呢？还记得B+树的叶子节点存储了具体数据嘛，在InnoDB里，叶子节点存储的树真正的数据值，而不是MyISAM里存储的是地址。索引的key就是数据表的主键。</p>
-</li>
-<li><p>InnoDB主索引的示意图如下，可以看见叶节点包含了完整的数据记录，这种索引也叫<strong>做聚集索引</strong>。因为InnoDB的数据文件本身要按照主键聚集，所以必须要有主键。如果没有显示指定，则Mysql会自动选择可以唯一标识的数据列作为主键，如果不存在这种列，则Mysql自动为InnoDB生成一个隐含字段，占位6字节，长整型。</p>
-</li>
-</ol>
-<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/3.jpg" alt="数据库索引原理"></p>
-<ol start="3">
-<li>InnoDB辅助索引（<strong>非聚集索引</strong>）也和MyISAM不同，辅助索引里面存储的是<strong>数据的主键而不是地址</strong>，可以这么说InnoDB的辅助索引最终还是要依赖主键索引来实现。</li>
-</ol>
-<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/4.jpg" alt="数据库索引原理"></p>
-<ol start="4">
-<li><p>辅助索引里面有一个比较特殊的索引叫<strong>覆盖索引</strong>，指从<strong>辅助索引中就能获取到需要的记录</strong>，而不需要查找聚簇索引中的记录。使用覆盖索引的一个好处是因为辅助索引不包括一条记录的整行信息，所以数据量较聚集索引要少，可以减少大量io操作，也就是在辅助索引中叶子节点不仅包含主键值，还包括有限的多个字段，直接可以获取。</p>
-</li>
-<li><p>它奇特在哪边呢？从2我们知道辅助索引的data区域其实存储的是主键的地址，需要通过主键进行再一次定位访问到具体的数据。那么假设：</p>
-<p> select uage,uname from user where uage = 12; </p>
-</li>
-</ol>
-<p>如果我们建立的是复合索引(uage,uname)的话，上面一条语句会用到索引，而且能够直接返回出ucard和uname，而不需要再去进行主键定位的操作，这就是特别之处。所以这个复合索引其实可以说成是一种覆盖索引。</p>
-<p><strong>辅助索引：</strong></p>
-<p><img src="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/5.jpg" alt="数据库索引原理"></p>
-<blockquote>
-<p>总结，InnoDB的聚集索引是按照主键保存搜索的，是最高效的，辅助索引需要走两次索引，首先咨询辅助索引得到主键，在跟进主键查询获得记录。</p>
-</blockquote>
-<p>###索引缺点</p>
-<ol>
-<li>创建索引和维护索引要耗费时间，随着数据量的增加而增加。</li>
-<li>索引需要占物理空间。</li>
-<li>对表中的数据进行增加、删除和修改的时候，索引也要动态维护，降低了数据访问速度。</li>
-</ol>
+<ul>
+<li>Map：将大量数据分割后（或者将困难任务分解后）“各个击破”；</li>
+<li>Reduce：将“各个击破”的结果按照一定的规律进行合并操作；<br>这样做的好处是可以在任务被分解后，可以通过大量机器进行并行计算，从而突破时间或者空间的限制。时间上显然更快，空间上，单个机器只需要处理空间允许的数据量即可。举个简单的例子就是归并排序，我们先将数据集分割成小数据集，使用多个机器排序每个分割后的小数据集（Map），再将处理好的归并段依次归并（Reduce）。</li>
+</ul>
 
       
     </div>
@@ -457,8 +471,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/02/CAS/" rel="next" title="CAS">
-                <i class="fa fa-chevron-left"></i> CAS
+              <a href="/ciyunruoshui.github.io/2019/05/03/B树和B-树/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -466,10 +480,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/04/03/分布式锁/" rel="prev" title="分布式锁">
-                分布式锁 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -513,8 +523,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -560,6 +579,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags"><span class="nav-number">1.</span> <span class="nav-text">tags:</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
