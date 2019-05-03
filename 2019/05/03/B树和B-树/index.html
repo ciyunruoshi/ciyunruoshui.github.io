@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="开闭原则   一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。   里氏代换原则   所有引用基类（父类）的地方必须能透明地使用其子类的对象。因此在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型，用子类对象来替换父类对象。   依赖倒转原则   抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。需要">
+  <meta name="description" content="—title: B树和B+树date: 2019-05-03 14:35:03 tags:#B树  B树可以认为是m叉树搜索树。目的是减少程序读取数据的代价，因为在大量的数据中，数据读取会耗费大量时间，制约程序的效率，因此利用B树能提高数据读取效率。logm（n）  ##B树的特点  每个结点至多拥有m棵子树 根节点至少拥有两颗子树，每个中间节点至少拥有k个子树和k-1个元素，m/2&amp;lt;=">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式六大原则">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/17/设计模式六大原则/index.html">
+<meta property="og:title" content="Blog">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/03/B树和B-树/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="开闭原则   一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。   里氏代换原则   所有引用基类（父类）的地方必须能透明地使用其子类的对象。因此在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型，用子类对象来替换父类对象。   依赖倒转原则   抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。需要">
+<meta property="og:description" content="—title: B树和B+树date: 2019-05-03 14:35:03 tags:#B树  B树可以认为是m叉树搜索树。目的是减少程序读取数据的代价，因为在大量的数据中，数据读取会耗费大量时间，制约程序的效率，因此利用B树能提高数据读取效率。logm（n）  ##B树的特点  每个结点至多拥有m棵子树 根节点至少拥有两颗子树，每个中间节点至少拥有k个子树和k-1个元素，m/2&amp;lt;=">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-17T14:00:21.597Z">
+<meta property="og:updated_time" content="2019-05-03T06:55:53.688Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式六大原则">
-<meta name="twitter:description" content="开闭原则   一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。   里氏代换原则   所有引用基类（父类）的地方必须能透明地使用其子类的对象。因此在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型，用子类对象来替换父类对象。   依赖倒转原则   抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。需要">
+<meta name="twitter:title" content="Blog">
+<meta name="twitter:description" content="—title: B树和B+树date: 2019-05-03 14:35:03 tags:#B树  B树可以认为是m叉树搜索树。目的是减少程序读取数据的代价，因为在大量的数据中，数据读取会耗费大量时间，制约程序的效率，因此利用B树能提高数据读取效率。logm（n）  ##B树的特点  每个结点至多拥有m棵子树 根节点至少拥有两颗子树，每个中间节点至少拥有k个子树和k-1个元素，m/2&amp;lt;=">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/17/设计模式六大原则/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/03/B树和B-树/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>设计模式六大原则 | Blog</title>
+  <title> | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/17/设计模式六大原则/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/03/B树和B-树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式六大原则
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-04-17 21:50:05 / 修改时间：22:00:21" itemprop="dateCreated datePublished" datetime="2019-04-17T21:50:05+08:00">2019-04-17</time>
+              <time title="创建时间：2019-05-03 14:35:03 / 修改时间：14:55:53" itemprop="dateCreated datePublished" datetime="2019-05-03T14:35:03+08:00">2019-05-03</time>
             
 
             
@@ -371,43 +371,34 @@
       
 
       
-        <ol>
-<li>开闭原则</li>
-</ol>
+        <p>﻿﻿—<br>title: B树和B+树<br>date: 2019-05-03 14:35:03</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>#B树</p>
 <blockquote>
-<p>一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。</p>
+<p>B树可以认为是m叉树搜索树。目的是减少程序读取数据的代价，因为在大量的数据中，数据读取会耗费大量时间，制约程序的效率，因此利用B树能提高数据读取效率。logm（n）</p>
 </blockquote>
-<ol start="2">
-<li>里氏代换原则</li>
+<p>##B树的特点</p>
+<ol>
+<li>每个结点至多拥有m棵子树</li>
+<li>根节点至少拥有两颗子树，每个中间节点至少拥有k个子树和k-1个元素，m/2&lt;=k&lt;=m;</li>
+<li>所有的叶节点都在同一层上</li>
+<li>满足查找树特点</li>
 </ol>
+<p>#B+树</p>
 <blockquote>
-<p>所有引用基类（父类）的地方必须能透明地使用其子类的对象。<br>因此在程序中<strong>尽量使用基类类型来对对象进行定义</strong>，而在运行时再确定其子类类型，用子类对象来替换父类对象。</p>
+<p>B+树实在B树基础上的优化结构</p>
 </blockquote>
-<ol start="3">
-<li>依赖倒转原则</li>
+<p>##B+树特点</p>
+<ol>
+<li>中间节点包含k个元素和k个子树（<em>B树中是k-1个元素</em>），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点，<strong>而B树的数据保存在叶子节点和中间节点中</strong></li>
+<li>叶子结点中包含了全部元素的信息或者含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。</li>
+<li><strong>所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。</strong>这里保证了中间节点的关键字在自树中同样保存，这样一层一层传递，<em>也就保证了叶子节点保存和所有关键字和对饮的数据，也就是特点1</em><br>4.B+树查找时是从上到下查找；B-树则是从下往上查找（中序遍历）</li>
 </ol>
-<blockquote>
-<p>抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。<br>需要针对抽象层编程，而<strong>将具体类的对象通过依赖注入</strong>(DependencyInjection, DI)的方式注入到其他对象中,<br>也就是具体类程序以来的实例对象有第三方控制，也就是依赖实例的控制权倒转。</p>
-</blockquote>
-<ol start="4">
-<li>接口隔离原则</li>
+<p>##B+树优点</p>
+<ol>
+<li>IO次数更少</li>
+<li>所有查询都要查找到叶子节点，查询性能更加稳定，保证在logm（n）,同时B+比B树更加矮胖，也意味着查询效率更高</li>
+<li>所有叶子节点形成有序链表，便于范围查询，只要找到上限，就可以按照叶子节点的连接依次查找，不需要B树里面执行中序便利等操作。</li>
 </ol>
-<blockquote>
-<p>使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它不需要的接口。</p>
-</blockquote>
-<ol start="5">
-<li>迪米特法则</li>
-</ol>
-<blockquote>
-<p>一个软件实体应当尽可能少地与其他实体发生相互作用</p>
-</blockquote>
-<ol start="6">
-<li>合成复用法则</li>
-</ol>
-<blockquote>
-<p><strong>一个新的对象里面使用一些已有的对象，使之成为新对象的一部分</strong>；新的对象通过向这些对象的委派达到复用已有功能的目的<br>很想责任链模式</p>
-</blockquote>
-<p>7. </p>
 
       
     </div>
@@ -438,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/17/位运算/" rel="next" title="位运算">
-                <i class="fa fa-chevron-left"></i> 位运算
+              <a href="/ciyunruoshui.github.io/2019/04/17/设计模式六大原则/" rel="next" title="设计模式六大原则">
+                <i class="fa fa-chevron-left"></i> 设计模式六大原则
               </a>
             
           </div>
@@ -447,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/05/03/B树和B-树/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -494,8 +481,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -541,6 +537,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags"><span class="nav-number">1.</span> <span class="nav-text">tags:</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
