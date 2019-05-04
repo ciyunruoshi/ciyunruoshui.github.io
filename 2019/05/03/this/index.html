@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="—title: this指针date: 2019-04-17 21:50:05 tags:记住，this是个指针，指向的是实例对象，只不过这个指针比较特殊，只能在对象内部使用，这也就是解释了为什么类方法不能使用super和this关键字，因为他们都是对象指针，不能用来指向类，类指针只有一个class&amp;lt;?&amp;gt;，而且基本在虚拟机内部使用和反射时使用。 类方法是属于整个类的，而实例方法是属">
+  <meta name="description" content="—title: this指针date: 2019-04-17 21:50:05 tags: 记住，this是个指针，指向的是实例对象，只不过这个指针比较特殊，只能在对象内部使用，这也就是解释了为什么类方法不能使用super和this关键字，因为他们都是对象指针，不能用来指向类，类指针只有一个class&amp;lt;?&amp;gt;，而且基本在虚拟机内部使用和反射时使用。   类方法是属于整个类的，而实">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Blog">
 <meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/03/this/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="—title: this指针date: 2019-04-17 21:50:05 tags:记住，this是个指针，指向的是实例对象，只不过这个指针比较特殊，只能在对象内部使用，这也就是解释了为什么类方法不能使用super和this关键字，因为他们都是对象指针，不能用来指向类，类指针只有一个class&amp;lt;?&amp;gt;，而且基本在虚拟机内部使用和反射时使用。 类方法是属于整个类的，而实例方法是属">
+<meta property="og:description" content="—title: this指针date: 2019-04-17 21:50:05 tags: 记住，this是个指针，指向的是实例对象，只不过这个指针比较特殊，只能在对象内部使用，这也就是解释了为什么类方法不能使用super和this关键字，因为他们都是对象指针，不能用来指向类，类指针只有一个class&amp;lt;?&amp;gt;，而且基本在虚拟机内部使用和反射时使用。   类方法是属于整个类的，而实">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-04T09:35:10.413Z">
+<meta property="og:updated_time" content="2019-05-04T09:40:20.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Blog">
-<meta name="twitter:description" content="—title: this指针date: 2019-04-17 21:50:05 tags:记住，this是个指针，指向的是实例对象，只不过这个指针比较特殊，只能在对象内部使用，这也就是解释了为什么类方法不能使用super和this关键字，因为他们都是对象指针，不能用来指向类，类指针只有一个class&amp;lt;?&amp;gt;，而且基本在虚拟机内部使用和反射时使用。 类方法是属于整个类的，而实例方法是属">
+<meta name="twitter:description" content="—title: this指针date: 2019-04-17 21:50:05 tags: 记住，this是个指针，指向的是实例对象，只不过这个指针比较特殊，只能在对象内部使用，这也就是解释了为什么类方法不能使用super和this关键字，因为他们都是对象指针，不能用来指向类，类指针只有一个class&amp;lt;?&amp;gt;，而且基本在虚拟机内部使用和反射时使用。   类方法是属于整个类的，而实">
 
 
 
@@ -349,7 +349,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-04 17:35:10" itemprop="dateModified" datetime="2019-05-04T17:35:10+08:00">2019-05-04</time>
+                <time title="修改时间：2019-05-04 17:40:20" itemprop="dateModified" datetime="2019-05-04T17:40:20+08:00">2019-05-04</time>
               
             
           </span>
@@ -383,9 +383,22 @@
       
 
       
-        <p>﻿﻿—<br>title: this指针<br>date: 2019-04-17 21:50:05</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>记住，this是个指针，指向的是实例对象，只不过这个指针比较特殊，只能在对象内部使用，这也就是解释了为什么类方法不能使用super和this关键字，因为他们都是对象指针，不能用来指向类，类指针只有一个class&lt;?&gt;，而且基本在虚拟机内部使用和反射时使用。</p>
-<p>类方法是属于整个类的，而实例方法是属于类的某个对象的。<br>由于类方法是属于整个类的，并不属于类的哪个对象，所以类方法的方法体中不能有与类的对象有关的内容。即类方法体有如下限制：<br>(1) 类方法中不能引用对象变量；<br>(2) 类方法中不能调用类的对象方法；<br>(3) 在类方法中不能使用super、this关键字。</p>
+        <p>﻿﻿﻿﻿—<br>title: this指针<br>date: 2019-04-17 21:50:05</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><blockquote>
+<p>记住，this是个指针，指向的是实例对象，只不过这个指针比较特殊，只能在对象内部使用，这也就是解释了为什么类方法不能使用super和this关键字，因为他们都是对象指针，不能用来指向类，类指针只有一个class&lt;?&gt;，而且基本在虚拟机内部使用和反射时使用。</p>
+</blockquote>
+<blockquote>
+<p>类方法是属于整个类的，而实例方法是属于类的某个对象的。<br>由于类方法是属于整个类的，并不属于类的哪个对象，所以类方法的方法体中不能有与类的对象有关的内容。即类方法体有如下限制： </p>
+</blockquote>
+<blockquote>
+<p>(1) 类方法中不能引用对象变量；</p>
+</blockquote>
+<blockquote>
+<p>(2) 类方法中不能调用类的对象方法；</p>
+</blockquote>
+<blockquote>
+<p>(3) 在类方法中不能使用super、this关键字。</p>
+</blockquote>
 
       
     </div>
