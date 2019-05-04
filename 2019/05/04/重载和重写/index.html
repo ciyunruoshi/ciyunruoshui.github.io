@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+  <meta name="description" content="— title: 重载和重写##重写的规则  参数列表必须完全和重写方法相同 返回类型可以不相同，但必须是父类返回类的派生类。 访问权限不能比父类更低，public&amp;gt;protected&amp;gt;缺省&amp;gt;private final的方法不能重写 声明为static的方法不能被重写，但能被重新声明 构造方法不能被重写  ##重载规则  重载方法必须改变参数列表 重载方法可以改变返回类型 重">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CAS">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/CAS/index.html">
+<meta property="og:title" content="Blog">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/04/重载和重写/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+<meta property="og:description" content="— title: 重载和重写##重写的规则  参数列表必须完全和重写方法相同 返回类型可以不相同，但必须是父类返回类的派生类。 访问权限不能比父类更低，public&amp;gt;protected&amp;gt;缺省&amp;gt;private final的方法不能重写 声明为static的方法不能被重写，但能被重新声明 构造方法不能被重写  ##重载规则  重载方法必须改变参数列表 重载方法可以改变返回类型 重">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T13:59:58.360Z">
+<meta property="og:updated_time" content="2019-05-04T09:26:43.931Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CAS">
-<meta name="twitter:description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+<meta name="twitter:title" content="Blog">
+<meta name="twitter:description" content="— title: 重载和重写##重写的规则  参数列表必须完全和重写方法相同 返回类型可以不相同，但必须是父类返回类的派生类。 访问权限不能比父类更低，public&amp;gt;protected&amp;gt;缺省&amp;gt;private final的方法不能重写 声明为static的方法不能被重写，但能被重新声明 构造方法不能被重写  ##重载规则  重载方法必须改变参数列表 重载方法可以改变返回类型 重">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/CAS/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/04/重载和重写/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>CAS | Blog</title>
+  <title> | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/02/CAS/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/04/重载和重写/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CAS
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-04-02 21:40:40 / 修改时间：21:59:58" itemprop="dateCreated datePublished" datetime="2019-04-02T21:40:40+08:00">2019-04-02</time>
+              <time title="创建时间：2019-05-04 16:47:32 / 修改时间：17:26:43" itemprop="dateCreated datePublished" datetime="2019-05-04T16:47:32+08:00">2019-05-04</time>
             
 
             
@@ -371,28 +371,35 @@
       
 
       
-        <p>在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在共享资源访问时没有冲突，无需加锁，一旦发生冲突，无锁策略采用CAS技术保证线程执行的安全性。</p>
-<p>##无锁的执行者-CAS</p>
-<p>##CAS<br>CAS的全称是Compare And Swap 即比较交换，其算法核心思想如下:</p>
+        <p>﻿﻿—</p>
+<h2 id="title-重载和重写"><a href="#title-重载和重写" class="headerlink" title="title: 重载和重写"></a>title: 重载和重写</h2><p>##重写的规则</p>
+<ol>
+<li>参数列表必须完全和重写方法相同</li>
+<li>返回类型可以不相同，但必须是父类返回类的派生类。</li>
+<li>访问权限不能比父类更低，public&gt;protected&gt;缺省&gt;private</li>
+<li>final的方法不能重写</li>
+<li>声明为static的方法不能被重写，但能被重新声明</li>
+<li>构造方法不能被重写</li>
+</ol>
+<p>##重载规则</p>
+<ol>
+<li><strong>重载方法必须改变参数列表</strong></li>
+<li>重载方法可以改变返回类型</li>
+<li>重载方法可以改变修饰符</li>
+<li>方法能够在同一个类中或者在一个子类被重载</li>
+<li>返回值不能作为重载的区分标志。</li>
+</ol>
+<p>##为什么返回值不作为重载的区分标志呢？<br>如果可以，从程序编写者的角度来看，我调用方法，Object.foo(7);<br>这时候我想要使用不同的重载函数，却没用办法利用返回这区分，<br>这就尴尬了，同样也让程序没法判断我们意图，因此以返回值区分重载函数。</p>
+<p>##重写方法为什么要参数不变，其他修饰可以向下兼容？</p>
 <blockquote>
-<p>执行函数 CAS(V,E,N)</p>
+<p>重载是为了区分同名不同方法，重写则是相反，同名同一方法，而参数列表作为区分不同方法的标志，当然不能变化，但是其他的话不作为判断标志，</p>
 </blockquote>
-<p>其中包含三个参数：</p>
-<ol>
-<li>V表示要跟新的变量</li>
-<li>E表示预期值</li>
-<li>N表示新值</li>
-</ol>
-<p>如果V值等于E值，则将V的值设为N。若V值和E值不同，则说明已经有其他线程做了更新，则当前线程什么都不做。通俗的理解就是CAS操作需要我们提供一个期望值，当期望值与当前线程的变量值相同时，说明还没线程修改该值，当前线程可以进行修改，也就是执行CAS操作，但如果期望值与当前线程不符，则说明该值已被其他线程修改，此时不执行更新操作，但可以选择重新读取该变量再尝试再次修改该变量，也可以放弃操作。</p>
-<p>##CAS的ABA问题</p>
-<ol>
-<li>thread-1 获取变量S值为 A,保存在工作内存，还未用CAS修改,此时S的值为 A</li>
-<li>thread-2 获取变量S值为 A,保存在工作内存，用CAS修改S为 B,并刷新到主内存,此时S的值为 B</li>
-<li>thread-3 获取变量S值为 B,保存在工作内存，用CAS修改S为 A,并刷新到主内存,此时S的值为 A</li>
-<li>thread-1 想要修改S的值，V=S,E=A,N=C,此时S的值为 A，能够修改为C，修改成功，此时S的值为 C</li>
-</ol>
-<p>虽然修改成功，但是中间经历了两个线程的修改，S的值在多次改变后依旧为A,但是thread-1预期值是当时状态为A,thread-1的目标为在第一个A的时候执行修改，现在1，2，3，4后并不符合预期。</p>
-<p>修改方式就是在每个值前面添加版本号。</p>
+<blockquote>
+<p>其中为什么不能返回类型随意改变？</p>
+</blockquote>
+<blockquote>
+<p>当返回类型随意变化，同样就有了同名同参数列表方法，但是int 和 long返回类型不同那就是不同的方法，导致子类继承的方法和自己重写的方法不一样，程序就没法判断使用哪个方法</p>
+</blockquote>
 
       
     </div>
@@ -423,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/02/内存模型与内存结构/" rel="next" title="内存模型与内存结构">
-                <i class="fa fa-chevron-left"></i> 内存模型与内存结构
+              <a href="/ciyunruoshui.github.io/2019/05/03/Integer和int/" rel="next" title="Integer和int">
+                <i class="fa fa-chevron-left"></i> Integer和int
               </a>
             
           </div>
@@ -432,10 +439,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/" rel="prev" title="数据库索引原理">
-                数据库索引原理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -479,8 +482,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -526,6 +538,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-重载和重写"><span class="nav-number">1.</span> <span class="nav-text">title: 重载和重写</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
