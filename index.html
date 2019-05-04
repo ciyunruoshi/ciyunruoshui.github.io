@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/04/重载和重写/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/04/Aop编程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/ciyunruoshui.github.io/2019/05/04/重载和重写/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/ciyunruoshui.github.io/2019/05/04/Aop编程/" class="post-title-link" itemprop="url">Aop编程</a>
               
             
           </h1>
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-05-04 16:47:32 / 修改时间：17:33:08" itemprop="dateCreated datePublished" datetime="2019-05-04T16:47:32+08:00">2019-05-04</time>
+              <time title="创建时间：2019-05-04 21:19:36 / 修改时间：21:19:47" itemprop="dateCreated datePublished" datetime="2019-05-04T21:19:36+08:00">2019-05-04</time>
             
 
             
@@ -373,19 +373,669 @@
         
           
             <p>
-              ﻿—title: 重载与重写date: 2019-04-17 21:50:05
-tags:##重写的规则
+              ###Aop概念
 
-参数列表必须完全和重写方法相同
-返回类型可以不相同，但必须是父类返回类的派生类。
-访问权限不能比父类更低，public&gt;protected&gt;缺省&gt;private
-final的
+AOP像OOP一样，只是一种编程范式，AOP并没有规定说，实现AOP协议的代码，要用什么方式去实现。概念：动态地将代码切入到类的指定方法、指定位置上的编程思想就是面向切面的编程
+
+
+将公共代码封装到一个可重用模块，这样就能减少系统的重复代码。
+
+###IOC
+
+IOC,也就是控制
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/05/04/重载和重写/#more" rel="contents">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/05/04/Aop编程/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/04/重载and重写/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/05/04/重载and重写/" class="post-title-link" itemprop="url">重载and重写</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-04 21:18:43 / 修改时间：21:18:55" itemprop="dateCreated datePublished" datetime="2019-05-04T21:18:43+08:00">2019-05-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              ##重写的规则
+
+参数列表必须完全和重写方法相同
+返回类型可以不相同，但必须是父类返回类的派生类。
+访问权限不能比父类更低，public&gt;protected&gt;缺省&gt;private
+final的方法不能重写
+声明为static的方法不能被重写，但能被重新声明
+构造方法不能被重写
+
+#
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/05/04/重载and重写/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/04/this指针/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/05/04/this指针/" class="post-title-link" itemprop="url">this指针</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-04 21:17:43 / 修改时间：21:18:11" itemprop="dateCreated datePublished" datetime="2019-05-04T21:17:43+08:00">2019-05-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              
+记住，this是个指针，指向的是实例对象，只不过这个指针比较特殊，只能在对象内部使用，这也就是解释了为什么类方法不能使用super和this关键字，因为他们都是对象指针，不能用来指向类，类指针只有一个class&lt;?&gt;，而且基本在虚拟机内部使用和反射时使用。
+
+
+类方法是属于整个类的，而
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/05/04/this指针/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/04/海量数据处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/05/04/海量数据处理/" class="post-title-link" itemprop="url">海量数据处理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-04 21:17:00 / 修改时间：21:17:17" itemprop="dateCreated datePublished" datetime="2019-05-04T21:17:00+08:00">2019-05-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              #海量数据处理
+
+海量数据处理的困难就是
+
+
+时间受限。无法在优先时间内，完成对海量数据的某项处理工作
+空间受限。无法将海量数据一次性读入内存。将大的数据块分为小数据块，然后分别处理。
+
+
+处理手段
+
+
+时间受限，利用高效的算法配合恰当的数据结构。散列表，布隆过滤，堆，倒排索引 tries树。
+空间
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/05/04/海量数据处理/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/04/B和B-树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/05/04/B和B-树/" class="post-title-link" itemprop="url">B和B+树</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-04 21:15:52 / 修改时间：21:16:25" itemprop="dateCreated datePublished" datetime="2019-05-04T21:15:52+08:00">2019-05-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              
+
+#B树
+
+B树可以认为是m叉树搜索树。目的是减少程序读取数据的代价，因为在大量的数据中，数据读取会耗费大量时间，制约程序的效率，因此利用B树能提高数据读取效率。logm（n）
+
+##B树的特点
+
+每个结点至多拥有m棵子树
+根节点至少拥有两颗子树，每个中间节点至少拥有k个子树和k-1个元素，m/2
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/05/04/B和B-树/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -545,524 +1195,6 @@ public class Test03 {
           
             <div class="post-button text-center">
               <a class="btn" href="/ciyunruoshui.github.io/2019/05/03/Integer和int/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/03/this/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/05/03/this/" class="post-title-link" itemprop="url">未命名</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-03 20:28:49" itemprop="dateCreated datePublished" datetime="2019-05-03T20:28:49+08:00">2019-05-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-04 17:43:42" itemprop="dateModified" datetime="2019-05-04T17:43:42+08:00">2019-05-04</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-title: this指针
-记住，this是个指针，指向的是实例对象，只不过这个指针比较特殊，只能在对象内部使用，这也就是解释了为什么类方法不能使用super和this关键字，因为他们都是对象指针，不能用来指向类，类指针只有一个class&lt;?&gt;，而且基本在虚拟机内部使用和反射时使用。
-
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/05/03/this/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/03/海量数据处理方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/05/03/海量数据处理方式/" class="post-title-link" itemprop="url">未命名</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-03 19:17:29" itemprop="dateCreated datePublished" datetime="2019-05-03T19:17:29+08:00">2019-05-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-04 17:34:47" itemprop="dateModified" datetime="2019-05-04T17:34:47+08:00">2019-05-04</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              ﻿﻿—title: 海量数据处理date: 2019-04-17 21:50:05
-tags:#海量数据处理
-
-海量数据处理的困难就是
-
-
-时间受限。无法在优先时间内，完成对海量数据的某项处理工作
-空间受限。无法将海量数据一次性读入内存。将大的数据块分为小数据块，然后分别处理。
-
-
-处理手段
-
-
-时
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/05/03/海量数据处理方式/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/03/B树和B-树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/05/03/B树和B-树/" class="post-title-link" itemprop="url">未命名</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-03 14:35:03" itemprop="dateCreated datePublished" datetime="2019-05-03T14:35:03+08:00">2019-05-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-04 20:50:36" itemprop="dateModified" datetime="2019-05-04T20:50:36+08:00">2019-05-04</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              ﻿—title: B树和B+树date: 2019-04-17 21:50:05
-tags:#B树
-
-B树可以认为是m叉树搜索树。目的是减少程序读取数据的代价，因为在大量的数据中，数据读取会耗费大量时间，制约程序的效率，因此利用B树能提高数据读取效率。logm（n）
-
-##B树的特点
-
-每个结点至多
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/05/03/B树和B-树/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1783,167 +1915,6 @@ a-nb=z(ka-nkb)z
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/16/get和post/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/04/16/get和post/" class="post-title-link" itemprop="url">get和post</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-16 10:17:27 / 修改时间：10:39:15" itemprop="dateCreated datePublished" datetime="2019-04-16T10:17:27+08:00">2019-04-16</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-get和post是HTTP协议中的两种发送请求的方法。
-
-
-HTTP的底层是TCP/IP，所以post和get的底层同样是TCP/IP,这两种方法能做的事情是一样的，两种方法功能互换是完全行的通的。
-
-####但是，为什么会有区别？
-
-由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/04/16/get和post/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1990,7 +1961,7 @@ HTTP的底层是TCP/IP，所以post和get的底层同样是TCP/IP,这两种方�
                 
                   <a href="/ciyunruoshui.github.io/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
