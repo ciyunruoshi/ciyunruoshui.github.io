@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+  <meta name="description" content="五个基本原则：   单一职责原则（Single-Resposibility Principle）：  一个类，最好只做一件事，只有一个引起它的变化。单一职责原则可以看做是低耦合、高内聚在面向对象原则上的引申，将职责定义为引起变化的原因，以提高内聚性来减少引起变化的原因。    开放封闭原则（Open-Closed principle）：  软件实体应该是可扩展的，而不可修改的。也就是，对扩展开放">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CAS">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/CAS/index.html">
+<meta property="og:title" content="面向对象的基本原则">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/06/面向对象的基本原则/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+<meta property="og:description" content="五个基本原则：   单一职责原则（Single-Resposibility Principle）：  一个类，最好只做一件事，只有一个引起它的变化。单一职责原则可以看做是低耦合、高内聚在面向对象原则上的引申，将职责定义为引起变化的原因，以提高内聚性来减少引起变化的原因。    开放封闭原则（Open-Closed principle）：  软件实体应该是可扩展的，而不可修改的。也就是，对扩展开放">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T13:59:58.360Z">
+<meta property="og:updated_time" content="2019-05-06T13:23:22.131Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CAS">
-<meta name="twitter:description" content="在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在">
+<meta name="twitter:title" content="面向对象的基本原则">
+<meta name="twitter:description" content="五个基本原则：   单一职责原则（Single-Resposibility Principle）：  一个类，最好只做一件事，只有一个引起它的变化。单一职责原则可以看做是低耦合、高内聚在面向对象原则上的引申，将职责定义为引起变化的原因，以提高内聚性来减少引起变化的原因。    开放封闭原则（Open-Closed principle）：  软件实体应该是可扩展的，而不可修改的。也就是，对扩展开放">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/02/CAS/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/06/面向对象的基本原则/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>CAS | Blog</title>
+  <title>面向对象的基本原则 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/02/CAS/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/06/面向对象的基本原则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CAS
+          <h1 class="post-title" itemprop="name headline">面向对象的基本原则
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-04-02 21:40:40 / 修改时间：21:59:58" itemprop="dateCreated datePublished" datetime="2019-04-02T21:40:40+08:00">2019-04-02</time>
+              <time title="创建时间：2019-05-06 21:20:36 / 修改时间：21:23:22" itemprop="dateCreated datePublished" datetime="2019-05-06T21:20:36+08:00">2019-05-06</time>
             
 
             
@@ -371,28 +371,36 @@
       
 
       
-        <p>在谈论锁的时候，总会关联乐观派和悲观派，对乐观派来说，他们认为事情总会想着好的方向发展，认为坏的情况发生的概率很小，可以不需要防备，而悲观派正好相反，他们总认为事态不加以控制，就会带来问题，这两种派系映射到并发编程中就如同加锁和无锁的策略，也就是加锁是一种悲观策略，无锁是一种乐观策略，因为对于加锁的并发编程来说，他们总认为访问共享资源时总会发生冲突，因此对每次数据访问实施加锁策略，而无锁总是假设在共享资源访问时没有冲突，无需加锁，一旦发生冲突，无锁策略采用CAS技术保证线程执行的安全性。</p>
-<p>##无锁的执行者-CAS</p>
-<p>##CAS<br>CAS的全称是Compare And Swap 即比较交换，其算法核心思想如下:</p>
-<blockquote>
-<p>执行函数 CAS(V,E,N)</p>
+        <blockquote>
+<p>五个基本原则：</p>
 </blockquote>
-<p>其中包含三个参数：</p>
-<ol>
-<li>V表示要跟新的变量</li>
-<li>E表示预期值</li>
-<li>N表示新值</li>
-</ol>
-<p>如果V值等于E值，则将V的值设为N。若V值和E值不同，则说明已经有其他线程做了更新，则当前线程什么都不做。通俗的理解就是CAS操作需要我们提供一个期望值，当期望值与当前线程的变量值相同时，说明还没线程修改该值，当前线程可以进行修改，也就是执行CAS操作，但如果期望值与当前线程不符，则说明该值已被其他线程修改，此时不执行更新操作，但可以选择重新读取该变量再尝试再次修改该变量，也可以放弃操作。</p>
-<p>##CAS的ABA问题</p>
-<ol>
-<li>thread-1 获取变量S值为 A,保存在工作内存，还未用CAS修改,此时S的值为 A</li>
-<li>thread-2 获取变量S值为 A,保存在工作内存，用CAS修改S为 B,并刷新到主内存,此时S的值为 B</li>
-<li>thread-3 获取变量S值为 B,保存在工作内存，用CAS修改S为 A,并刷新到主内存,此时S的值为 A</li>
-<li>thread-1 想要修改S的值，V=S,E=A,N=C,此时S的值为 A，能够修改为C，修改成功，此时S的值为 C</li>
-</ol>
-<p>虽然修改成功，但是中间经历了两个线程的修改，S的值在多次改变后依旧为A,但是thread-1预期值是当时状态为A,thread-1的目标为在第一个A的时候执行修改，现在1，2，3，4后并不符合预期。</p>
-<p>修改方式就是在每个值前面添加版本号。</p>
+<ul>
+<li><p>单一职责原则（Single-Resposibility Principle）：</p>
+<blockquote>
+<p>一个类，最好只做一件事，只有一个引起它的变化。单一职责原则可以看做是低耦合、高内聚在面向对象原则上的引申，将职责定义为引起变化的原因，以提高内聚性来减少引起变化的原因。 </p>
+</blockquote>
+</li>
+<li><p>开放封闭原则（Open-Closed principle）：</p>
+<blockquote>
+<p>软件实体应该是可扩展的，而不可修改的。也就是，对扩展开放，对修改封闭的。 </p>
+</blockquote>
+</li>
+<li><p>里氏替换原则（Liskov-Substituion Principle）：</p>
+<blockquote>
+<p>子类必须能够替换其基类。这一思想体现为对继承机制的约束规范，只有子类能够替换基类时，才能保证系统在运行期内识别子类，这是保证继承复用的基础。 </p>
+</blockquote>
+</li>
+<li><p>依赖倒置原则（Dependecy-Inversion Principle）：</p>
+<blockquote>
+<p>赖于抽象。具体而言就是高层模块不依赖于底层模块，二者都同依赖于抽象；抽象不依赖于具体，具体依赖于抽象。 </p>
+</blockquote>
+</li>
+<li><p>接口隔离原则（Interface-Segregation Principle）：</p>
+<blockquote>
+<p>使用多个小的专门的接口，而不要使用一个大的总接口，</p>
+</blockquote>
+</li>
+</ul>
 
       
     </div>
@@ -423,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/02/内存模型与内存结构/" rel="next" title="内存模型与内存结构">
-                <i class="fa fa-chevron-left"></i> 内存模型与内存结构
+              <a href="/ciyunruoshui.github.io/2019/05/06/静态方法继承的知识点/" rel="next" title="静态方法继承的知识点">
+                <i class="fa fa-chevron-left"></i> 静态方法继承的知识点
               </a>
             
           </div>
@@ -432,10 +440,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/04/03/数据库索引原理/" rel="prev" title="数据库索引原理">
-                数据库索引原理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
