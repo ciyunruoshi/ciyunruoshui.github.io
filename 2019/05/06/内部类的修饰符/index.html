@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="加法：利用异或求得每一位进位后留下的数字，用和运算和左移计算进位  public static int add(int a,int b){     //位运算实现     while(b!=0){         int n1 = a;         int n2 = b;         a = n1^n2;         //不包含进位的计算         b = (n1&amp;amp;n2">
+  <meta name="description" content="局部内部类相当于在方法内声明变量，修饰符好只有final,abstract等符不能用修饰作用范围的，如public private等，因为局部内部类的作用范围已经确定，那就是局部，不可能更改">
 <meta property="og:type" content="article">
-<meta property="og:title" content="位运算">
-<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/17/位运算/index.html">
+<meta property="og:title" content="局部内部类的修饰符">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/06/内部类的修饰符/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="加法：利用异或求得每一位进位后留下的数字，用和运算和左移计算进位  public static int add(int a,int b){     //位运算实现     while(b!=0){         int n1 = a;         int n2 = b;         a = n1^n2;         //不包含进位的计算         b = (n1&amp;amp;n2">
+<meta property="og:description" content="局部内部类相当于在方法内声明变量，修饰符好只有final,abstract等符不能用修饰作用范围的，如public private等，因为局部内部类的作用范围已经确定，那就是局部，不可能更改">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-17T13:48:12.612Z">
+<meta property="og:updated_time" content="2019-05-06T13:53:33.069Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="位运算">
-<meta name="twitter:description" content="加法：利用异或求得每一位进位后留下的数字，用和运算和左移计算进位  public static int add(int a,int b){     //位运算实现     while(b!=0){         int n1 = a;         int n2 = b;         a = n1^n2;         //不包含进位的计算         b = (n1&amp;amp;n2">
+<meta name="twitter:title" content="局部内部类的修饰符">
+<meta name="twitter:description" content="局部内部类相当于在方法内声明变量，修饰符好只有final,abstract等符不能用修饰作用范围的，如public private等，因为局部内部类的作用范围已经确定，那就是局部，不可能更改">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/04/17/位运算/">
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/06/内部类的修饰符/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>位运算 | Blog</title>
+  <title>局部内部类的修饰符 | Blog</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/17/位运算/">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/06/内部类的修饰符/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ciyunroshui">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">位运算
+          <h1 class="post-title" itemprop="name headline">局部内部类的修饰符
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-04-17 20:58:56 / 修改时间：21:48:12" itemprop="dateCreated datePublished" datetime="2019-04-17T20:58:56+08:00">2019-04-17</time>
+              <time title="创建时间：2019-05-06 21:51:36 / 修改时间：21:53:33" itemprop="dateCreated datePublished" datetime="2019-05-06T21:51:36+08:00">2019-05-06</time>
             
 
             
@@ -371,80 +371,7 @@
       
 
       
-        <blockquote>
-<p>加法：利用异或求得每一位进位后留下的数字，用和运算和左移计算进位</p>
-</blockquote>
-<pre><code>public static int add(int a,int b){
-    //位运算实现
-    while(b!=0){
-        int n1 = a;
-        int n2 = b;
-        a = n1^n2;
-        //不包含进位的计算
-        b = (n1&amp;n2)&lt;&lt;1;
-        //进位表示
-
-    }
-    return a;
-}
-</code></pre><blockquote>
-<p>减法：数的相反数就是先求反码再加1</p>
-</blockquote>
-<pre><code>public static int sub(int a,int b){
-    b = add(~b,1);
-
-    return add(a,b);
-}
-</code></pre><blockquote>
-<p>乘法：利用乘法计算式来构建或者直接转为加法</p>
-</blockquote>
-<pre><code>public static int mul(int a,int b){
-    /*
-    *           1 1 0 1
-    * *         1 1 1 0
-    * ----------------
-    *           0 0 0 0
-    *         1 1 0 1
-    *       1 1 0 1
-    *     1 1 0 1
-    *     -----------
-    *   1 0 1 1 0  1 1 0
-    *
-    * 可以看到，每次被乘数左移以为执行加法，乘数右移一位获取最有一位乘数
-    * 如果乘数为0 不执行操作，只让被乘数左移一位
-    * 如果为1    则将被乘数和结果相加并更新结果
-    * */
-    int sum=0;
-    while(b!=0){
-        if((b&amp;1)==1){
-            sum=add(sum,a);
-        }
-        a = a&lt;&lt;1;
-        b= b&gt;&gt;1;
-    }
-    return sum;
-}
-</code></pre><blockquote>
-<p>除法：直接转为减法</p>
-</blockquote>
-<pre><code>public static int div(int a,int b){
-    /*
-    *也可以把除法转化为减法
-     */
-    int f = 0;
-    while(a&gt;=b){
-        f = add(f,1);
-        a = sub(a,b);
-    }
-    return f;
-}
-public static void main(String[] args){
-    System.out.println(add(25,5));
-    System.out.println(sub(25,5));
-    System.out.println(mul(20,5));
-    System.out.println(div(20,5));
-}
-</code></pre><p>}</p>
+        <p>局部内部类相当于在方法内声明变量，修饰符好只有final,abstract等符<br>不能用修饰作用范围的，如public private等，因为局部内部类的作用范围已经确定，那就是局部，不可能更改</p>
 
       
     </div>
@@ -475,8 +402,8 @@ public static void main(String[] args){
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ciyunruoshui.github.io/2019/04/16/Reactor和nio/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/ciyunruoshui.github.io/2019/05/06/基本数据类型类赋值/" rel="next" title="基本数据类型类赋值">
+                <i class="fa fa-chevron-left"></i> 基本数据类型类赋值
               </a>
             
           </div>
@@ -484,10 +411,6 @@ public static void main(String[] args){
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ciyunruoshui.github.io/2019/04/17/设计模式六大原则/" rel="prev" title="设计模式六大原则">
-                设计模式六大原则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
