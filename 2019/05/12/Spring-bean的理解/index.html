@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/ciyunruoshui.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/ciyunruoshui.github.io/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ciyunruoshui.github.io/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/ciyunruoshui.github.io/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/ciyunruoshui.github.io/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/ciyunruoshui.github.io/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/ciyunruoshui.github.io/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Spring的其中一个特点就是DI(依赖注入)，而注入就是利用Bean来实现  ###Bean到底是什么？  Java面向对象，对象有方法和属性，那么就需要对象实例来调用方法和属性（即实例化） 凡是有方法或属性的类都需要实例化，这样才能具象化去使用这些方法和属性 规律：凡是子类及带有方法或属性的类都要加上注册Bean到Spring IoC的注解；（@Component , @Repository">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-bean的理解">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/12/Spring-bean的理解/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="Spring的其中一个特点就是DI(依赖注入)，而注入就是利用Bean来实现  ###Bean到底是什么？  Java面向对象，对象有方法和属性，那么就需要对象实例来调用方法和属性（即实例化） 凡是有方法或属性的类都需要实例化，这样才能具象化去使用这些方法和属性 规律：凡是子类及带有方法或属性的类都要加上注册Bean到Spring IoC的注解；（@Component , @Repository">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-12T07:51:12.186Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring-bean的理解">
+<meta name="twitter:description" content="Spring的其中一个特点就是DI(依赖注入)，而注入就是利用Bean来实现  ###Bean到底是什么？  Java面向对象，对象有方法和属性，那么就需要对象实例来调用方法和属性（即实例化） 凡是有方法或属性的类都需要实例化，这样才能具象化去使用这些方法和属性 规律：凡是子类及带有方法或属性的类都要加上注册Bean到Spring IoC的注解；（@Component , @Repository">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/12/Spring-bean的理解/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Spring-bean的理解 | Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/ciyunruoshui.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/ciyunruoshui.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/ciyunruoshui.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/12/Spring-bean的理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring-bean的理解
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-12 15:02:37 / 修改时间：15:51:12" itemprop="dateCreated datePublished" datetime="2019-05-12T15:02:37+08:00">2019-05-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Spring的其中一个特点就是DI(依赖注入)，而注入就是利用Bean来实现</p>
+</blockquote>
+<p>###Bean到底是什么？</p>
+<ol>
+<li>Java面向对象，对象有方法和属性，那么就需要对象实例来调用方法和属性（即实例化）</li>
+<li>凡是有方法或属性的类都需要实例化，这样才能具象化去使用这些方法和属性</li>
+<li>规律：<strong>凡是子类及带有方法或属性的类都要加上注册Bean到Spring IoC的注解</strong>；（@Component , @Repository , @ Controller , @Service , @Configration）</li>
+</ol>
+<blockquote>
+<p>也就是在ssm中定义的各种包含方法和属性的类都需要注册到Spring中，而Bean就是对这些类的信息的包装，也就是</p>
+<ul>
+<li>把Bean理解为类的代理或代言人（实际上确实是通过反射、代理来实现的），这样它就能代表类拥有该拥有的东西了。</li>
+</ul>
+</blockquote>
+<p>4.我们都在微博上@过某某，对方会优先看到这条信息，并给你反馈，那么在Spring中，你标识一个@符号，那么Spring就会来看看，并且从这里拿到<strong>一个Bean（注册）或者给出一个Bean（使用）</strong></p>
+<p>###注解分为两类</p>
+<ol>
+<li><p>一类是使用Bean，即是把已经在xml文件中配置好的Bean拿来用，完成属性、方法的组装；比如@Autowired , @Resource，可以通过byTYPE（@Autowired）、byNAME（@Resource）的方式获取Bean；</p>
+</li>
+<li><p>一类是注册Bean,@Component , @Repository , @ Controller , @Service , @Configration这些注解都是把你要实例化的对象转化成一个Bean，放在IoC容器中，等你要用的时候，它会和上面的@Autowired , @Resource配合到一起，把对象、属性、方法完美组装。</p>
+</li>
+</ol>
+<ul>
+<li>包括注册方法 和类</li>
+</ul>
+<p>###@Bean是啥？</p>
+<pre><code>Indicates that a method produces a bean to be managed by the Spring container.
+
+The names and semantics of the attributes to this annotation are intentionally
+
+similar to those of the {@code &lt;bean/&gt;} element in the Spring XML schema. For
+
+ example:
+     @Bean
+
+     public MyBean myBean() {
+
+         // instantiate and configure MyBean obj
+
+         return obj;
+
+    }
+</code></pre><blockquote>
+<p>意思是@Bean明确地指示了一种方法，什么方法呢——产生一个bean的方法，并且交给Spring容器管理；从这我们就明白了为啥@Bean是放在方法的注释上了，因为它很明确地告诉被注释的方法，你给我产生一个Bean，然后交给Spring容器，剩下的你就别管了</p>
+</blockquote>
+<blockquote>
+<p>记住，@Bean就放在方法上，就是产生一个Bean，那你是不是又糊涂了，因为已经在你定义的类上加了@Configration等注册Bean的注解了，为啥还要用@Bean呢？这个我也不知道，下面我给个例子，一起探讨一下吧：</p>
+</blockquote>
+<pre><code>//定义一个接口
+public interface Fruit&lt;T&gt;{
+    //没有方法
+}
+</code></pre><p>定义两个子类</p>
+<pre><code>@Configuration
+public class Apple implements Fruit&lt;Integer&gt;{
+   //将Apple类约束为Integer类型
+}
+
+ @Configuration
+ public class GinSeng implements Fruit&lt;String&gt;{
+       //将GinSeng 类约束为String类型
+ }
+</code></pre><p>业务逻辑类</p>
+<pre><code>@Configuration
+public class FruitService {
+
+     @Autowired
+
+    private Apple apple;
+
+    @Autowired
+
+    private GinSeng ginseng;
+
+    //定义一个产生Bean的方法
+    @Bean(name=&quot;getApple&quot;)
+
+    public Fruit&lt;?&gt; getApple(){
+
+        System.out.println(apple.getClass().getName().hashCode);
+
+        System.out.println(ginseng.getClass().getName().hashCode);
+
+        return new Apple();
+
+    }
+
+}
+</code></pre><p>测试类</p>
+<pre><code>@RunWith(BlockJUnit4ClassRunner.class)
+
+public class Config {
+
+    public Config(){
+
+        super(&quot;classpath:spring-fruit.xml&quot;);
+
+    }
+
+    @Test
+
+    public void test(){
+
+        super.getBean(&quot;getApple&quot;);
+        //这个Bean从哪来，从上面的@Bean下面的方法中来，返回
+        //的是一个Apple类实例对象
+
+     }
+}
+</code></pre><blockquote>
+<p>1、凡是子类及带属性、方法的类都注册Bean到Spring中，交给它管理；</p>
+</blockquote>
+<blockquote>
+<p>2、@Bean 用在方法上，告诉Spring容器，你可以从下面这个方法中拿到一个Bean</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ciyunruoshui.github.io/2019/05/11/leetocode-5/" rel="next" title="leetcode[5] Longest Palindromic Substring">
+                <i class="fa fa-chevron-left"></i> leetcode[5] Longest Palindromic Substring
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/ciyunruoshui.github.io/2019/05/12/进程间的通信方式/" rel="prev" title="进程间的通信方式">
+                进程间的通信方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ciyunroshui</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/ciyunruoshui.github.io/archives/">
+                
+                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ciyunroshui</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/ciyunruoshui.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/ciyunruoshui.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/ciyunruoshui.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/ciyunruoshui.github.io/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/ciyunruoshui.github.io/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/ciyunruoshui.github.io/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/ciyunruoshui.github.io/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
