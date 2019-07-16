@@ -286,6 +286,1352 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/17/位运算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/04/17/位运算/" class="post-title-link" itemprop="url">位运算</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-17 20:58:56 / 修改时间：21:48:12" itemprop="dateCreated datePublished" datetime="2019-04-17T20:58:56+08:00">2019-04-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              
+加法：利用异或求得每一位进位后留下的数字，用和运算和左移计算进位
+
+public static int add(int a,int b){
+    //位运算实现
+    while(b!=0){
+        int n1 = a;
+        int n2 = b;
+        a 
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/04/17/位运算/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/16/Reactor和nio/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/04/16/Reactor和nio/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-16 20:51:22" itemprop="dateCreated datePublished" datetime="2019-04-16T20:51:22+08:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-04 17:40:39" itemprop="dateModified" datetime="2019-05-04T17:40:39+08:00">2019-05-04</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              ﻿﻿﻿—title: Nio和Reactordate: 2019-04-17 21:50:05
+tags:
+Nio和Reactor
+
+###线程IO
+
+线程有四种模式
+
+
+阻塞
+非阻塞
+同步
+异步
+
+
+nio是同步非阻塞模型，IO多路复用的基础同步是指线程不断轮询 IO 事件是否就绪，非阻塞是指线程
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/04/16/Reactor和nio/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/16/最小公约数算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/04/16/最小公约数算法/" class="post-title-link" itemprop="url">最小公约数算法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-16 10:43:40 / 修改时间：20:48:01" itemprop="dateCreated datePublished" datetime="2019-04-16T10:43:40+08:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              最小公约数主要有两种算法：辗转相除法和更相减损术
+###辗转相除法
+
+辗转相除法的原理很简单：a与b的最小公约数等于b和a%b的最小公约数
+
+
+解释：
+
+
+c=a%b
+a=n*b+c
+z为最小公约数
+a/z=ka;
+b/z=kb;
+a-nb=z(ka-nkb)z
+
+循环直到a%b=0,那么b就是最大
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/04/16/最小公约数算法/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/16/get和post/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/04/16/get和post/" class="post-title-link" itemprop="url">get和post</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-16 10:17:27 / 修改时间：10:39:15" itemprop="dateCreated datePublished" datetime="2019-04-16T10:17:27+08:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              
+get和post是HTTP协议中的两种发送请求的方法。
+
+
+HTTP的底层是TCP/IP，所以post和get的底层同样是TCP/IP,这两种方法能做的事情是一样的，两种方法功能互换是完全行的通的。
+
+####但是，为什么会有区别？
+
+由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/04/16/get和post/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/14/java对象一定在堆上分配内存吗？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/04/14/java对象一定在堆上分配内存吗？/" class="post-title-link" itemprop="url">java对象一定在堆上分配内存吗？</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-14 22:23:43 / 修改时间：22:53:39" itemprop="dateCreated datePublished" datetime="2019-04-14T22:23:43+08:00">2019-04-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              ###JIT及时编译器，是针对解释性语言而言的，而且不是虚拟机必须的，是一种优化的手段。
+
+HotSpot虚拟机的执行引擎在执行Java代码是可以采用【解释执行】和【编译执行】两种方式的，如果采用的是编译执行方式，那么就会使用到JIT，而解释执行就不会使用到JIT，所以，早期说Java是解释型语言，
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/04/14/java对象一定在堆上分配内存吗？/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/" class="post-title-link" itemprop="url">synzhronized 对象头和monitor</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-13 16:07:22" itemprop="dateCreated datePublished" datetime="2019-04-13T16:07:22+08:00">2019-04-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-16 10:38:49" itemprop="dateModified" datetime="2019-04-16T10:38:49+08:00">2019-04-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              ####代码编写层面
+
+synchronized使我们在代码编辑层面使用的关键字，用于对方法和代码块加锁，一般有有三种实现形式：
+
+
+对于实例方法，锁是当前实例对象。
+对于类方法，锁是当前类的Class对象。
+对于同步代码块，锁是synchronized关键字括号内的对象
+
+public void 
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/04/13/synzhronized-对象头和monitor/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/" class="post-title-link" itemprop="url">JAVA对象模型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-11 21:11:37" itemprop="dateCreated datePublished" datetime="2019-04-11T21:11:37+08:00">2019-04-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-13 16:06:36" itemprop="dateModified" datetime="2019-04-13T16:06:36+08:00">2019-04-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              java对象包括三部分：
+
+对象头
+实例数据
+对齐填充
+
+###对象头
+
+对象头包含两部分信息，第一部分用于存储对象自身运行时数据，如哈希吗、GC分代年龄、锁状态标志、线程持有的锁、偏向锁ID、偏向时间戳等，这部分数据的长度在32位和64位虚拟机中分别为32个bit和64个bit,官方称它为“Mar
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/04/11/JAVA对象模型/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/11/GC算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ciyunruoshui.github.io/2019/04/11/GC算法/" class="post-title-link" itemprop="url">GC算法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-11 19:54:26 / 修改时间：20:38:28" itemprop="dateCreated datePublished" datetime="2019-04-11T19:54:26+08:00">2019-04-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              本文主要内容：
+
+GC概念
+GC算法
+引用计数法
+根搜索法
+
+
+现代虚拟机中的垃圾搜索算法
+
+标记-清除
+赋值算法 新生代
+标记-压缩 老年代
+
+
+分代收集
+
+
+###GC概念java中，GC的对象是Java堆和方法区(永久区)
+
+GC:垃圾收集算法。这里的垃圾指的是在系统运行过程中所产生的一些无用
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ciyunruoshui.github.io/2019/04/11/GC算法/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/11/Dijstra算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -587,1291 +1933,11 @@ Ps:这里的思路就是在动态规划表格中会有不同的（i,j）组合�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/07/指令重排序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/04/07/指令重排序/" class="post-title-link" itemprop="url">指令重排序</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-07 20:15:48" itemprop="dateCreated datePublished" datetime="2019-04-07T20:15:48+08:00">2019-04-07</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/04/07/指令重排序/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/06/类加载机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/04/06/类加载机制/" class="post-title-link" itemprop="url">类加载机制</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-06 16:23:42" itemprop="dateCreated datePublished" datetime="2019-04-06T16:23:42+08:00">2019-04-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-12 21:58:34" itemprop="dateModified" datetime="2019-04-12T21:58:34+08:00">2019-04-12</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              ###概述
-
-虚拟机把描述类的文件机载到内存，并对数据进行校验、转换解析和初始化，最终形成能被虚拟机直接用的java类型，这就是虚拟机的类加载机制。
-
-###类加载的时机
-
-类从class二进制文件加载到jvm内存中开始到卸载出内存，整个生命周期包括：加载、验证、准备、解析和初始化、使用。 任何一个
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/04/06/类加载机制/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/06/动态代理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/04/06/动态代理/" class="post-title-link" itemprop="url">动态代理</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-06 13:54:47 / 修改时间：16:23:11" itemprop="dateCreated datePublished" datetime="2019-04-06T13:54:47+08:00">2019-04-06</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              ###动态代理的实现方式
-
-jdk内置的反射机制实现的额
-cglib实现动态代理。
-
-###静态代理和动态代理
-
-静态代理
-由程序员创建代理类或特定工具自动生成源代码再对其编译。在程序运行前代理类的.class文件就已经存在了。具体代码就是代理模式的代码，在代理类的实例中保存被代理类的实例。缺点：代
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/04/06/动态代理/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/05/线程三大特性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/04/05/线程三大特性/" class="post-title-link" itemprop="url">JMM(java内存模型)线程三大特性</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-05 10:36:13" itemprop="dateCreated datePublished" datetime="2019-04-05T10:36:13+08:00">2019-04-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-06 21:09:31" itemprop="dateModified" datetime="2019-04-06T21:09:31+08:00">2019-04-06</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-原子性 可见性 有序性线程安全问题的两大核心：JMM内存模型和happen-before原则
-
-###关于java内存模型和JVM内存结构
-
-首先，java内存模型把内存划分为工作内存和主内存。jvm内存结构(JVM内存模型)将静态内存划分为 方法区 堆 虚拟机栈 本地方法区 程序计数器
-java
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/04/05/线程三大特性/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/04/不使用synchronized和lock，如何实现一个线程安全的单例/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/04/04/不使用synchronized和lock，如何实现一个线程安全的单例/" class="post-title-link" itemprop="url">不使用synchronized和lock，如何实现一个线程安全的单例</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-04 17:04:21 / 修改时间：21:38:36" itemprop="dateCreated datePublished" datetime="2019-04-04T17:04:21+08:00">2019-04-04</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              synchronized和Lock
-Lcok依赖于CAS操作，而CAS依赖CPU指令集实现原子操作，因此Lock是依赖于硬件实现。synchronized依赖jvm的内置特性，monitor内置的监视器锁，是依赖jvm软件层面实现。java的线程是映射到操作系统的原生线程之上的，如果要阻塞或者唤醒一
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/04/04/不使用synchronized和lock，如何实现一个线程安全的单例/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/04/各种锁机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/04/04/各种锁机制/" class="post-title-link" itemprop="url">各种锁机制</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-04 10:04:02 / 修改时间：14:45:19" itemprop="dateCreated datePublished" datetime="2019-04-04T10:04:02+08:00">2019-04-04</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-可重入锁
-
-
-也叫递归锁，是指统一线程的外层函数获取锁之后，内存递归函数仍然获取该锁的代码，但不收影响，应该是想偏向锁一样会判断当前线程是不是获取锁的线程，是就让线程冲入次数加一，不是就要膨胀去竞争锁。
-
-public class Main implements Runnable{
-    @Ov
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/04/04/各种锁机制/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/03/锁优化与膨胀/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/04/03/锁优化与膨胀/" class="post-title-link" itemprop="url">锁优化与膨胀</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-03 21:01:59 / 修改时间：21:54:25" itemprop="dateCreated datePublished" datetime="2019-04-03T21:01:59+08:00">2019-04-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              问题由来
-synchronized关键字调用内置监视器锁来实现同步代码块，是JVM的内置特性，在这过程中使用了多种优化手段提高性能。这其中针对的就是锁竞争和阻塞的优化，锁竞争带来的最大的性能消耗就是系统调度引起的内核态和用户态的切换，锁竞争带来的线程上下文切换等。
-
-
-重量级锁
-
-
-内置锁在Java
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/04/03/锁优化与膨胀/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/04/03/分布式锁/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ciyunroshui">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ciyunruoshui.github.io/2019/04/03/分布式锁/" class="post-title-link" itemprop="url">分布式锁</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-03 20:04:23 / 修改时间：20:21:38" itemprop="dateCreated datePublished" datetime="2019-04-03T20:04:23+08:00">2019-04-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              分布式锁
-在单机情况下，如果多个线程对共享资源进行访问，可以采用线程间加锁的机制，保持对共享资源的一致性访问。但是在分布式系统中，这种进程间的锁机制没作用了，系统部署在不同机器上，浙西资源不再线程间共享，而是属于进程间共享的资源。为了解决这个问题，引入了分布式锁。分布式锁，是指在分布式的部署情况下，
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/ciyunruoshui.github.io/2019/04/03/分布式锁/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/ciyunruoshui.github.io/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/ciyunruoshui.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ciyunruoshui.github.io/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/ciyunruoshui.github.io/page/5/">5</a><a class="page-number" href="/ciyunruoshui.github.io/page/6/">6</a><a class="extend next" rel="next" href="/ciyunruoshui.github.io/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/ciyunruoshui.github.io/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/ciyunruoshui.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ciyunruoshui.github.io/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/ciyunruoshui.github.io/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/ciyunruoshui.github.io/page/7/">7</a><a class="extend next" rel="next" href="/ciyunruoshui.github.io/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1913,7 +1979,7 @@ synchronized关键字调用内置监视器锁来实现同步代码块，是JVM�
                 
                   <a href="/ciyunruoshui.github.io/archives/">
                 
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

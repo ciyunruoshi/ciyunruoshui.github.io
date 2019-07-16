@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/ciyunruoshui.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/ciyunruoshui.github.io/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ciyunruoshui.github.io/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/ciyunruoshui.github.io/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/ciyunruoshui.github.io/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/ciyunruoshui.github.io/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/ciyunruoshui.github.io/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="引出问题？   在分段这个技术还没有出现之前，程序运行是需要从内存中分配出足够多的连续的内存，然后把整个程序装载进去。举个例子，某个程序大小是10M，然后，就需要有连续的10M内存空间才能把这个程序装载到内存里面。如果无法找到连续的10M内存，就无法把这个程序装载进内存里面，程序也就无法得到运行。  1.地址空间不隔离  如何理解地址空间不隔离？举个例子，假设我有两个程序，一个是程序A，一个是程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统-内存管理">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/19/操作系统-内存管理/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="引出问题？   在分段这个技术还没有出现之前，程序运行是需要从内存中分配出足够多的连续的内存，然后把整个程序装载进去。举个例子，某个程序大小是10M，然后，就需要有连续的10M内存空间才能把这个程序装载到内存里面。如果无法找到连续的10M内存，就无法把这个程序装载进内存里面，程序也就无法得到运行。  1.地址空间不隔离  如何理解地址空间不隔离？举个例子，假设我有两个程序，一个是程序A，一个是程">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-02T08:26:29.791Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作系统-内存管理">
+<meta name="twitter:description" content="引出问题？   在分段这个技术还没有出现之前，程序运行是需要从内存中分配出足够多的连续的内存，然后把整个程序装载进去。举个例子，某个程序大小是10M，然后，就需要有连续的10M内存空间才能把这个程序装载到内存里面。如果无法找到连续的10M内存，就无法把这个程序装载进内存里面，程序也就无法得到运行。  1.地址空间不隔离  如何理解地址空间不隔离？举个例子，假设我有两个程序，一个是程序A，一个是程">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/05/19/操作系统-内存管理/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>操作系统-内存管理 | Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/ciyunruoshui.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/ciyunruoshui.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/ciyunruoshui.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/05/19/操作系统-内存管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">操作系统-内存管理
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-19 23:31:33" itemprop="dateCreated datePublished" datetime="2019-05-19T23:31:33+08:00">2019-05-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-02 16:26:29" itemprop="dateModified" datetime="2019-06-02T16:26:29+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>引出问题？</p>
+</blockquote>
+<blockquote>
+<p>在分段这个技术还没有出现之前，程序运行是需要从内存中分配出足够多的连续的内存，然后把整个程序装载进去。举个例子，某个程序大小是10M，然后，就需要有连续的10M内存空间才能把这个程序装载到内存里面。如果无法找到连续的10M内存，就无法把这个程序装载进内存里面，程序也就无法得到运行。</p>
+</blockquote>
+<p>1.地址空间不隔离</p>
+<blockquote>
+<p>如何理解地址空间不隔离？举个例子，假设我有两个程序，一个是程序A，一个是程序B。程序A在内存中的地址假设是0x00000000~0x00000099，程序B在内存中的地址假设是0x00000100~x00000199。那么假设你在程序A中，本来想操作地址0x00000050，不小心手残操作了地址0x00000150，那么，不好的事情或许会发生。你影响了程序A也就罢了，你把程序B也搞了一顿。</p>
+</blockquote>
+<p>2.程序运行时候的地址不确定</p>
+<blockquote>
+<p>因为我们程序每次要运行的时候，都是需要装载到内存中的，假设你在程序中写死了要操作某个地址的内存，例如你要地址0x00000010。但是问题来了，你能够保证你操作的地址0x00000010真的就是你原来想操作的那个位置吗？很可能程序第一次装载进内存的位置是0x00000000~0x00000099，而程序第二次运行的时候，这个程序装载进内存的位置变成了0x00000200~0x00000299，而你操作的0x00000010地址压根就不是属于这个程序所占有的内存。</p>
+</blockquote>
+<p>3.内存使用率低下</p>
+<blockquote>
+<p>举个例子，假设你写了3个程序，其中程序A大小为10M，程序B为70M，程序C的大小为30M你的计算机的内存总共有100M。</p>
+</blockquote>
+<blockquote>
+<p>这三个程序加起来有110M，显然这三个程序是无法同时存在于内存中的</p>
+</blockquote>
+<blockquote>
+<p>并且最多只能够同时运行两个程序。可能是这样的，程序A占有的内存空间是0x00000000～0x00000009，程序B占有的内存空间是0x00000010～0x00000079。假设这个时候程序C要运行该怎么做？可以把其中的一个程序换出到磁盘上，然后再把程序C装载到内存中。假设是把程序A换出，那么程序C还是无法装载进内存中，因为内存中空闲的连续区域有两块，一块是原来程序A占有的那10M，还有就是从0x00000080～0x00000099这20M，所以，30M的程序C无法装载进内存中。那么，唯一的办法就是把程序B换出，保留程序A，但是，此时会有60M的内存无法利用起来，很浪费对吧。</p>
+</blockquote>
+<p>有一句话说的好：计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决.</p>
+<p>所以，分段这种技术就出现了。</p>
+<p>然后，分段这个技术做了一件什么事情呢？</p>
+<blockquote>
+<p>它把虚拟地址空间映射到了物理地址空间，并且你写的程序操作的是虚拟地址。假设，程序A的虚拟地址空间是0x00000100～0x00000200。此时，不仅需要一块连续的物理内存来存放程序A，还需要把程序A的虚拟地址空间映射到（转换为）物理地址空间。可能，程序A的虚拟地址空间从0x00000100～0x00000200映射到了物理地址空间0x00000000～0x00000100。</p>
+</blockquote>
+<blockquote>
+<p>那么分段的技术可以解决什么问题呢？可以解决上面1、2两个问题</p>
+</blockquote>
+<blockquote>
+<p>在问题1中，假设程序A的虚拟地址空间是0x00000000~0x00000099，映射到的物理地址空间是0x00000600~0x00000699，程序B的虚拟地址空间是0x00000100~0x00000199，映射到的物理地址空间是0x00000300~0x00000399。假设你还是手残，在程序A中操作了地址0x00000150，但是英文此时的地址0x00000150是虚拟的，而虚拟化的操作是在操作系统的掌控中的，所以，操作系统有能力判断，这个虚拟地址0x00000150是有问题的，然后阻止后续的操作。所以，体现出了隔离性。（另一种体现隔离性的方式就是，操作同一个虚拟地址，实际上可能操作的是不同的物理地址）</p>
+</blockquote>
+<blockquote>
+<p>问题2也很好的解决了。正是因为这种映射，使得程序无需关注物理地址是多少，只要虚拟地址没有改变，那么，程序就不会操作地址不当。</p>
+</blockquote>
+<p>####但是问题3仍然没有解决<br>因为第三个问题是换入换出的问题，这个问题的关键是能不能在换出一个完整的程序之后，把另一个完整的程序换进来。而这种分段机制，映射的是一片连续的物理内存，所以问题3得不到解决。</p>
+<ul>
+<li>交换</li>
+</ul>
+<blockquote>
+<p>交换：最简单的想法就是为每个进程设立基地址寄存器和界限寄存器确定每个进程的内存范围，不会出现越界的情况。</p>
+</blockquote>
+<blockquote>
+<p>进程在需要在内存中以便执行。不过，进程可以暂时从内存中交换到备份存储上，当需要再次执行时调回内存中。</p>
+</blockquote>
+<ul>
+<li>连续内存分配</li>
+</ul>
+<blockquote>
+<p>内存必须容纳操作系统和各种用户进程。因此，应该尽可能有效的分配内存的各个部分。<br>内存通常分为两个区域：一个用于驻留操作系统，另一个用于用户进程。</p>
+</blockquote>
+<blockquote>
+<p>采用连续内存分配时，每个进程位于一个连续的内存分配区域。</p>
+</blockquote>
+<ul>
+<li>非连续分配内存</li>
+</ul>
+<p>####而问题出在哪呢？就是<strong>完整和连续</strong>。</p>
+<blockquote>
+<p>而分页技术的出现就是为了解决这个问题的。分页这个技术仍然是一种虚拟地址空间到物理地址空间映射的机制。但是，粒度更加的小了。单位不是整个程序，而是某个“页”，一段虚拟地址空间组成的某一页映射到一段物理地址空间组成的某一页。<br><strong>物理内存是 帧， 虚拟地址是 页，大小相同并且对应</strong></p>
+</blockquote>
+<p>分页这个技术，它的虚拟地址空间仍然是连续的，但是，每一页映射后的物理地址就不一定是连续的了。正是因为有了分页的概念，程序的换入换出就可以以页为单位了。那么，为什么就可以只换出某一页呢？实际上，不是为什么可以换出某一页，而是可以换出CPU还用不到的那些程序代码、数据。但是，把这些都换出到磁盘，万一下次CPU就要使用这些代码和数据怎么办？又得把这些代码、数据装载进内存。性能有影响对吧。所以，我们把换入换出的单位变小，变成了“页”。（实际上，这利用了空间局部性）</p>
+<blockquote>
+<p>至此，问题三解决</p>
+</blockquote>
+<blockquote>
+<p>所以，分段和分页的区别在于：粒度</p>
+</blockquote>
+<p>####连续分配内存如果使用可变分区来调入程序，那么可能导致不同分区之间存在小的碎片内存，而这些内存太小以至于不能利用来换入程序，就会一直空闲，也就是所谓的“外部碎片”</p>
+<p>####内部碎片则是程序不能完全利用分区内存大小，导致该分区的一部分内存空闲。</p>
+<p>分段：支持用户视角的内存管理方案<br>分页：允许进程物理地址空间是非连续的。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ciyunruoshui.github.io/2019/05/15/操作系统2/" rel="next" title="操作系统2 CPU调度">
+                <i class="fa fa-chevron-left"></i> 操作系统2 CPU调度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/ciyunruoshui.github.io/2019/06/01/关系型数据库-概念/" rel="prev" title="关系型数据库(1) 概念">
+                关系型数据库(1) 概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ciyunroshui</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/ciyunruoshui.github.io/archives/">
+                
+                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ciyunroshui</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/ciyunruoshui.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/ciyunruoshui.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/ciyunruoshui.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/ciyunruoshui.github.io/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/ciyunruoshui.github.io/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/ciyunruoshui.github.io/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/ciyunruoshui.github.io/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

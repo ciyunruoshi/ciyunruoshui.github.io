@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/ciyunruoshui.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/ciyunruoshui.github.io/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ciyunruoshui.github.io/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/ciyunruoshui.github.io/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/ciyunruoshui.github.io/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/ciyunruoshui.github.io/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/ciyunruoshui.github.io/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="核心观点就是，将给定的字符串转化为数字int规则：  第一字符必须为‘+’ ‘-’ ‘ ’或者数字，分别代表正数 负数 空格（没影响，要去除）正数否则不能转换为数字 除去符号位，剩下的字符串，必须是连续的数字字符，否则，转换结束。    例子1 Input:  “42”     putput: 42   Input: “   -42”   例子2  Output: -42Explanation:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode8 String to Integer (atoi)">
+<meta property="og:url" content="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/06/02/leetcode8/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="核心观点就是，将给定的字符串转化为数字int规则：  第一字符必须为‘+’ ‘-’ ‘ ’或者数字，分别代表正数 负数 空格（没影响，要去除）正数否则不能转换为数字 除去符号位，剩下的字符串，必须是连续的数字字符，否则，转换结束。    例子1 Input:  “42”     putput: 42   Input: “   -42”   例子2  Output: -42Explanation:">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-02T13:08:52.089Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode8 String to Integer (atoi)">
+<meta name="twitter:description" content="核心观点就是，将给定的字符串转化为数字int规则：  第一字符必须为‘+’ ‘-’ ‘ ’或者数字，分别代表正数 负数 空格（没影响，要去除）正数否则不能转换为数字 除去符号位，剩下的字符串，必须是连续的数字字符，否则，转换结束。    例子1 Input:  “42”     putput: 42   Input: “   -42”   例子2  Output: -42Explanation:">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/2019/06/02/leetcode8/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>leetcode8 String to Integer (atoi) | Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/ciyunruoshui.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/ciyunruoshui.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/ciyunruoshui.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ciyunruoshi.github.io/ciyunruoshui.github.io/ciyunruoshui.github.io/2019/06/02/leetcode8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ciyunroshui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/ciyunruoshui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">leetcode8 String to Integer (atoi)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-02 20:58:07 / 修改时间：21:08:52" itemprop="dateCreated datePublished" datetime="2019-06-02T20:58:07+08:00">2019-06-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>核心观点就是，将给定的字符串转化为数字int<br>规则：</p>
+<ul>
+<li>第一字符必须为‘+’ ‘-’ ‘ ’或者数字，分别代表正数 负数 空格（没影响，要去除）正数否则不能转换为数字</li>
+<li>除去符号位，剩下的字符串，必须是连续的数字字符，否则，转换结束。</li>
+</ul>
+</blockquote>
+<ul>
+<li>例子1<blockquote>
+<p>Input:  “42”</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>putput: 42</p>
+</blockquote>
+<blockquote>
+<p>Input: “   -42”</p>
+</blockquote>
+<ul>
+<li><p>例子2</p>
+<blockquote>
+<p>Output: -42<br>Explanation: The first non-whitespace character is ‘-‘, &gt;which is the minus sign.</p>
+<p>Then take as many numerical digits as possible, which &gt;gets 42.</p>
+</blockquote>
+</li>
+<li><p>例子3</p>
+</li>
+</ul>
+<blockquote>
+<p>Input: “words and 987”</p>
+<p>Output: 0</p>
+<p>Explanation: The first non-whitespace character is ‘w’, &gt;which is not a numerical </p>
+<pre><code>digit or a +/- sign. Therefore no valid &gt;conversion &gt;could be performed.
+</code></pre></blockquote>
+<ul>
+<li>例子4</li>
+</ul>
+<blockquote>
+<p>Input: “-91283472332”</p>
+<p>Output: -2147483648</p>
+<p>Explanation: The number “-91283472332” is out of the &gt;range of a 32-bit signed integer.<br>           Thefore INT_MIN (−231) is returned.</p>
+</blockquote>
+<ul>
+<li>思路</li>
+</ul>
+<p>思路很简单，难点在一些不知道的方法使用：</p>
+<ol>
+<li>先去除字符串开头的空格 ，如果有的话</li>
+<li>先判断第一个字符串的满足条件1，用sign保存数字的符号 1 或者 -1</li>
+<li><p>开始循环转换数字字符串，遇到第一个不是数字字符串的，结束循环</p>
+<p> class Solution {</p>
+<pre><code>public int myAtoi(String str) {
+
+    if(str==null)
+        return 0;
+
+    str = str.trim();
+
+    if(str.length()==0)
+        return 0;
+    int sign=1;
+    int start=0;
+    int n = str.length();
+    long sum=0;
+
+    if(str.charAt(0)==&apos;-&apos;){
+        sign=-1;
+        start++;
+    }else if(str.charAt(0)==&apos;+&apos;){
+        sign=1;
+        start++;
+    }
+
+    for(int i=start;i&lt;n;i++){
+        if(!Character.isDigit(str.charAt(i)))
+            return (int)(sum*sign);
+        sum = sum*10+(str.charAt(i)-&apos;0&apos;);
+
+        if(sum*sign&gt;=Integer.MAX_VALUE||sum*sign&lt;=Integer.MIN_VALUE){
+
+            return sign==1?Integer.MAX_VALUE:Integer.MIN_VALUE;
+        }
+    }
+    return (int)(sign*sum);
+}
+</code></pre><p> }</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ciyunruoshui.github.io/2019/06/02/操作系统-虚拟内存/" rel="next" title="操作系统 虚拟内存">
+                <i class="fa fa-chevron-left"></i> 操作系统 虚拟内存
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/ciyunruoshui.github.io/2019/07/08/leetcode34/" rel="prev" title="leetcode34 Find First and Last Position of Element in Sorted Array">
+                leetcode34 Find First and Last Position of Element in Sorted Array <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ciyunroshui</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/ciyunruoshui.github.io/archives/">
+                
+                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ciyunroshui</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/ciyunruoshui.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/ciyunruoshui.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/ciyunruoshui.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/ciyunruoshui.github.io/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/ciyunruoshui.github.io/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/ciyunruoshui.github.io/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/ciyunruoshui.github.io/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/ciyunruoshui.github.io/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
